@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
-    </list>
+    <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +28,8 @@
           <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="true">
             <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="488">
-                  <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+                <state relative-caret-position="114">
+                  <caret line="8" column="73" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="73" />
                   <folding>
                     <element signature="e#0#47#0" expanded="true" />
                   </folding>
@@ -733,8 +731,8 @@
     </entry>
     <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+        <state relative-caret-position="114">
+          <caret line="8" column="73" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="73" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
