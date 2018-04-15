@@ -191,9 +191,11 @@ class Ui_MainWindow(object):
             self.statusbar.showMessage(str(a_qualified_contract))
             buildOptionMatrices.qualify_index_option_chain(self.ib, a_qualified_contract)
 
+
     def updateConnect(self):
         self.updatePushButton.clicked.connect(self.get_underlying_info)
         self.connectToIB.triggered.connect(self.onConnectButtonClicked)
+
 
     def onConnectButtonClicked(self):
         if self.connectToIB.isChecked():
@@ -207,11 +209,10 @@ class Ui_MainWindow(object):
             # as disconnect is not accure on the IB Gateway
             # but was disconnected in my code found this thread
             # https://github.com/erdewit/ib_insync/issues/10
-            # adding the loop works - not sure why
+            # adding the loop works - not sure why 4/15/18 - mrk
             loop = asyncio.get_event_loop()
             loop.run_until_complete(asyncio.sleep(0))
             self.statusbar.showMessage("Disconnected from IB")
-
 
 
 if __name__ == "__main__":
