@@ -15,7 +15,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.44362485">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PyOption.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PyOption.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PyOption.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="289">
@@ -27,11 +27,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="true">
             <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+                <state relative-caret-position="488">
+                  <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
                   <folding>
                     <element signature="e#0#47#0" expanded="true" />
                   </folding>
@@ -55,8 +55,8 @@
           <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="539">
-                  <caret line="211" column="64" selection-start-line="211" selection-start-column="64" selection-end-line="211" selection-end-column="64" />
+                <state relative-caret-position="283">
+                  <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="17" />
                   <folding>
                     <element signature="e#205#247#0" expanded="true" />
                     <element signature="e#6571#8481#0" />
@@ -106,6 +106,7 @@
       <find>Blah</find>
       <find>qac</find>
       <find>QAction</find>
+      <find>_option_chain</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,8 +120,8 @@
         <option value="$PROJECT_DIR$/PyOption.py" />
         <option value="P:/local-packages/localUtilities/dateUtils.py" />
         <option value="P:/local-packages/localUtilities/errorHandler.py" />
-        <option value="P:/local-packages/localUtilities/buildOptionMatrices.py" />
         <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
+        <option value="P:/local-packages/localUtilities/buildOptionMatrices.py" />
       </list>
     </option>
   </component>
@@ -159,7 +160,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyOption">
+  <component name="RunManager" selected="Python.buildOptionMatrices">
     <configuration name="PyOption" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyOptions" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,7 +175,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyOption.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
@@ -259,11 +260,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PyOption" />
         <item itemvalue="Python.buildOptionMatrices" />
+        <item itemvalue="Python.PyOption" />
+        <item itemvalue="Python.PyOption" />
         <item itemvalue="Python.dateUtils" />
         <item itemvalue="Python.errorHandler" />
-        <item itemvalue="Python.bullSpreadViewSmall" />
       </list>
     </recent_temporary>
   </component>
@@ -296,6 +297,7 @@
       <window_info content_ui="combo" id="Project" order="0" weight="0.24973656" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50316125" side_tool="true" weight="0.36266094" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.25751072" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32939914" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32939914" />
@@ -309,7 +311,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -702,13 +703,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py">
+    <entry file="file://P:/local-packages/localUtilities/errorHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -722,20 +720,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://P:/local-packages/localUtilities/errorHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="211" column="64" selection-start-line="211" selection-start-column="64" selection-end-line="211" selection-end-column="64" />
+        <state relative-caret-position="283">
+          <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="17" />
           <folding>
             <element signature="e#205#247#0" expanded="true" />
             <element signature="e#6571#8481#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>

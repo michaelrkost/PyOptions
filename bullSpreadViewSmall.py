@@ -189,7 +189,7 @@ class Ui_MainWindow(object):
         else:
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
-            buildOptionMatrices.qualify_index_option_chain(self.ib, a_qualified_contract)
+            buildOptionMatrices.qualify_option_chain_close(self.ib, a_qualified_contract)
 
 
     def updateConnect(self):
