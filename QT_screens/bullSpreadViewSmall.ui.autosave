@@ -126,6 +126,11 @@
         </item>
         <item>
          <property name="text">
+          <string>NASDAQ</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>SMART</string>
          </property>
         </item>
