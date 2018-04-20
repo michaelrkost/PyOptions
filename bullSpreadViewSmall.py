@@ -9,9 +9,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ib_insync import *
 
-# Neeed to disconnect
+
+# Need to disconnect
 # see note in function // onConnectButtonClicked
-import asyncio
+# import asyncio
+util.useQt()
 
 from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
 
@@ -240,9 +242,11 @@ class Ui_MainWindow(object):
         the_exchange = self.comboBoxExchange.currentText()
 
         a=self.security_type(the_underlying, the_exchange)
-
-        get_underlying = self.ib.qualifyContracts(a)
-
+        try:
+            get_underlying = self.ib.qualifyContracts(a)
+        except ConnectionError:
+            self.statusbar.showMessage("NOT CONNECTED")
+            return
         if not get_underlying:  # empty list - failed qualifyContract
             self.statusbar.showMessage("Underlying: " + the_underlying + " not recognized!")
         else:
@@ -287,8 +291,8 @@ class Ui_MainWindow(object):
             # but was disconnected in my code found this thread
             # https://github.com/erdewit/ib_insync/issues/10
             # adding the loop works - not sure why 4/15/18 - mrk
-            loop = asyncio.get_event_loop()
-            loop.run_until_complete(asyncio.sleep(0))
+            # loop = asyncio.get_event_loop()
+            # loop.run_until_complete(asyncio.sleep(0))
             self.statusbar.showMessage("Disconnected from IB")
 
 
