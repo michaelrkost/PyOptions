@@ -8,12 +8,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
-
-
-# Need to disconnect
-# see note in function // onConnectButtonClicked
-# import asyncio
 util.useQt()
+
 
 from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
 
@@ -22,14 +18,14 @@ class Ui_MainWindow(object):
         self.ib = IB()
         self.ib.setCallback('error', errorHandler.onError)
 
-    # def setup Ui -- goes here:
+    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui -- goes from here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1289, 697)
+        MainWindow.resize(956, 737)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget_Contracts = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 1301, 661))
+        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 881, 661))
         self.tabWidget_Contracts.setObjectName("tabWidget_Contracts")
         self.Contract_tab = QtWidgets.QWidget()
         self.Contract_tab.setObjectName("Contract_tab")
@@ -132,7 +128,7 @@ class Ui_MainWindow(object):
         self.radioButton_Put.setObjectName("radioButton_Put")
         self.gridLayout_CallPut.addWidget(self.radioButton_Put, 0, 1, 1, 1)
         self.tableWidget = QtWidgets.QTableWidget(self.Contract_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(350, 10, 931, 581))
+        self.tableWidget.setGeometry(QtCore.QRect(350, 10, 481, 581))
         font = QtGui.QFont()
         font.setFamily("Monospace")
         font.setPointSize(10)
@@ -141,7 +137,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setRowCount(10)
-        self.tableWidget.setColumnCount(10)
+        self.tableWidget.setColumnCount(5)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.horizontalHeader().setDefaultSectionSize(90)
         self.tableWidget.horizontalHeader().setHighlightSections(True)
@@ -152,11 +148,16 @@ class Ui_MainWindow(object):
         self.tabWidget_Contracts.addTab(self.Contract_tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
+        self.tableWidget_2 = QtWidgets.QTableWidget(self.tab_2)
+        self.tableWidget_2.setGeometry(QtCore.QRect(10, 10, 751, 561))
+        self.tableWidget_2.setObjectName("tableWidget_2")
+        self.tableWidget_2.setColumnCount(0)
+        self.tableWidget_2.setRowCount(0)
         self.tabWidget_Contracts.addTab(self.tab_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         font = QtGui.QFont()
-        font.setFamily("Chandas")
+        font.setFamily("Noto Sans CJK TC")
         font.setPointSize(12)
         self.statusbar.setFont(font)
         self.statusbar.setObjectName("statusbar")
@@ -178,7 +179,7 @@ class Ui_MainWindow(object):
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainWindow)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal,
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/py_pic.png"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
         self.actiontestIB.setIcon(icon1)
         self.actiontestIB.setObjectName("actiontestIB")
@@ -186,13 +187,18 @@ class Ui_MainWindow(object):
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal,
+        icon2.addPixmap(QtGui.QPixmap(".:/resources/icons/about.gif"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
         self.actiontestCheckableIB.setIcon(icon2)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIBToolbar.addAction(self.connectToIB)
 
-        # this is not part of the QT Creator for setupUi()
+        self.retranslateUi(MainWindow)
+        self.tabWidget_Contracts.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        # ===================this is not part of the QT Creator for setupUi()===================
         # These are the function connectors
         self.updateConnect()
 
@@ -201,7 +207,7 @@ class Ui_MainWindow(object):
         self.tabWidget_Contracts.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    # def retranslateUi -- goes below:
+    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- goes here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "IB Options"))
@@ -244,7 +250,7 @@ class Ui_MainWindow(object):
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.Contract_tab),
                                             _translate("MainWindow", "Option Contracts "))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab_2),
-                                            _translate("MainWindow", "Tab 2"))
+                                            _translate("MainWindow", "Bear Spreads"))
         self.actionIBToolbar.setWindowTitle(_translate("MainWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainWindow", "Connect to IB "))
         self.connectToIB.setToolTip(_translate("MainWindow", "Connect to IB api"))
@@ -253,7 +259,9 @@ class Ui_MainWindow(object):
         self.actiontestCheckableIB.setText(_translate("MainWindow", "testCheckable"))
         self.actiontestCheckableIB.setToolTip(_translate("MainWindow", "Meow"))
 
-        # this is not part of the QT Creator for retranslateUi()
+    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        # ================this is not part of the QT Creator for retranslateUi()===================
         self.doExpiry(_translate)
         self.trimTable(_translate)
 
@@ -359,6 +367,7 @@ class Ui_MainWindow(object):
             # loop.run_until_complete(asyncio.sleep(0))
             self.statusbar.showMessage("Disconnected from IB")
 
+import resources_rc
 
 if __name__ == "__main__":
     import sys
