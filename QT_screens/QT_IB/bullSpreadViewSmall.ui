@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>IB Options</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/resources/icons/ib.png</normaloff>:/resources/icons/ib.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget_Contracts">
     <property name="geometry">
@@ -24,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Contract_tab">
      <attribute name="title">
@@ -387,7 +391,7 @@
        <number>30</number>
       </attribute>
       <attribute name="verticalHeaderVisible">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>19</number>

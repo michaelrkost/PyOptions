@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/buildContracts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QT_screens/Archive2018/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/Archive2018/bullSpreadViewSmall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QT_screens/Archive2018/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/Archive2018/bullSpreadViewSmall.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources.qrc" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +20,7 @@
           <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="812">
+                <state relative-caret-position="317">
                   <caret line="189" column="52" selection-start-line="189" selection-start-column="52" selection-end-line="189" selection-end-column="52" />
                   <folding>
                     <element signature="e#205#251#0" expanded="true" />
@@ -104,6 +98,11 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="MRK" />
+      </list>
+    </option>
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -123,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1602" />
     <option name="height" value="450" />
@@ -136,7 +135,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="/usr/bin/git" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -291,9 +290,10 @@
     <frame x="-1" y="0" width="1602" height="900" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16740647" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.32816538" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" visible="true" weight="0.32816538" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3475" side_tool="true" weight="0.43287328" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" visible="true" weight="0.32816538" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32816538" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32816538" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6525" weight="0.45865634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -306,11 +306,40 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated resources file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated resources file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -481,7 +510,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
+        <state relative-caret-position="317">
           <caret line="189" column="52" selection-start-line="189" selection-start-column="52" selection-end-line="189" selection-end-column="52" />
           <folding>
             <element signature="e#205#251#0" expanded="true" />
