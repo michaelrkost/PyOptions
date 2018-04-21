@@ -277,31 +277,23 @@ class Ui_MainWindow(object):
     def displayContracts(self, contracts):
         contractsLen = len(contracts)
         self.tableWidget.setRowCount(contractsLen)
-        # itemStr = Qt.QTableWidgetItem('-')
-        # itemNum = Qt.QTableWidgetItem(0)
+        self.tableWidget.clearContents()
         #Items are created ouside the table (with no parent widget) and inserted into the table with setItem():
         theRow = 0
         for aContract in contracts:
-
-            # if hasattr(aContract, 'conId'):
-            if aContract.conId > 0:
-                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
-                self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
-                self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(aContract.lastTradeDateOrContractMonth))
-                self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
-                self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
-                # self.tableWidget.setItem(theRow, 5, QtWidgets.QTableWidgetItem(aContract.multiplier))
-                # self.tableWidget.setItem(theRow, 6, QtWidgets.QTableWidgetItem(aContract.exchange))
-                # self.tableWidget.setItem(theRow, 7, QtWidgets.QTableWidgetItem(aContract.currency))
-                # self.tableWidget.setItem(theRow, 8, QtWidgets.QTableWidgetItem(aContract.localSymbol))
-                # self.tableWidget.setItem(theRow, 9, QtWidgets.QTableWidgetItem(aContract.tradingClass))
-                theRow = theRow + 1
-                print("row: ",theRow , 'Contract:  ', aContract)
-                print(aContract.conId)
-                print(type(aContract.conId))
+            if aContract.conId == 0:
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
             else:
-                print("row: ",theRow , 'Contract:  ', aContract)
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
 
+            self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
+            self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
+            self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
+            self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
+
+            theRow = theRow + 1
+            print("row: ",theRow , 'Contract:  ', aContract)
+            print(aContract.conId)
 
 
     def right(self):
