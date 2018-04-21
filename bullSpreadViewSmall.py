@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
 
 
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     # def setup Ui -- goes here:
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(546, 319)
+        MainWindow.resize(1011, 319)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/ib.png"), QtGui.QIcon.Normal,
                        QtGui.QIcon.Off)
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.radioButton_Option = QtWidgets.QRadioButton(self.splitter)
         self.radioButton_Option.setObjectName("radioButton_Option")
         self.layoutWidget = QtWidgets.QWidget(self.groupBox_2)
-        self.layoutWidget.setGeometry(QtCore.QRect(20, 40, 250, 48))
+        self.layoutWidget.setGeometry(QtCore.QRect(20, 40, 250, 50))
         self.layoutWidget.setObjectName("layoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -72,6 +72,7 @@ class Ui_MainWindow(object):
         self.comboBoxExchange = QtWidgets.QComboBox(self.layoutWidget)
         self.comboBoxExchange.setToolTip("")
         self.comboBoxExchange.setObjectName("comboBoxExchange")
+        self.comboBoxExchange.addItem("")
         self.comboBoxExchange.addItem("")
         self.comboBoxExchange.addItem("")
         self.comboBoxExchange.addItem("")
@@ -116,19 +117,33 @@ class Ui_MainWindow(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
-        self.widget = QtWidgets.QWidget(self.groupBox_2)
-        self.widget.setGeometry(QtCore.QRect(20, 98, 121, 21))
-        self.widget.setObjectName("widget")
-        self.gridLayout_CallPut = QtWidgets.QGridLayout(self.widget)
+        self.layoutWidget1 = QtWidgets.QWidget(self.groupBox_2)
+        self.layoutWidget1.setGeometry(QtCore.QRect(20, 98, 121, 25))
+        self.layoutWidget1.setObjectName("layoutWidget1")
+        self.gridLayout_CallPut = QtWidgets.QGridLayout(self.layoutWidget1)
         self.gridLayout_CallPut.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_CallPut.setObjectName("gridLayout_CallPut")
-        self.radioButton_Call = QtWidgets.QRadioButton(self.widget)
+        self.radioButton_Call = QtWidgets.QRadioButton(self.layoutWidget1)
         self.radioButton_Call.setChecked(True)
         self.radioButton_Call.setObjectName("radioButton_Call")
         self.gridLayout_CallPut.addWidget(self.radioButton_Call, 0, 0, 1, 1)
-        self.radioButton_Put = QtWidgets.QRadioButton(self.widget)
+        self.radioButton_Put = QtWidgets.QRadioButton(self.layoutWidget1)
         self.radioButton_Put.setObjectName("radioButton_Put")
         self.gridLayout_CallPut.addWidget(self.radioButton_Put, 0, 1, 1, 1)
+        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableWidget.setGeometry(QtCore.QRect(360, 10, 631, 261))
+        self.tableWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.tableWidget.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget.setRowCount(10)
+        self.tableWidget.setColumnCount(10)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(90)
+        self.tableWidget.horizontalHeader().setHighlightSections(True)
+        self.tableWidget.horizontalHeader().setMinimumSectionSize(30)
+        self.tableWidget.verticalHeader().setVisible(True)
+        self.tableWidget.verticalHeader().setDefaultSectionSize(19)
+        self.tableWidget.verticalHeader().setMinimumSectionSize(18)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -140,28 +155,20 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.actionIBToolbar)
         self.connectToIB = QtWidgets.QAction(MainWindow)
         self.connectToIB.setCheckable(True)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/ConnectNo.ico"),
-                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/ConnectEstablished.ico"),
-                        QtGui.QIcon.Normal, QtGui.QIcon.On)
-        icon1.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/ConnectCreating.ico"),
-                        QtGui.QIcon.Active, QtGui.QIcon.On)
-        self.connectToIB.setIcon(icon1)
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainWindow)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal,
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
-        self.actiontestIB.setIcon(icon2)
+        self.actiontestIB.setIcon(icon1)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal,
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
-        self.actiontestCheckableIB.setIcon(icon3)
+        self.actiontestCheckableIB.setIcon(icon2)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIBToolbar.addAction(self.connectToIB)
 
@@ -186,12 +193,13 @@ class Ui_MainWindow(object):
         self.labelExchange.setText(_translate("MainWindow", "Exchange:"))
         self.label.setText(_translate("MainWindow", "Expiry"))
         self.comboBoxExchange.setItemText(0, _translate("MainWindow", "CBOE"))
-        self.comboBoxExchange.setItemText(1, _translate("MainWindow", "SMART"))
-        self.comboBoxExchange.setItemText(2, _translate("MainWindow", "ISLAND"))
-        self.comboBoxExchange.setItemText(3, _translate("MainWindow", "NYSE"))
-        self.comboBoxExchange.setItemText(4, _translate("MainWindow", "AMEX"))
-        self.comboBoxExchange.setItemText(5, _translate("MainWindow", "IDEAL"))
-        self.comboBoxExchange.setItemText(6, _translate("MainWindow", "PHLX"))
+        self.comboBoxExchange.setItemText(1, _translate("MainWindow", "NASDAQ"))
+        self.comboBoxExchange.setItemText(2, _translate("MainWindow", "SMART"))
+        self.comboBoxExchange.setItemText(3, _translate("MainWindow", "ISLAND"))
+        self.comboBoxExchange.setItemText(4, _translate("MainWindow", "NYSE"))
+        self.comboBoxExchange.setItemText(5, _translate("MainWindow", "AMEX"))
+        self.comboBoxExchange.setItemText(6, _translate("MainWindow", "IDEAL"))
+        self.comboBoxExchange.setItemText(7, _translate("MainWindow", "PHLX"))
         self.groupBox_StrikePrice.setTitle(_translate("MainWindow", "Strkie Price"))
         self.label_4.setText(_translate("MainWindow", "Range"))
         self.label_3.setText(_translate("MainWindow", "Multiple"))
@@ -211,6 +219,7 @@ class Ui_MainWindow(object):
         self.comboBox_2.setItemText(3, _translate("MainWindow", "20"))
         self.radioButton_Call.setText(_translate("MainWindow", "Call"))
         self.radioButton_Put.setText(_translate("MainWindow", "Put"))
+        self.tableWidget.setSortingEnabled(True)
         self.actionIBToolbar.setWindowTitle(_translate("MainWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainWindow", "Connect to IB "))
         self.connectToIB.setToolTip(_translate("MainWindow", "Connect to IB api"))
@@ -221,6 +230,13 @@ class Ui_MainWindow(object):
 
         # this is not part of the QT Creator for retranslateUi()
         self.doExpiry(_translate)
+        self.trimTable(_translate)
+
+    def trimTable(self, _translate):
+        headers = ['conId', 'symbol', 'lastTradeDate', 'strike', 'right']
+        self.tableWidget.setColumnCount(len(headers))
+        self.tableWidget.setHorizontalHeaderLabels( headers)
+        self.tableWidget.setAlternatingRowColors(True)
 
     def doExpiry(self, _translate):
         """Create a list of 18 Months of Option Fridays
@@ -253,8 +269,39 @@ class Ui_MainWindow(object):
             print('self.comboBoxExchange.currentText(): ', self.comboBoxExchange.currentText())
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
-            buildOptionMatrices.qualify_option_chain_close(self.ib, a_qualified_contract,
+            contracts = buildOptionMatrices.qualify_option_chain_close(self.ib, a_qualified_contract,
                                                            self.right(), self.comboBoxExchange.currentText())
+            print("=================================Contracts: \n", contracts)
+            self.displayContracts(contracts)
+
+    def displayContracts(self, contracts):
+        contractsLen = len(contracts)
+        self.tableWidget.setRowCount(contractsLen)
+        # itemStr = Qt.QTableWidgetItem('-')
+        # itemNum = Qt.QTableWidgetItem(0)
+        #Items are created ouside the table (with no parent widget) and inserted into the table with setItem():
+        theRow = 0
+        for aContract in contracts:
+
+            # if hasattr(aContract, 'conId'):
+            if aContract.conId > 0:
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
+                self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
+                self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(aContract.lastTradeDateOrContractMonth))
+                self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
+                self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
+                # self.tableWidget.setItem(theRow, 5, QtWidgets.QTableWidgetItem(aContract.multiplier))
+                # self.tableWidget.setItem(theRow, 6, QtWidgets.QTableWidgetItem(aContract.exchange))
+                # self.tableWidget.setItem(theRow, 7, QtWidgets.QTableWidgetItem(aContract.currency))
+                # self.tableWidget.setItem(theRow, 8, QtWidgets.QTableWidgetItem(aContract.localSymbol))
+                # self.tableWidget.setItem(theRow, 9, QtWidgets.QTableWidgetItem(aContract.tradingClass))
+                theRow = theRow + 1
+                print("row: ",theRow , 'Contract:  ', aContract)
+                print(aContract.conId)
+                print(type(aContract.conId))
+            else:
+                print("row: ",theRow , 'Contract:  ', aContract)
+
 
 
     def right(self):

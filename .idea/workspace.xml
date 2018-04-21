@@ -10,53 +10,44 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="167">
-                  <caret line="247" column="52" selection-start-line="247" selection-start-column="52" selection-end-line="247" selection-end-column="52" />
-                  <folding>
-                    <element signature="e#205#247#0" expanded="true" />
-                    <element signature="e#670#8907#0" />
-                    <element signature="e#8997#12240#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PyOption.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/PyOption.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-                  <folding>
-                    <element signature="e#0#23#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <folding>
-                    <element signature="e#0#47#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="235" column="72" selection-start-line="235" selection-start-column="72" selection-end-line="235" selection-end-column="72" />
+              <folding>
+                <element signature="e#205#251#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PyOption.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PyOption.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" selection-start-line="40" selection-end-line="40" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -78,6 +69,8 @@
       <find>qac</find>
       <find>QAction</find>
       <find>_option_chain</find>
+      <find>QTable</find>
+      <find>setColumnCount</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -93,6 +86,7 @@
         <option value="P:/local-packages/localUtilities/errorHandler.py" />
         <option value="P:/local-packages/localUtilities/buildOptionMatrices.py" />
         <option value="$PROJECT_DIR$/PyOption.py" />
+        <option value="$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py" />
         <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
       </list>
     </option>
@@ -145,7 +139,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../local-packages" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -298,18 +292,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16740647" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" visible="true" weight="0.32816538" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16740647" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.32816538" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3475" side_tool="true" weight="0.43287328" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32939914" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32939914" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6525" weight="0.5697674" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6525" visible="true" weight="0.45865634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32860824" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4963119" weight="0.36266094" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4963119" weight="0.6007752" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -326,48 +321,38 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>246</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>268</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>244</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>250</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>253</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>281</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>282</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>287</line>
+          <line>334</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="50" />
+          <line>278</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
+          <line>283</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
+          <line>282</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
+          <line>277</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
+          <line>287</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
+          <line>297</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -380,7 +365,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="51" />
+      <option name="time" value="63" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -392,16 +377,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PyOption.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://P:/local-packages/localUtilities/dateUtils.py" />
     <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -509,9 +484,17 @@
     <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py" />
     <entry file="file://P:/local-packages/localUtilities/errorHandler.py" />
     <entry file="file://P:/local-packages/ib_insync/util.py" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="600">
+          <caret line="40" selection-start-line="40" selection-end-line="40" selection-end-column="37" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -520,8 +503,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PyOption.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        <state relative-caret-position="45">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -530,12 +513,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="247" column="52" selection-start-line="247" selection-start-column="52" selection-end-line="247" selection-end-column="52" />
+        <state relative-caret-position="188">
+          <caret line="235" column="72" selection-start-line="235" selection-start-column="72" selection-end-line="235" selection-end-column="72" />
           <folding>
-            <element signature="e#205#247#0" expanded="true" />
-            <element signature="e#670#8907#0" />
-            <element signature="e#8997#12240#0" />
+            <element signature="e#205#251#0" expanded="true" />
           </folding>
         </state>
       </provider>
