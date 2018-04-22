@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>960</width>
+    <width>1196</width>
     <height>742</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>861</width>
+      <width>1051</width>
       <height>661</height>
      </rect>
     </property>
@@ -351,7 +351,7 @@
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>540</x>
         <y>10</y>
         <width>481</width>
         <height>601</height>
@@ -403,6 +403,33 @@
       <row/>
       <row/>
       <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_OptionGreeks">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>250</y>
+        <width>481</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="rowCount">
+       <number>6</number>
+      </property>
+      <property name="columnCount">
+       <number>5</number>
+      </property>
       <row/>
       <row/>
       <row/>
@@ -529,6 +556,23 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget_Contracts</tabstop>
+  <tabstop>underlyingText</tabstop>
+  <tabstop>radioButton_Index</tabstop>
+  <tabstop>radioButton_Stock</tabstop>
+  <tabstop>radioButton_Option</tabstop>
+  <tabstop>comboBoxExchange</tabstop>
+  <tabstop>comboBox_Expiry</tabstop>
+  <tabstop>radioButton_Call</tabstop>
+  <tabstop>radioButton_Put</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>updateQualifyClose</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>tableWidget_OptionGreeks</tabstop>
+  <tabstop>tableWidget_2</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

@@ -22,11 +22,14 @@ class Ui_MainWindow(object):
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui      -- goes here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(956, 737)
+        MainWindow.resize(1196, 742)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/resources/icons/ib.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget_Contracts = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 881, 661))
+        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 1051, 661))
         self.tabWidget_Contracts.setObjectName("tabWidget_Contracts")
         self.Contract_tab = QtWidgets.QWidget()
         self.Contract_tab.setObjectName("Contract_tab")
@@ -129,7 +132,7 @@ class Ui_MainWindow(object):
         self.radioButton_Put.setObjectName("radioButton_Put")
         self.gridLayout_CallPut.addWidget(self.radioButton_Put, 0, 1, 1, 1)
         self.tableWidget = QtWidgets.QTableWidget(self.Contract_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(350, 10, 481, 581))
+        self.tableWidget.setGeometry(QtCore.QRect(540, 10, 481, 601))
         font = QtGui.QFont()
         font.setFamily("Monospace")
         font.setPointSize(10)
@@ -143,23 +146,28 @@ class Ui_MainWindow(object):
         self.tableWidget.horizontalHeader().setDefaultSectionSize(90)
         self.tableWidget.horizontalHeader().setHighlightSections(True)
         self.tableWidget.horizontalHeader().setMinimumSectionSize(30)
-        self.tableWidget.verticalHeader().setVisible(True)
+        self.tableWidget.verticalHeader().setVisible(False)
         self.tableWidget.verticalHeader().setDefaultSectionSize(19)
         self.tableWidget.verticalHeader().setMinimumSectionSize(18)
+        self.tableWidget_OptionGreeks = QtWidgets.QTableWidget(self.Contract_tab)
+        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 250, 481, 361))
+        self.tableWidget_OptionGreeks.setRowCount(6)
+        self.tableWidget_OptionGreeks.setColumnCount(5)
+        self.tableWidget_OptionGreeks.setObjectName("tableWidget_OptionGreeks")
         self.tabWidget_Contracts.addTab(self.Contract_tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.tableWidget_2 = QtWidgets.QTableWidget(self.tab_2)
         self.tableWidget_2.setGeometry(QtCore.QRect(10, 10, 751, 561))
+        self.tableWidget_2.setRowCount(10)
+        self.tableWidget_2.setColumnCount(5)
         self.tableWidget_2.setObjectName("tableWidget_2")
-        self.tableWidget_2.setColumnCount(0)
-        self.tableWidget_2.setRowCount(0)
         self.tabWidget_Contracts.addTab(self.tab_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         font = QtGui.QFont()
-        font.setFamily("Noto Sans CJK TC")
-        font.setPointSize(12)
+        font.setFamily("Chandas")
+        font.setPointSize(10)
         self.statusbar.setFont(font)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -170,33 +178,30 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.actionIBToolbar)
         self.connectToIB = QtWidgets.QAction(MainWindow)
         self.connectToIB.setCheckable(True)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectNo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal,
-                       QtGui.QIcon.On)
-        icon.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Active, QtGui.QIcon.On)
-        icon.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected, QtGui.QIcon.On)
-        self.connectToIB.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectNo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected,
+                        QtGui.QIcon.On)
+        self.connectToIB.setIcon(icon1)
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainWindow)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/py_pic.png"), QtGui.QIcon.Normal,
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
-        self.actiontestIB.setIcon(icon1)
+        self.actiontestIB.setIcon(icon2)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".:/resources/icons/about.gif"), QtGui.QIcon.Normal,
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
-        self.actiontestCheckableIB.setIcon(icon2)
+        self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIBToolbar.addAction(self.connectToIB)
-
-        self.retranslateUi(MainWindow)
-        self.tabWidget_Contracts.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         # ===================this is not part of the QT Creator for setupUi()===================
@@ -269,8 +274,13 @@ class Ui_MainWindow(object):
     def trimTable(self, _translate):
         headers = ['conId', 'symbol', 'lastTradeDate', 'strike', 'right']
         self.tableWidget.setColumnCount(len(headers))
-        self.tableWidget.setHorizontalHeaderLabels( headers)
+        self.tableWidget.setHorizontalHeaderLabels(headers)
         self.tableWidget.setAlternatingRowColors(True)
+
+        headerGreeks = ['Price', 'Implied Vol', 'Gamma', 'Delta', 'Time Val']
+        self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
+        self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
+
 
     def doExpiry(self, _translate):
         """Create a list of 18 Months of Option Fridays
@@ -306,10 +316,11 @@ class Ui_MainWindow(object):
             self.statusbar.showMessage(str(a_qualified_contract))
             #TODO: add check for time and date - wether to use close(market closed) or last(active market)
             aOptionSpread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
-            aOptionSpread.qualify_option_chain_close(self.right(), self.comboBoxExchange.currentText())
+            aOptionSpread.qualify_option_chain_close(self.right())
             print("=================================Contracts: \n", aOptionSpread.contracts)
             self.displayContracts(aOptionSpread.contracts)
             self.displayBullSpreads(aOptionSpread.contracts)
+            aOptionSpread.buildBullPandas()
 
     def displayBullSpreads(self, contracts):
         contractsLen = len(contracts)
@@ -380,7 +391,7 @@ class Ui_MainWindow(object):
     def onConnectButtonClicked(self):
         if self.connectToIB.isChecked():
             self.ib.connect(configIB.IB_API_HOST,
-                        configIB.IB_PAPER_TRADE_PORT,
+                        configIB.IB_LIVE_TRADE_PORT,
                         configIB.IB_API_CLIENTID_1)
             self.statusbar.showMessage("Connected to IB")
         else:

@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optionClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/optionClass.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,18 +15,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42929614">
+    <splitter split-orientation="horizontal" split-proportion="0.48256183">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="248">
-                  <caret line="311" selection-start-line="311" selection-end-line="311" />
+                <state relative-caret-position="60">
+                  <caret line="322" column="43" lean-forward="true" selection-start-line="322" selection-start-column="43" selection-end-line="322" selection-end-column="43" />
                   <folding>
                     <element signature="e#205#251#0" expanded="true" />
-                    <element signature="e#656#11035#0" />
-                    <element signature="e#11189#15098#0" />
+                    <element signature="e#11656#15565#0" />
                   </folding>
                 </state>
               </provider>
@@ -32,8 +34,8 @@
           <file leaf-file-name="PyOption.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PyOption.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -60,8 +62,8 @@
           <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="62" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="62" />
+                <state relative-caret-position="511">
+                  <caret line="45" selection-start-line="45" selection-end-line="45" />
                   <folding>
                     <element signature="e#0#47#0" expanded="true" />
                   </folding>
@@ -72,11 +74,20 @@
           <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/optionClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="840">
-                  <caret line="68" column="15" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="23" />
+                <state relative-caret-position="107">
+                  <caret line="73" selection-start-line="73" selection-end-line="73" />
                   <folding>
                     <element signature="e#20#77#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="configIB.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/configIB.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -136,11 +147,12 @@
         <option value="$PROJECT_DIR$/buildContracts.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py" />
         <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
+        <option value="$PROJECT_DIR$/../local-packages/localUtilities/configIB.py" />
         <option value="$PROJECT_DIR$/optionClass.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1602" />
     <option name="height" value="450" />
@@ -341,6 +353,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16740647" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.3268734" />
@@ -352,7 +365,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32816538" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4963119" visible="true" weight="0.48966408" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4963119" weight="0.48966408" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -398,9 +411,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>311</line>
-          <option name="timeStamp" value="75" />
+          <url>file://$PROJECT_DIR$/optionClass.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/optionClass.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -413,7 +431,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="76" />
+      <option name="time" value="79" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -425,7 +443,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://P:/local-packages/localUtilities/errorHandler.py" />
     <entry file="file://P:/local-packages/ib_insync/wrapper.py" />
     <entry file="file://P:/local-packages/localUtilities/widgetIB.py" />
     <entry file="file://$PROJECT_DIR$/PyOption.py">
@@ -546,16 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/quamash/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -563,34 +570,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/configIB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PyOption.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="165">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optionClass.py">
+    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="68" column="15" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="23" />
+        <state relative-caret-position="60">
+          <caret line="322" column="43" lean-forward="true" selection-start-line="322" selection-start-column="43" selection-end-line="322" selection-end-column="43" />
           <folding>
-            <element signature="e#20#77#0" expanded="true" />
+            <element signature="e#205#251#0" expanded="true" />
+            <element signature="e#11656#15565#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+    <entry file="file://$PROJECT_DIR$/optionClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="311" selection-start-line="311" selection-end-line="311" />
+        <state relative-caret-position="107">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
-            <element signature="e#205#251#0" expanded="true" />
-            <element signature="e#656#11035#0" />
-            <element signature="e#11189#15098#0" />
+            <element signature="e#20#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
