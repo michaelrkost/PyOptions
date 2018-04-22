@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
 util.useQt()
 
+import optionClass
 
 from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
 
@@ -286,6 +287,7 @@ class Ui_MainWindow(object):
             orderNum += 1
 
     def get_underlying_info(self):
+        #TODO drop any existing instance of contracts if new instance is created
         self.statusbar.clearMessage()
         the_underlying = self.underlyingText.text()
         the_exchange = self.comboBoxExchange.currentText()
@@ -303,11 +305,11 @@ class Ui_MainWindow(object):
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
             #TODO: add check for time and date - wether to use close(market closed) or last(active market)
-            contracts = buildOptionMatrices.qualify_option_chain_close(self.ib, a_qualified_contract,
-                                                           self.right(), self.comboBoxExchange.currentText())
-            print("=================================Contracts: \n", contracts)
-            self.displayContracts(contracts)
-            self.displayBullSpreads(contracts)
+            aOptionSpread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
+            aOptionSpread.qualify_option_chain_close(self.right(), self.comboBoxExchange.currentText())
+            print("=================================Contracts: \n", aOptionSpread.contracts)
+            self.displayContracts(aOptionSpread.contracts)
+            self.displayBullSpreads(aOptionSpread.contracts)
 
     def displayBullSpreads(self, contracts):
         contractsLen = len(contracts)
