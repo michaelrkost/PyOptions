@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         self.ib = IB()
         self.ib.setCallback('error', errorHandler.onError)
 
-    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui -- goes from here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui      -- goes here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(956, 737)
@@ -294,7 +294,7 @@ class Ui_MainWindow(object):
         try:
             get_underlying = self.ib.qualifyContracts(a)
         except ConnectionError:
-            self.statusbar.showMessage("NOT CONNECTED")
+            self.statusbar.showMessage("NOT CONNECTED!!! Knucklehead!")
             return
         if not get_underlying:  # empty list - failed qualifyContract
             self.statusbar.showMessage("Underlying: " + the_underlying + " not recognized!")
@@ -302,12 +302,14 @@ class Ui_MainWindow(object):
             print('self.comboBoxExchange.currentText(): ', self.comboBoxExchange.currentText())
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
+            #TODO: add check for time and date - wether to use close(market closed) or last(active market)
             contracts = buildOptionMatrices.qualify_option_chain_close(self.ib, a_qualified_contract,
                                                            self.right(), self.comboBoxExchange.currentText())
             print("=================================Contracts: \n", contracts)
             self.displayContracts(contracts)
+            self.displayBullSpreads(contracts)
 
-    def displayContracts(self, contracts):
+    def displayBullSpreads(self, contracts):
         contractsLen = len(contracts)
         self.tableWidget.setRowCount(contractsLen)
         self.tableWidget.clearContents()
@@ -326,6 +328,29 @@ class Ui_MainWindow(object):
 
             theRow = theRow + 1
             print("row: ",theRow , 'Contract:  ', aContract)
+            print(aContract.conId)
+
+
+    def displayContracts(self, contracts):
+        contractsLen = len(contracts)
+        self.tableWidget.setRowCount(contractsLen)
+        self.tableWidget.clearContents()
+        # Items are created ouside the table (with no parent widget) and inserted into the table with setItem():
+        theRow = 0
+        for aContract in contracts:
+            if aContract.conId == 0:
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
+            else:
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
+
+            self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
+            self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
+            self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
+            self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
+
+            theRow = theRow + 1
+            print("row: ", theRow, 'Contract:  ', aContract)
             print(aContract.conId)
 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>944</width>
-    <height>697</height>
+    <width>960</width>
+    <height>742</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,14 +21,14 @@
    <widget class="QTabWidget" name="tabWidget_Contracts">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>-10</y>
-      <width>1311</width>
+      <x>0</x>
+      <y>0</y>
+      <width>861</width>
       <height>661</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Contract_tab">
      <attribute name="title">
@@ -354,7 +354,7 @@
         <x>350</x>
         <y>10</y>
         <width>481</width>
-        <height>581</height>
+        <height>601</height>
        </rect>
       </property>
       <property name="font">
@@ -429,6 +429,27 @@
         <height>561</height>
        </rect>
       </property>
+      <property name="rowCount">
+       <number>10</number>
+      </property>
+      <property name="columnCount">
+       <number>5</number>
+      </property>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
      </widget>
     </widget>
    </widget>
