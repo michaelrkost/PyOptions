@@ -28,7 +28,7 @@ class OptionSpreads:
         self.a_Contract = a_qualified_contract
         self.ib = anIB
         self.contracts = []
-        self.toIntStrikes =[]
+        self.theStrikes =[]
 
     def qualify_option_chain_close(self, theRight, exchange,
                                    strikePriceRange=10, strikePriceMultiple=5):
@@ -66,9 +66,9 @@ class OptionSpreads:
         self.ib.qualifyContracts(*self.contracts)
         print("Contracts: \n", self.contracts)
 
-        self.toIntStrikes = strikes
-        self.toIntStrikes = [int(i) for i in self.toIntStrikes]
-        print("toIntStrikes:  ", self.toIntStrikes)
+        self.theStrikes = strikes
+        self.theStrikes = [int(i) for i in self.theStrikes]
+        print("toIntStrikes:  ", self.theStrikes)
 
 
 
