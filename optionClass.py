@@ -13,7 +13,6 @@ class OptionSpreads:
 
     # a single list is shared by all instances:
     # Headers
-    headerPrice = ['Price', 'impliedVol', 'Gamma', 'Delta', 'TimeVal']
     # Puts / Calls
     putRight = 'P'
     callRight = 'C'
@@ -30,7 +29,7 @@ class OptionSpreads:
         self.contracts = []
         self.theStrikes =[]
 
-    def qualify_option_chain_close(self, theRight, exchange,
+    def qualify_option_chain_close(self, theRight,
                                    strikePriceRange=10, strikePriceMultiple=5):
         print("<<in qualify_index_option_chain >>  ")
         # Fully qualify the given contracts in-place.
@@ -70,8 +69,12 @@ class OptionSpreads:
         self.theStrikes = [int(i) for i in self.theStrikes]
         print("toIntStrikes:  ", self.theStrikes)
 
-
-
+    def buildBullPandas(self):
+        print('in bull ')
+        for aContract in self.contracts:
+            [aContractTicker] = self.ib.reqTickers(aContract)
+            self.theGreeks = aContractTicker.modelGreeks
+            print('theGreeks: ', self.theGreeks)
 
 
 
