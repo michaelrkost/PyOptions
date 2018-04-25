@@ -6,6 +6,7 @@ import pandas as pd
 import datetime
 import random
 import itertools
+import math
 
 from ib_insync import *
 
@@ -48,7 +49,7 @@ class OptionSpreads:
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
         strikes = ibPyUtils.getStrikes(listSmartOptionChain, self.aTicker.close,
                                        strikePriceRange, strikePriceMultiple)
-        print('aTicker.close:  ', self.aTicker.close)
+        print('aTicker.close:  ', self.aTicker.close)   #    aTicker.close)
         print('strikes: ', strikes)
 
         # Get the SPX expirations set
@@ -70,16 +71,50 @@ class OptionSpreads:
         print("toIntStrikes:  ", self.theStrikes)
 
     def buildBullPandas(self):
+        headerLM = ['Loss$', 'Max$']
+        colStrikeHL = ['StrikeL', 'StrikeH']
+
         print('in bull ')
         for aContract in self.contracts:
             [aContractTicker] = self.ib.reqTickers(aContract)
-            self.theGreeks = aContractTicker.modelGreeks
-            print('theGreeks: ', self.theGreeks)
+            # print('contract: ', aContractTicker)
 
+        indexRangeList = list(itertools.product(self.theStrikes, self.theStrikes))
+        # indexRangeList
+        multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList, names=colStrikeHL)
+        print("multiIndexRange\n", multiIndexRange)
+        type(multiIndexRange)
+        print("multiIndexRange.names\n", multiIndexRange.names)
+        print("multiIndexRange.labels\n", multiIndexRange.labels)
 
+        self.bullCallSpreads = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
+        print('bullCallSpreads\n', bullCallSpreads)
 
-
-
+    def populateBullSpread(self):
+        #TODO need to update "closeSPXOptionPrices" to reflect the data from buildGreeks
+        for aStrikeL in self.theStrikes:
+            for aStrikeH in self.theStrikes:
+                if aStrikeH <= aStrikeL:
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = float('nan')
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = float('nan')
+                else:
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = closeSPXOptionPrices.loc[
+                                                                             (self.callRight, 'Price'), aStrikeL] - \
+                                                                         closeSPXOptionPrices.loc[
+                                                                             (self.callRight, 'Price'), aStrikeH]
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = ((aStrikeH - aStrikeL)
+                                                                         - self.bullCallSpreads.loc[
+                                                                             (aStrikeL, aStrikeH), 'Loss$'])
+    def buildGreeks(self):
+        headerPrice = ['Price', 'impliedVol', 'Gamma', 'Delta', 'TimeVal']
+        indexRangeList = list(itertools.product(self.rights, headerPrice))
+        multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
+                                                    names=['Right', 'Type'])
+        print('multiIndexRange: ', multiIndexRange)
+        closeSPXOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
+                                            columns=self.theStrikes)
+        print('closeSPXOptionPrices\n\n', closeSPXOptionPrices)
+        # TODO add pricing to this Pandas
 
 
 

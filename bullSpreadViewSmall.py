@@ -272,7 +272,7 @@ class Ui_MainWindow(object):
         self.trimTable(_translate)
 
     def trimTable(self, _translate):
-        headers = ['conId', 'symbol', 'lastTradeDate', 'strike', 'right']
+        headers = ['Id', 'Symbol', 'Expriy', 'Strike', 'Right']
         self.tableWidget.setColumnCount(len(headers))
         self.tableWidget.setHorizontalHeaderLabels(headers)
         self.tableWidget.setAlternatingRowColors(True)
@@ -320,7 +320,8 @@ class Ui_MainWindow(object):
             print("=================================Contracts: \n", aOptionSpread.contracts)
             self.displayContracts(aOptionSpread.contracts)
             self.displayBullSpreads(aOptionSpread.contracts)
-            aOptionSpread.buildBullPandas()
+            aOptionSpread.buildGreeks()
+            # aOptionSpread.buildBullPandas()
 
     def displayBullSpreads(self, contracts):
         contractsLen = len(contracts)
@@ -391,7 +392,7 @@ class Ui_MainWindow(object):
     def onConnectButtonClicked(self):
         if self.connectToIB.isChecked():
             self.ib.connect(configIB.IB_API_HOST,
-                        configIB.IB_LIVE_TRADE_PORT,
+                        configIB.IB_PAPER_TRADE_PORT,
                         configIB.IB_API_CLIENTID_1)
             self.statusbar.showMessage("Connected to IB")
         else:
