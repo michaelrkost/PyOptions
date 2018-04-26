@@ -141,7 +141,7 @@ class Ui_MainWindow(object):
         self.tableWidget_OptionGreeks = QtWidgets.QTableWidget(self.Contract_tab)
         self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 250, 481, 361))
         self.tableWidget_OptionGreeks.setRowCount(6)
-        self.tableWidget_OptionGreeks.setColumnCount(4)
+        self.tableWidget_OptionGreeks.setColumnCount(5)
         self.tableWidget_OptionGreeks.setObjectName("tableWidget_OptionGreeks")
         self.tabWidget_Contracts.addTab(self.Contract_tab, "")
         self.tab_2 = QtWidgets.QWidget()
@@ -190,7 +190,22 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget_Contracts.setCurrentIndex(0)
+        self.underlyingText.editingFinished.connect(self.comboBox_Expiry.setFocus)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.tabWidget_Contracts, self.underlyingText)
+        MainWindow.setTabOrder(self.underlyingText, self.radioButton_Index)
+        MainWindow.setTabOrder(self.radioButton_Index, self.radioButton_Stock)
+        MainWindow.setTabOrder(self.radioButton_Stock, self.radioButton_Option)
+        MainWindow.setTabOrder(self.radioButton_Option, self.comboBoxExchange)
+        MainWindow.setTabOrder(self.comboBoxExchange, self.comboBox_Expiry)
+        MainWindow.setTabOrder(self.comboBox_Expiry, self.radioButton_Call)
+        MainWindow.setTabOrder(self.radioButton_Call, self.radioButton_Put)
+        MainWindow.setTabOrder(self.radioButton_Put, self.comboBox)
+        MainWindow.setTabOrder(self.comboBox, self.comboBox_2)
+        MainWindow.setTabOrder(self.comboBox_2, self.updateQualifyClose)
+        MainWindow.setTabOrder(self.updateQualifyClose, self.tableWidget)
+        MainWindow.setTabOrder(self.tableWidget, self.tableWidget_OptionGreeks)
+        MainWindow.setTabOrder(self.tableWidget_OptionGreeks, self.tableWidget_2)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

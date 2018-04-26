@@ -86,7 +86,7 @@ class OptionSpreads:
 
         print("sortedExpirations: ", sortedExpirations)
 
-        # Build requested options based on expriy and price range
+        # Build requested options based on expiry and price range
         self.contracts = [Option(self.a_Contract.symbol, expiration, strike, right, exchange='SMART')
                      for right in theRight for expiration in sortedExpirations for strike in strikes]
         # Qualify the options

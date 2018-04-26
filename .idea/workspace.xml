@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optionClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/optionClass.py" afterDir="false" />
     </list>
@@ -14,17 +17,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.39251745">
+    <splitter split-orientation="horizontal" split-proportion="0.5396322">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="202">
-                  <caret line="323" column="12" selection-start-line="323" selection-start-column="12" selection-end-line="323" selection-end-column="12" />
+                <state relative-caret-position="231">
+                  <caret line="207" column="81" selection-start-line="207" selection-start-column="73" selection-end-line="207" selection-end-column="81" />
                   <folding>
                     <element signature="e#205#251#0" expanded="true" />
-                    <element signature="e#11656#15565#0" />
                   </folding>
                 </state>
               </provider>
@@ -33,7 +35,7 @@
           <file leaf-file-name="PyOption.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PyOption.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
+                <state relative-caret-position="180">
                   <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
@@ -54,7 +56,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="errorHandler.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="errorHandler.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/errorHandler.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="330">
@@ -82,8 +84,8 @@
           <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/optionClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="75" column="15" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="15" />
+                <state relative-caret-position="465">
+                  <caret line="92" column="48" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="48" />
                   <folding>
                     <element signature="e#19#76#0" expanded="true" />
                   </folding>
@@ -160,12 +162,12 @@
         <option value="$PROJECT_DIR$/buildContracts.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/configIB.py" />
-        <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
         <option value="$PROJECT_DIR$/optionClass.py" />
+        <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1602" />
     <option name="height" value="450" />
@@ -381,7 +383,7 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32816538" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32816538" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32816538" />
-      <window_info active="true" anchor="bottom" x="1600" y="509" width="1577" height="743" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
+      <window_info anchor="bottom" x="1615" y="513" width="1577" height="743" id="Run" order="2" sideWeight="0.6525" type="FLOATING" weight="0.45865634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32816538" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -574,31 +576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyOption.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="323" column="12" selection-start-line="323" selection-start-column="12" selection-end-line="323" selection-end-column="12" />
-          <folding>
-            <element signature="e#205#251#0" expanded="true" />
-            <element signature="e#11656#15565#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        <state relative-caret-position="165">
+          <caret line="14" column="45" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="30" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -621,10 +602,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/optionClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="75" column="15" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="15" />
+        <state relative-caret-position="465">
+          <caret line="92" column="48" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="48" />
           <folding>
             <element signature="e#19#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PyOption.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="207" column="81" selection-start-line="207" selection-start-column="73" selection-end-line="207" selection-end-column="81" />
+          <folding>
+            <element signature="e#205#251#0" expanded="true" />
           </folding>
         </state>
       </provider>
