@@ -320,8 +320,9 @@ class Ui_MainWindow(object):
             print("=================================Contracts: \n", aOptionSpread.contracts)
             self.displayContracts(aOptionSpread.contracts)
             self.displayBullSpreads(aOptionSpread.contracts)
+
+            aOptionSpread.buildBullPandas()
             aOptionSpread.buildGreeks()
-            # aOptionSpread.buildBullPandas()
 
     def displayBullSpreads(self, contracts):
         contractsLen = len(contracts)

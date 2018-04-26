@@ -12,6 +12,26 @@ from ib_insync import *
 
 class OptionSpreads:
 
+    # all the options Pandas builds and Calculations
+    # ##### # #####
+    #    -- init
+    #       :param a_qualified_contract: the Contract
+    #       :param anIB: the api
+    # ##### # #####
+    #   -- attributes
+    #     ib - IB
+    #     contracts - requested options based on expriy and price range then qualifyContracts(*self.contracts)
+    #     theStrikes - the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
+    #     aTicker - the contracts ticker / a snapshot ticker of the given contract.
+    #     bullCallSpreads - Pandas dataframe for spread info
+    #     closeOptionPrices - Pandas dataframe for greeks/option price
+    #
+    # putRight = 'P'
+    # callRight = 'C'
+    # rights = [putRight, callRight]
+    #
+    #
+
     # a single list is shared by all instances:
     # Headers
     # Puts / Calls
@@ -25,13 +45,19 @@ class OptionSpreads:
 
     # invoked for each instantiated class
     def __init__(self,a_qualified_contract, anIB):
+        """init
+
+        :param a_qualified_contract: the Contract
+        :param anIB: the api
+        """
         self.a_Contract = a_qualified_contract
         self.ib = anIB
         self.contracts = []
         self.theStrikes =[]
+        self.contractReqTickers = []
 
     def qualify_option_chain_close(self, theRight,
-                                   strikePriceRange=10, strikePriceMultiple=5):
+                                   strikePriceRange=5, strikePriceMultiple=5):
         print("<<in qualify_index_option_chain >>  ")
         # Fully qualify the given contracts in-place.
         # This will fill in the missing fields in the contract, especially the conId.
@@ -49,7 +75,8 @@ class OptionSpreads:
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
         strikes = ibPyUtils.getStrikes(listSmartOptionChain, self.aTicker.close,
                                        strikePriceRange, strikePriceMultiple)
-        print('aTicker.close:  ', self.aTicker.close)   #    aTicker.close)
+        print('aTicker:============================================================== \n ', self.aTicker)   #    aTicker.close)
+        print('============================================================== \n ')   #    aTicker.close)
         print('strikes: ', strikes)
 
         # Get the SPX expirations set
@@ -68,16 +95,20 @@ class OptionSpreads:
 
         self.theStrikes = strikes
         self.theStrikes = [int(i) for i in self.theStrikes]
-        print("toIntStrikes:  ", self.theStrikes)
+        print("theStrikes:  ", self.theStrikes)
+
+        for aContract in self.contracts:
+            self.contractReqTickers.append( self.ib.reqTickers(aContract))
+
+        print('Final => contractReqTickers::::::::: ', self.contractReqTickers)
 
     def buildBullPandas(self):
         headerLM = ['Loss$', 'Max$']
         colStrikeHL = ['StrikeL', 'StrikeH']
 
         print('in bull ')
-        for aContract in self.contracts:
-            [aContractTicker] = self.ib.reqTickers(aContract)
-            # print('contract: ', aContractTicker)
+
+
 
         indexRangeList = list(itertools.product(self.theStrikes, self.theStrikes))
         # indexRangeList
@@ -88,7 +119,7 @@ class OptionSpreads:
         print("multiIndexRange.labels\n", multiIndexRange.labels)
 
         self.bullCallSpreads = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
-        print('bullCallSpreads\n', bullCallSpreads)
+        print('bullCallSpreads\n', self.bullCallSpreads)
 
     def populateBullSpread(self):
         #TODO need to update "closeSPXOptionPrices" to reflect the data from buildGreeks
@@ -111,10 +142,20 @@ class OptionSpreads:
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Type'])
         print('multiIndexRange: ', multiIndexRange)
-        closeSPXOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
+        self.closeOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                             columns=self.theStrikes)
-        print('closeSPXOptionPrices\n\n', closeSPXOptionPrices)
+        print('closeSPXOptionPrices\n\n', self.closeOptionPrices)
         # TODO add pricing to this Pandas
+        for aStrike in self.theStrikes:
+            self.closeOptionPrices.loc[(self.contracts.right, 'Delta'),
+                                       self.contracts.strike] = self.aTicker.theGreeks.delta
+            self.closeOptionPrices.loc[(self.contracts.right, 'TimeVal'),
+                                       self.contracts.strike] = theSPXTicker.close - (priceSPX - self.contracts.strike)
+            self.closeOptionPrices.loc[(self.contracts.right, 'impliedVol'), self.contracts.strike] = theGreeks.impliedVol
+            self.closeOptionPrices.loc[(self.contracts.right, 'Gamma'), self.contracts.strike] = theGreeks.gamma
+            self.closeOptionPrices.loc[(self.contracts.right, 'Price'), self.contracts.strike] = theSPXTicker.close
+
+
 
 
 
