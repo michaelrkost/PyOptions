@@ -20,7 +20,7 @@ class OptionSpreads:
     # ##### # #####
     #   -- attributes
     #     ib - IB
-    #     contracts - requested options based on expriy and price range then qualifyContracts(*self.contracts)
+    #     contracts - requested options based on expiry and price range then qualifyContracts(*self.contracts)
     #     theStrikes - the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
     #     aTicker - the contracts ticker / a snapshot ticker of the given contract.
     #     bullCallSpreads - Pandas dataframe for spread info
