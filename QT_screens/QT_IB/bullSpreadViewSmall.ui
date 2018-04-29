@@ -528,7 +528,7 @@
   <action name="actiontestIB">
    <property name="icon">
     <iconset>
-     <normaloff>../../local-packages/localUtilities/icons/py_pic.png</normaloff>../../local-packages/localUtilities/icons/py_pic.png</iconset>
+     <normaloff>../../../../../local-packages/localUtilities/icons/py_pic.png</normaloff>../../../../../local-packages/localUtilities/icons/py_pic.png</iconset>
    </property>
    <property name="text">
     <string>test</string>
@@ -546,7 +546,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../local-packages/localUtilities/icons/about.gif</normaloff>../../local-packages/localUtilities/icons/about.gif</iconset>
+     <normaloff>../../../../../local-packages/localUtilities/icons/about.gif</normaloff>../../../../../local-packages/localUtilities/icons/about.gif</iconset>
    </property>
    <property name="text">
     <string>testCheckable</string>

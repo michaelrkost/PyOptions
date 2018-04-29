@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
 util.useQt()
 
+# Option management class for PyOptions - mrk
 import optionClass
 
 from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
@@ -317,14 +318,21 @@ class Ui_MainWindow(object):
 
     def get_underlying_info(self):
         #TODO drop any existing instance of contracts if new instance is created
+        #TODO filter out or combine Weekly or Monthly at the UI level
         self.statusbar.clearMessage()
         the_underlying = self.underlyingText.text()
         the_exchange = self.comboBoxExchange.currentText()
+        
+        # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
+        # and create a Contract
+        aSecurityType=self.security_type(the_underlying, the_exchange)
 
-        a=self.security_type(the_underlying, the_exchange)
+        # Fully qualify the given contracts in-place.
+        # This will fill in the missing fields in the contract, especially the conId.
+        # Returns a list of contracts that have been successfully qualified.
         try:
-            get_underlying = self.ib.qualifyContracts(a)
-        except ConnectionError:
+            get_underlying = self.ib.qualifyContracts(aSecurityType)
+        except ConnectionError: # are we connected?
             self.statusbar.showMessage("NOT CONNECTED!!! Knucklehead!")
             return
         if not get_underlying:  # empty list - failed qualifyContract
@@ -334,55 +342,39 @@ class Ui_MainWindow(object):
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
             #TODO: add check for time and date - wether to use close(market closed) or last(active market)
-            aOptionSpread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
-            aOptionSpread.qualify_option_chain_close(self.right())
-            print("=================================Contracts: \n", aOptionSpread.contracts)
-            self.displayContracts(aOptionSpread.contracts)
-            self.displayBullSpreads(aOptionSpread.contracts)
 
-            aOptionSpread.buildBullPandas()
-            aOptionSpread.buildGreeks()
+            # create a new optionClass instance
+            an_option_spread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
+            # Fully qualify the option
+            an_option_spread.qualify_option_chain_close()
 
-    def displayBullSpreads(self, contracts):
-        contractsLen = len(contracts)
-        self.tableWidget.setRowCount(contractsLen)
-        self.tableWidget.clearContents()
-        #Items are created ouside the table (with no parent widget) and inserted into the table with setItem():
-        theRow = 0
-        for aContract in contracts:
-            if aContract.conId == 0:
-                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
-            else:
-                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
+            # Display the contracts
+            self.displayContracts(an_option_spread.optionContracts)
 
-            self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
-            self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
-            self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
-            self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
-
-            theRow = theRow + 1
-            print("row: ",theRow , 'Contract:  ', aContract)
-            print(aContract.conId)
+            # an_option_spread.buildBullPandas()
+            #an_option_spread.buildGreeks()
 
 
     def displayContracts(self, contracts):
         contractsLen = len(contracts)
         self.tableWidget.setRowCount(contractsLen)
         self.tableWidget.clearContents()
-        # Items are created ouside the table (with no parent widget) and inserted into the table with setItem():
+        # Items are created outside the table (with no parent widget)
+        # and inserted into the table with setItem():
         theRow = 0
         for aContract in contracts:
+            # if Contract ID is 0 the Not Valid
             if aContract.conId == 0:
                 self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
             else:
                 self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
-
+            # set the remaining data
             self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
             self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
                 dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
             self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
             self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
-
+            #
             theRow = theRow + 1
             print("row: ", theRow, 'Contract:  ', aContract)
             print(aContract.conId)
@@ -396,10 +388,16 @@ class Ui_MainWindow(object):
 
 
     def security_type(self, the_underlying, the_exchange):
+        """ from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying.
+        Create Contract.
+        :param the_underlying: Stock/Index
+        :param the_exchange: CBOE etc
+        :return:
+        """
         if self.radioButton_Index.isChecked():
-            a_underlying = Index(the_underlying, the_exchange)
+            a_underlying = Index(the_underlying, the_exchange, 'USD')
         elif self.radioButton_Stock.isChecked():
-            a_underlying = Stock(the_underlying, the_exchange)
+            a_underlying = Stock(the_underlying, the_exchange, 'USD')
         else:
             print('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
         return a_underlying
@@ -414,7 +412,11 @@ class Ui_MainWindow(object):
             self.ib.connect(configIB.IB_API_HOST,
                         configIB.IB_PAPER_TRADE_PORT,
                         configIB.IB_API_CLIENTID_1)
-            self.statusbar.showMessage("Connected to IB")
+            # TODO automate the Close/Frozen data from the GUI and the Client ID
+            self.statusbar.showMessage("Connected to IB Paper and client #1")
+            # Live -1 / Frozen 2 -
+            # -Frozen market data is the last data recorded at market close.
+            self.ib.reqMarketDataType(2)
         else:
             self.ib.disconnect()
             # had an issue with disconnecting
