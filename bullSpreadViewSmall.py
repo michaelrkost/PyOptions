@@ -376,8 +376,7 @@ class Ui_MainWindow(object):
             self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
             #
             theRow = theRow + 1
-            print("row: ", theRow, 'Contract:  ', aContract)
-            print(aContract.conId)
+
 
 
     def right(self):

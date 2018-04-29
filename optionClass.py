@@ -66,38 +66,40 @@ class OptionSpreads:
         :param strikePriceMultiple: Define the price increment for price range
         :return:
         """
-        print("<<in qualify_index_option_chain >>  ", end="")
-        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        # print("<<in qualify_index_option_chain >>  ", end="")
+        # print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
         # ----get list of options
         # reqSecDefOptParams returns a list of expires and a list of strike prices.
         # In some cases it is possible there are combinations of strike and expiry that
         # would not give a valid option contract.
         listOptionChain = self.ib.reqSecDefOptParams(self.a_Contract.symbol, '', self.a_Contract.secType,
                                                 self.a_Contract.conId)
-        print('>>> listOptionChain: \n', listOptionChain)
+        # print('>>> listOptionChain: \n', listOptionChain)
 
         # filter out for SMART ????
         listSmartOptionChain = next(c for c in listOptionChain
                                       if c.exchange == 'SMART'and c.tradingClass == 'SPX')
         
-        print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
+        # print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
 
         [self.aTicker] = self.ib.reqTickers(self.a_Contract)
 
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
+        # using close price
+        #TODO update so not using close price / add last price functionality
         self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.aTicker.close,
                                        strikePriceRange, strikePriceMultiple)
-        print('strikes: ', self.theStrikes)
-
-        print('aTicker:============================================================== \n ', self.aTicker)
-        print('============================================================== \n ')
+        # print('strikes: ', self.theStrikes)
+        #
+        # print('aTicker:============================================================== \n ', self.aTicker)
+        # print('============================================================== \n ')
 
 
         # Get the SPX expiration set
         # to narrow to Friday or Thursdays use isThursday/isFriday // if dateUtils.isFriday(exp))
         self.theExpirations = sorted(exp for exp in listSmartOptionChain.expirations)
 
-        print("sorted Expirations: ", self.theExpirations)
+        # print("sorted Expirations: ", self.theExpirations)
 
         # Build requested options based on expiry and price range
         # Most common approach is to use "SMART" as the exchange
@@ -105,20 +107,17 @@ class OptionSpreads:
                                         exchange='SMART', multiplier='100'))
                                 for right in self.rights for expiration in self.theExpirations for strike in self.theStrikes]
 
-        print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
-        print('<-----------------------------------------------<<<optionContracts1:\n')
+        # print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
+        # print('<-----------------------------------------------<<<optionContracts1:\n')
 
         # # Qualify the options
         self.ib.qualifyContracts(*allOptionContracts)
 
-        # filter out for SMART ????
+        # filter for Contract Numbers
+        # and set attribute optionContracts
         for c in allOptionContracts:
             if c.conId != 0:
                 self.optionContracts.append(c)
-
-
-        print('optionContracts: ', self.optionContracts)
-
 
 
     def buildBullPandas(self):
