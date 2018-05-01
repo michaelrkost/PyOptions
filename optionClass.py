@@ -52,10 +52,12 @@ class OptionSpreads:
         """
         self.a_Contract = a_qualified_contract
         self.ib = anIB
+        self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract)
         self.optionContracts = []
         self.theStrikes =[]
         self.contractReqTickers = []
         self.theExpirations = []
+        self.closeOptionPrices = []
 
     def qualify_option_chain_close(self, strikePriceRange=5, strikePriceMultiple=5):
         """Fully qualify the given contracts in-place. close not last
@@ -153,25 +155,35 @@ class OptionSpreads:
                                                                          - self.bullCallSpreads.loc[
                                                                              (aStrikeL, aStrikeH), 'Loss$'])
     def buildGreeks(self):
-        headerPrice = ['Price', 'impliedVol', 'Gamma', 'Delta', 'TimeVal']
-        indexRangeList = list(itertools.product(self.rights, headerPrice))
+        headerPrice = ['Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal', 'conId']
+        indexRangeList = list(itertools.product(self.rights, self.theStrikes, self.theExpirations))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
-                                                    names=['Right', 'Type'])
+                                                    names=['Right', 'Strike', 'Expiry'])
         print('multiIndexRange: ', multiIndexRange)
         self.closeOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
-                                            columns=self.theStrikes)
-        print('closeSPXOptionPrices\n\n', self.closeOptionPrices)
+                                            columns=headerPrice)
+        print('closeOptionPrices\n\n', self.closeOptionPrices)
         # TODO add pricing to this Pandas
-        for aStrike in self.theStrikes:
-            print('pop ', self.closeOptionPrices.pop())
+        for aContract in self.optionContracts:
+            [theReqTicker] = self.ib.reqTickers(aContract)
+            theGreeks = theReqTicker.modelGreeks
+            self.contractReqTickers.append(theReqTicker)
+            print('aRight: ', aContract.right, 'Strike: ', aContract.strike,
+                  'Expiry: ', aContract.lastTradeDateOrContractMonth)
+            print('theReqTicker: ', theReqTicker, 'theGreeks', theGreeks, )
 
-        # self.closeOptionPrices.loc[(self.contracts.right, 'Delta'),
-        #                            self.contracts.strike] = self.aTicker.theGreeks.delta
-        # self.closeOptionPrices.loc[(self.contracts.right, 'TimeVal'),
-        #                            self.contracts.strike] = theSPXTicker.close - (priceSPX - self.contracts.strike)
-        # self.closeOptionPrices.loc[(self.contracts.right, 'impliedVol'), self.contracts.strike] = theGreeks.impliedVol
-        # self.closeOptionPrices.loc[(self.contracts.right, 'Gamma'), self.contracts.strike] = theGreeks.gamma
-        # self.closeOptionPrices.loc[(self.contracts.right, 'Price'), self.contracts.strike] = theSPXTicker.close
+            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+                                       'Delta'] = theGreeks.delta
+            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+                                       'TimeVal'] = theReqTicker.close #- (self.theUnderlyingReqTickerData.price - aContract.strike)
+            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+                                       'ImpliedVol'] = theGreeks.impliedVol
+            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+                                       'Gamma'] = theGreeks.gamma
+            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+                                       'Price'] = theReqTicker.close
+            print('.', end="")
+        print('closeOptionPrices\n\n', self.closeOptionPrices)
 
 
 

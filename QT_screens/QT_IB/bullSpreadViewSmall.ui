@@ -23,14 +23,14 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1051</width>
+      <width>1111</width>
       <height>661</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="Contract_tab">
+    <widget class="QWidget" name="getStuff_tab">
      <attribute name="title">
       <string>Option Contracts </string>
      </attribute>
@@ -351,7 +351,7 @@
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>410</x>
         <y>10</y>
         <width>481</width>
         <height>601</height>
@@ -415,20 +415,25 @@
       <column/>
       <column/>
      </widget>
+    </widget>
+    <widget class="QWidget" name="greek_tab">
+     <attribute name="title">
+      <string>The Greeks</string>
+     </attribute>
      <widget class="QTableWidget" name="tableWidget_OptionGreeks">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>250</y>
-        <width>481</width>
-        <height>361</height>
+        <x>40</x>
+        <y>20</y>
+        <width>1051</width>
+        <height>581</height>
        </rect>
       </property>
       <property name="rowCount">
        <number>6</number>
       </property>
       <property name="columnCount">
-       <number>5</number>
+       <number>10</number>
       </property>
       <row/>
       <row/>
@@ -436,6 +441,11 @@
       <row/>
       <row/>
       <row/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
       <column/>
       <column/>
       <column/>
@@ -443,7 +453,7 @@
       <column/>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="bullSpread_tab">
      <attribute name="title">
       <string>Bear Spreads</string>
      </attribute>
@@ -570,7 +580,6 @@
   <tabstop>comboBox_2</tabstop>
   <tabstop>updateQualifyClose</tabstop>
   <tabstop>tableWidget</tabstop>
-  <tabstop>tableWidget_OptionGreeks</tabstop>
   <tabstop>tableWidget_2</tabstop>
  </tabstops>
  <resources>

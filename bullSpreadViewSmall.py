@@ -30,11 +30,11 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget_Contracts = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 1051, 661))
+        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 1111, 661))
         self.tabWidget_Contracts.setObjectName("tabWidget_Contracts")
-        self.Contract_tab = QtWidgets.QWidget()
-        self.Contract_tab.setObjectName("Contract_tab")
-        self.groupBox_2 = QtWidgets.QGroupBox(self.Contract_tab)
+        self.getStuff_tab = QtWidgets.QWidget()
+        self.getStuff_tab.setObjectName("getStuff_tab")
+        self.groupBox_2 = QtWidgets.QGroupBox(self.getStuff_tab)
         self.groupBox_2.setGeometry(QtCore.QRect(40, 10, 291, 221))
         self.groupBox_2.setObjectName("groupBox_2")
         self.updateQualifyClose = QtWidgets.QPushButton(self.groupBox_2)
@@ -132,8 +132,8 @@ class Ui_MainWindow(object):
         self.radioButton_Put = QtWidgets.QRadioButton(self.layoutWidget1)
         self.radioButton_Put.setObjectName("radioButton_Put")
         self.gridLayout_CallPut.addWidget(self.radioButton_Put, 0, 1, 1, 1)
-        self.tableWidget = QtWidgets.QTableWidget(self.Contract_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(540, 10, 481, 601))
+        self.tableWidget = QtWidgets.QTableWidget(self.getStuff_tab)
+        self.tableWidget.setGeometry(QtCore.QRect(410, 10, 481, 601))
         font = QtGui.QFont()
         font.setFamily("Monospace")
         font.setPointSize(10)
@@ -150,20 +150,23 @@ class Ui_MainWindow(object):
         self.tableWidget.verticalHeader().setVisible(False)
         self.tableWidget.verticalHeader().setDefaultSectionSize(19)
         self.tableWidget.verticalHeader().setMinimumSectionSize(18)
-        self.tableWidget_OptionGreeks = QtWidgets.QTableWidget(self.Contract_tab)
-        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 250, 481, 361))
+        self.tabWidget_Contracts.addTab(self.getStuff_tab, "")
+        self.greek_tab = QtWidgets.QWidget()
+        self.greek_tab.setObjectName("greek_tab")
+        self.tableWidget_OptionGreeks = QtWidgets.QTableWidget(self.greek_tab)
+        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(40, 20, 1051, 581))
         self.tableWidget_OptionGreeks.setRowCount(6)
-        self.tableWidget_OptionGreeks.setColumnCount(5)
+        self.tableWidget_OptionGreeks.setColumnCount(10)
         self.tableWidget_OptionGreeks.setObjectName("tableWidget_OptionGreeks")
-        self.tabWidget_Contracts.addTab(self.Contract_tab, "")
-        self.tab_2 = QtWidgets.QWidget()
-        self.tab_2.setObjectName("tab_2")
-        self.tableWidget_2 = QtWidgets.QTableWidget(self.tab_2)
+        self.tabWidget_Contracts.addTab(self.greek_tab, "")
+        self.bullSpread_tab = QtWidgets.QWidget()
+        self.bullSpread_tab.setObjectName("bullSpread_tab")
+        self.tableWidget_2 = QtWidgets.QTableWidget(self.bullSpread_tab)
         self.tableWidget_2.setGeometry(QtCore.QRect(10, 10, 751, 561))
         self.tableWidget_2.setRowCount(10)
         self.tableWidget_2.setColumnCount(5)
         self.tableWidget_2.setObjectName("tableWidget_2")
-        self.tabWidget_Contracts.addTab(self.tab_2, "")
+        self.tabWidget_Contracts.addTab(self.bullSpread_tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         font = QtGui.QFont()
@@ -190,22 +193,22 @@ class Ui_MainWindow(object):
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestIB.setIcon(icon2)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIBToolbar.addAction(self.connectToIB)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget_Contracts.setCurrentIndex(0)
+        self.tabWidget_Contracts.setCurrentIndex(2)
         self.underlyingText.editingFinished.connect(self.comboBox_Expiry.setFocus)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.tabWidget_Contracts, self.underlyingText)
@@ -220,8 +223,7 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.comboBox, self.comboBox_2)
         MainWindow.setTabOrder(self.comboBox_2, self.updateQualifyClose)
         MainWindow.setTabOrder(self.updateQualifyClose, self.tableWidget)
-        MainWindow.setTabOrder(self.tableWidget, self.tableWidget_OptionGreeks)
-        MainWindow.setTabOrder(self.tableWidget_OptionGreeks, self.tableWidget_2)
+        MainWindow.setTabOrder(self.tableWidget, self.tableWidget_2)
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         # ===================this is not part of the QT Creator for setupUi()===================
@@ -273,9 +275,11 @@ class Ui_MainWindow(object):
         self.radioButton_Call.setText(_translate("MainWindow", "Call"))
         self.radioButton_Put.setText(_translate("MainWindow", "Put"))
         self.tableWidget.setSortingEnabled(True)
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.Contract_tab),
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.getStuff_tab),
                                             _translate("MainWindow", "Option Contracts "))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab_2),
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.greek_tab),
+                                            _translate("MainWindow", "The Greeks"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab),
                                             _translate("MainWindow", "Bear Spreads"))
         self.actionIBToolbar.setWindowTitle(_translate("MainWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainWindow", "Connect to IB "))
@@ -338,7 +342,6 @@ class Ui_MainWindow(object):
         if not get_underlying:  # empty list - failed qualifyContract
             self.statusbar.showMessage("Underlying: " + the_underlying + " not recognized!")
         else:
-            print('self.comboBoxExchange.currentText(): ', self.comboBoxExchange.currentText())
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
             #TODO: add check for time and date - wether to use close(market closed) or last(active market)
@@ -352,7 +355,7 @@ class Ui_MainWindow(object):
             self.displayContracts(an_option_spread.optionContracts)
 
             # an_option_spread.buildBullPandas()
-            #an_option_spread.buildGreeks()
+            an_option_spread.buildGreeks()
 
 
     def displayContracts(self, contracts):
