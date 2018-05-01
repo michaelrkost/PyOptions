@@ -52,7 +52,8 @@ class OptionSpreads:
         """
         self.a_Contract = a_qualified_contract
         self.ib = anIB
-        self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract)
+        self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
+        print('self.theUnderlyingReqTickerData.close:  ', self.theUnderlyingReqTickerData.close)
         self.optionContracts = []
         self.theStrikes =[]
         self.contractReqTickers = []
@@ -163,7 +164,7 @@ class OptionSpreads:
         self.closeOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                             columns=headerPrice)
         print('closeOptionPrices\n\n', self.closeOptionPrices)
-        # TODO add pricing to this Pandas
+
         for aContract in self.optionContracts:
             [theReqTicker] = self.ib.reqTickers(aContract)
             theGreeks = theReqTicker.modelGreeks
@@ -174,8 +175,10 @@ class OptionSpreads:
 
             self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
                                        'Delta'] = theGreeks.delta
+            # TODO need to determine if we should use close or last - close is yesterdays close - messing up calculations
             self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
-                                       'TimeVal'] = theReqTicker.close #- (self.theUnderlyingReqTickerData.price - aContract.strike)
+                                       'TimeVal'] = theReqTicker.close - \
+                                                    abs(self.theUnderlyingReqTickerData.close - aContract.strike)
             self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
                                        'ImpliedVol'] = theGreeks.impliedVol
             self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
@@ -184,6 +187,8 @@ class OptionSpreads:
                                        'Price'] = theReqTicker.close
             print('.', end="")
         print('closeOptionPrices\n\n', self.closeOptionPrices)
+
+
 
 
 
