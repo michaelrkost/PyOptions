@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,14 +12,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.46283606">
+    <splitter split-orientation="horizontal" split-proportion="0.51080656">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="397" column="70" selection-start-line="397" selection-start-column="70" selection-end-line="397" selection-end-column="70" />
+                <state relative-caret-position="551">
+                  <caret line="395" column="57" selection-start-line="395" selection-start-column="57" selection-end-line="395" selection-end-column="57" />
                   <folding>
                     <element signature="e#205#251#0" expanded="true" />
                     <element signature="e#13118#17218#0" />
@@ -73,7 +71,7 @@
           <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
+                <state relative-caret-position="3690">
                   <caret line="303" column="58" selection-start-line="303" selection-start-column="53" selection-end-line="303" selection-end-column="58" />
                   <folding>
                     <element signature="e#205#251#0" expanded="true" />
@@ -95,11 +93,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/optionClass.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="390">
-                  <caret line="179" column="48" lean-forward="true" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="48" />
+                  <caret line="179" column="48" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="48" />
                   <folding>
                     <element signature="e#19#76#0" expanded="true" />
                   </folding>
@@ -107,11 +105,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pydev_import_hook.py" pinned="false" current-in-tab="false">
-            <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_import_hook.py">
+          <file leaf-file-name="dateUtils.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="18" selection-start-line="18" selection-end-line="18" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="16" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -193,7 +191,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-1" />
     <option name="width" value="1922" />
     <option name="height" value="1080" />
@@ -202,7 +200,38 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (commonFiles) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (commonFiles) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="local-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (commonFiles) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="local-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="localUtilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="/usr/bin/git" />
@@ -374,14 +403,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16740647" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16710596" />
       <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.3259958" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3475" side_tool="true" weight="0.43186584" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" x="1954" y="0" width="1695" height="1033" id="Run" order="2" sideWeight="0.6525" type="FLOATING" weight="0.45865634" />
+      <window_info active="true" anchor="bottom" x="1954" y="0" width="1695" height="1033" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32816538" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -567,13 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="16" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/errorHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -646,10 +667,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="397" column="70" selection-start-line="397" selection-start-column="70" selection-end-line="397" selection-end-column="70" />
+        <state relative-caret-position="551">
+          <caret line="395" column="57" selection-start-line="395" selection-start-column="57" selection-end-line="395" selection-end-column="57" />
           <folding>
             <element signature="e#205#251#0" expanded="true" />
             <element signature="e#13118#17218#0" />

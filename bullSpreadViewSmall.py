@@ -394,25 +394,22 @@ class Ui_MainWindow(object):
         for aRight in contracts.rights:
             for aStrike in contracts.theStrikes:
                 for anExpriy in contracts.theExpirations:
-                    print(aRight,' ', aStrike, ' ', anExpriy)
                     # todo use .format to get the proper formatting...
                     self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(aRight))
                     self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(str(aStrike)))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(anExpriy))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
                     self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(
-                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'Price'])))
+                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'Price'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
-                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'ImpliedVol'])))
+                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'ImpliedVol'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
-                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Gamma'])))
+                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Gamma'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
-                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Delta'])))
+                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Delta'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
-                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'TimeVal'])))
+                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'TimeVal'])))
                     
                     theRow += 1
-
-
 
 
         # theRow = 0
