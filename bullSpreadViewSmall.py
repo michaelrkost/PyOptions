@@ -296,13 +296,13 @@ class Ui_MainWindow(object):
         self.trimTable(_translate)
 
     def trimTable(self, _translate):
-        headers = ['Right', 'Strike', 'Expiry','Price', 'ImpliedVol', 'Gamma',
-                   'Delta', 'TimeVal', 'conId']
+        headers = ['Id', 'Symbol', 'Expriy', 'Strike', 'Right']
         self.tableWidget.setColumnCount(len(headers))
         self.tableWidget.setHorizontalHeaderLabels(headers)
         self.tableWidget.setAlternatingRowColors(True)
 
-        headerGreeks = ['Price', 'Implied Vol', 'Gamma', 'Delta', 'Time Val']
+        headerGreeks = ['Right', 'Strike', 'Expiry','Price', 'ImpliedVol', 'Gamma',
+                        'Delta', 'TimeVal', 'conId']
         self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
         self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
@@ -357,7 +357,7 @@ class Ui_MainWindow(object):
 
             an_option_spread.buildGreeks()
             # todo -- this is next!
-            self.displayGreeks(an_option_spread.closeOptionPrices)
+            self.displayGreeks(an_option_spread)
             #an_option_spread.buildBullPandas()
 
 
@@ -384,26 +384,52 @@ class Ui_MainWindow(object):
             theRow = theRow + 1
 
     def displayGreeks(self, contracts):
-        contractsLen = len(contracts)
-        self.tableWidget_OptionGreeks.setRowCount(contractsLen)
+        # contractsLen = len(contracts)
+        greeksLen = len(contracts.rights) * ( len(contracts.theStrikes * len(contracts.theExpirations)))
+        self.tableWidget_OptionGreeks.setRowCount(greeksLen)
         self.tableWidget_OptionGreeks.clearContents()
         # Items are created outside the table (with no parent widget)
         # and inserted into the table with setItem():
         theRow = 0
-        for aContract in contracts:
-            # if Contract ID is 0 the Not Valid
-            if aContract.price != 0.0:
-                self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
-            else:
-                self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
-            # set the remaining data
-            self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
-            self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
-                dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
-            self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
-            self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
-            #
-            theRow = theRow + 1
+        for aRight in contracts.rights:
+            for aStrike in contracts.theStrikes:
+                for anExpriy in contracts.theExpirations:
+                    print(aRight,' ', aStrike, ' ', anExpriy)
+                    # todo use .format to get the proper formatting...
+                    self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(aRight))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(str(aStrike)))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(anExpriy))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(
+                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'Price'])))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
+                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'ImpliedVol'])))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
+                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Gamma'])))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
+                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Delta'])))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
+                        str(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'TimeVal'])))
+                    
+                    theRow += 1
+
+
+
+
+        # theRow = 0
+        # for aContract in contracts:
+        #     # if Contract ID is 0 the Not Valid
+        #     if aContract.theUnderlyingReqTickerData.close != 0.0:
+        #         self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
+        #     else:
+        #         self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
+        #     # set the remaining data
+        #     self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
+        #     self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+        #         dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
+        #     self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
+        #     self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
+        #     #
+        #     theRow = theRow + 1
 
 
 
