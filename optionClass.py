@@ -94,12 +94,13 @@ class OptionSpreads:
         self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.theUnderlyingReqTickerData.close,
                                        strikePriceRange, strikePriceMultiple)
 
-
-        # Get the SPX expiration set
-        # to narrow to Friday or Thursdays use isThursday/isFriday // if dateUtils.isFriday(exp))
-        #self.theExpiration = sorted(exp for exp in listSmartOptionChain.expirations)
-
-        # print("sorted Expirations: ", self.theExpirations)
+        #todo need to put in more logic to get existing expiries as they do not extend out logically
+        # Get the SPX expiration set and find the proper experiation
+        # as it is not always the third thursday/friday
+        theExpirationList = sorted(exp for exp in listSmartOptionChain.expirations
+                                   if exp[:6] == self.theExpiration[:6])
+        print("sorted Expirations: ", theExpirationList)
+        self.theExpiration = theExpirationList.pop()
 
         # Build requested options based on expiry and price range
         # Most common approach is to use "SMART" as the exchange
@@ -107,8 +108,8 @@ class OptionSpreads:
                                         exchange='SMART', multiplier='100'))
                               for strike in self.theStrikes]
 
-        print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
-        print('<-----------------------------------------------<<<optionContracts1:\n')
+        # print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
+        # print('<-----------------------------------------------<<<optionContracts1:\n')
 
         # # Qualify the options
         self.ib.qualifyContracts(*allOptionContracts)
@@ -154,9 +155,9 @@ class OptionSpreads:
                                                                              (aStrikeL, aStrikeH), 'Loss$'])
     def buildGreeks(self):
         headerPrice = ['Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal', 'conId']
-        indexRangeList = list(itertools.product(self.right, self.theStrikes, self.theExpiration))
+        indexRangeList = list(itertools.product(self.right, [self.theExpiration], self.theStrikes))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
-                                                    names=['Right', 'Strike', 'Expiry'])
+                                                    names=['Right', 'Expiry', 'Strike'])
         print('multiIndexRange: ', multiIndexRange)
         self.closeOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                             columns=headerPrice)
@@ -170,17 +171,17 @@ class OptionSpreads:
                   'Expiry: ', aContract.lastTradeDateOrContractMonth)
             print('theReqTicker: ', theReqTicker, 'theGreeks', theGreeks, )
 
-            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Delta'] = theGreeks.delta
             # TODO need to determine if we should use close or last - close is yesterdays close - messing up calculations
-            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'TimeVal'] = theReqTicker.close - \
                                                     abs(self.theUnderlyingReqTickerData.close - aContract.strike)
-            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'ImpliedVol'] = theGreeks.impliedVol
-            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Gamma'] = theGreeks.gamma
-            self.closeOptionPrices.loc[(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth),
+            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Price'] = theReqTicker.close
             print('.', end="")
         print('closeOptionPrices\n\n', self.closeOptionPrices)

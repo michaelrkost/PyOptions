@@ -371,7 +371,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget.setHorizontalHeaderLabels(headers)
         self.tableWidget.setAlternatingRowColors(True)
 
-        headerGreeks = ['Right', 'Strike', 'Expiry','Price', 'ImpliedVol', 'Gamma',
+        headerGreeks = ['Right', 'Expiry','Strike', 'Price', 'ImpliedVol', 'Gamma',
                         'Delta', 'TimeVal', 'conId']
         self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
         self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
@@ -446,9 +446,9 @@ class Ui_MainPyOptionsWindow(object):
             # Display the contracts
             self.displayContracts(an_option_spread.optionContracts)
 
-#            an_option_spread.buildGreeks()
+            an_option_spread.buildGreeks()
             # todo -- this is next!
-            #self.displayGreeks(an_option_spread)
+            self.displayGreeks(an_option_spread)
             #an_option_spread.buildBullPandas()
 
 
@@ -476,29 +476,31 @@ class Ui_MainPyOptionsWindow(object):
 
     def displayGreeks(self, contracts):
         # contractsLen = len(contracts)
-        greeksLen = len(contracts.rights) * ( len(contracts.theStrikes * len(contracts.theExpirations)))
+        greeksLen = len(contracts.right) * ( len(contracts.theStrikes * len(contracts.theExpiration)))
         self.tableWidget_OptionGreeks.setRowCount(greeksLen)
         self.tableWidget_OptionGreeks.clearContents()
         # Items are created outside the table (with no parent widget)
         # and inserted into the table with setItem():
         theRow = 0
-        for aRight in contracts.rights:
+        anExpriy = contracts.theExpiration
+        for aRight in contracts.right:
             for aStrike in contracts.theStrikes:
-                for anExpriy in contracts.theExpirations:
+
                     # todo use .format to get the proper formatting...
                     self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(aRight))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(str(aStrike)))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 2, QtWidgets.QTableWidgetItem(str(aStrike)))
+                    self.tableWidget_OptionGreeks.setItem(theRow, 1,
+                                                          QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
                     self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(
-                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'Price'])))
+                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
-                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'ImpliedVol'])))
+                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
-                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Gamma'])))
+                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
-                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy), 'Delta'])))
+                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
-                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, aStrike, anExpriy),'TimeVal'])))
+                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
                     
                     theRow += 1
 
