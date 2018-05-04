@@ -399,20 +399,28 @@ class Ui_MainPyOptionsWindow(object):
         the_exchange = self.comboBoxExchange.currentText()
         theStrikePriceRange = int(self.comboBox_StrikePriceRange.currentText())
         theStrikePriceMultiple = int(self.comboBox_StrikePriceMultiple.currentText())
-        theMarketData = self.marketDataType()
-        thePriceType = self.priceDataType()
 
-        if 
-        theExpiry = self.comboBox_Expiry.currentText()
-
-        # Live -1 / Frozen 2 -
-        # -Frozen market data is the last data recorded at market close.
-        self.ib.reqMarketDataType(theMarketData)
-
+        # set the type of Price Data to receive
+        #   - Frozen market data is the last data recorded at market close.
+        #   - Last market data is the last data set, which may be empty after hours
+        self.ib.reqMarketDataType(self.marketDataType())
 
         # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
         # and create a Contract
         aSecurityType=self.security_type(the_underlying, the_exchange)
+
+        # then if securityType == Stock get Friday Expiry if Index get Thursday Expiry
+        theExpiry = self.comboBox_Expiry.currentText()
+        expiryDate = dateUtils.getDateFromMonthYear(theExpiry)
+        if self.securityType == configIB.STOCK_TYPE:
+            theExpiry = dateUtils.getDateString(dateUtils.third_friday(expiryDate.year, expiryDate.month))
+        else: #Index
+            theExpiry = dateUtils.getDateString(dateUtils.third_Thursday(expiryDate.year, expiryDate.month))
+
+
+        # To Use the Close price or Last price
+        #thePriceType = self.priceDataType()
+
 
         # Fully qualify the given contracts in-place.
         # This will fill in the missing fields in the contract, especially the conId.
@@ -420,7 +428,7 @@ class Ui_MainPyOptionsWindow(object):
         try:
             get_underlying = self.ib.qualifyContracts(aSecurityType)
         except ConnectionError: # are we connected?
-            self.statusbar.showMessage("NOT CONNECTED!!! Knucklehead!")
+            self.statusbar.showMessage("NOT CONNECTED!!! Knucklehead!!!")
             return
         if not get_underlying:  # empty list - failed qualifyContract
             self.statusbar.showMessage("Underlying: " + the_underlying + " not recognized!")
@@ -433,14 +441,12 @@ class Ui_MainPyOptionsWindow(object):
             # create a new optionClass instance
             an_option_spread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
             # Fully qualify the option
-            print("theStrikePriceRange {theStrikePriceRange},  theStrikePriceMultiple {theStrikePriceMultiple}",
-                  theStrikePriceRange, theStrikePriceMultiple)
-            an_option_spread.qualify_option_chain_close(theStrikePriceRange, theStrikePriceMultiple)
+            an_option_spread.qualify_option_chain(self.right(), theExpiry, theStrikePriceRange, theStrikePriceMultiple)
 
             # Display the contracts
             self.displayContracts(an_option_spread.optionContracts)
 
-            an_option_spread.buildGreeks()
+#            an_option_spread.buildGreeks()
             # todo -- this is next!
             #self.displayGreeks(an_option_spread)
             #an_option_spread.buildBullPandas()
@@ -499,21 +505,21 @@ class Ui_MainPyOptionsWindow(object):
 
     def right(self):
         if self.radioButton_Call.isChecked():
-            return 'C'
+            return configIB.CALL_RIGHT
         else:
-            return 'P'
+            return configIB.PUT_RIGHT
 
     def marketDataType(self):
         if self.radioButton_MktDataType_Frozen.isChecked():
-            return 2
+            return configIB.MARKET_DATA_TYPE_FROZEN
         else:
-            return 1
+            return configIB.MARKET_DATA_TYPE_LIVE
 
     def priceDataType(self):
         if self.radioButton_TradeClose.isChecked():
-            return "close"
+            return configIB.CLOSE_PRICE
         else:
-            return "last"
+            return configIB.LAST_PRICE
 
     def security_type(self, the_underlying, the_exchange):
         """ from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying.

@@ -37,7 +37,7 @@ class OptionSpreads:
     # Puts / Calls
     putRight = 'P'
     callRight = 'C'
-    rights = [putRight, callRight]
+    right = [putRight, callRight]
 
     # Some header stuff
     headerLM = ['Loss$', 'Max$', 'Delta']
@@ -57,20 +57,22 @@ class OptionSpreads:
         self.optionContracts = []
         self.theStrikes =[]
         self.contractReqTickers = []
-        self.theExpirations = []
+        self.theExpiration = []
         self.closeOptionPrices = []
+        self.right = []
 
-    def qualify_option_chain_close(self, strikePriceRange=5, strikePriceMultiple=5):
+    def qualify_option_chain(self, aRight, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
         """Fully qualify the given contracts in-place. close not last
         This will fill in the missing fields in the contract, especially the conId.
 
         Update attributes: aTicker, contracts, theStrikes
         :param strikePriceRange:    Define the price range plus/minus this amount
         :param strikePriceMultiple: Define the price increment for price range
+        :param anExiry: the expriration
         :return:
         """
-        # print("<<in qualify_index_option_chain >>  ", end="")
-        # print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        self.theExpiration = anExpiry
+        self.right = aRight
         # ----get list of options
         # reqSecDefOptParams returns a list of expires and a list of strike prices.
         # In some cases it is possible there are combinations of strike and expiry that
@@ -80,33 +82,33 @@ class OptionSpreads:
         # print('>>> listOptionChain: \n', listOptionChain)
 
         listSmartOptionChain = next(c for c in listOptionChain
-                                      if c.exchange == 'SMART'and c.tradingClass == 'SPX')
+                                      if c.exchange == 'SMART')
 
         print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
 
-        [self.aTicker] = self.ib.reqTickers(self.a_Contract)
+        #[self.aTicker] = self.ib.reqTickers(self.a_Contract)
 
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
         # using close price
         #TODO update so not using close price / add last price functionality
-        self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.aTicker.close,
+        self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.theUnderlyingReqTickerData.close,
                                        strikePriceRange, strikePriceMultiple)
 
 
         # Get the SPX expiration set
         # to narrow to Friday or Thursdays use isThursday/isFriday // if dateUtils.isFriday(exp))
-        self.theExpirations = sorted(exp for exp in listSmartOptionChain.expirations)
+        #self.theExpiration = sorted(exp for exp in listSmartOptionChain.expirations)
 
         # print("sorted Expirations: ", self.theExpirations)
 
         # Build requested options based on expiry and price range
         # Most common approach is to use "SMART" as the exchange
-        allOptionContracts = [(Option(self.a_Contract.symbol, expiration, strike, right,
+        allOptionContracts = [(Option(self.a_Contract.symbol, self.theExpiration, strike, self.right,
                                         exchange='SMART', multiplier='100'))
-                                for right in self.rights for expiration in self.theExpirations for strike in self.theStrikes]
+                              for strike in self.theStrikes]
 
-        # print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
-        # print('<-----------------------------------------------<<<optionContracts1:\n')
+        print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
+        print('<-----------------------------------------------<<<optionContracts1:\n')
 
         # # Qualify the options
         self.ib.qualifyContracts(*allOptionContracts)
@@ -152,7 +154,7 @@ class OptionSpreads:
                                                                              (aStrikeL, aStrikeH), 'Loss$'])
     def buildGreeks(self):
         headerPrice = ['Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal', 'conId']
-        indexRangeList = list(itertools.product(self.rights, self.theStrikes, self.theExpirations))
+        indexRangeList = list(itertools.product(self.right, self.theStrikes, self.theExpiration))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Strike', 'Expiry'])
         print('multiIndexRange: ', multiIndexRange)
