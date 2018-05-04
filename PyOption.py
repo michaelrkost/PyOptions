@@ -8,7 +8,7 @@ from PyQt5 import QtCore, QtWidgets
 def main():
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = bsv.Ui_MainWindow()
+    ui = bsv.Ui_MainPyOptionsWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     # needed to add this with util.useQt()
