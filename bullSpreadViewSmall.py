@@ -385,7 +385,7 @@ class Ui_MainPyOptionsWindow(object):
         none
         """
         orderNum = 0
-        expiry_list = dateUtils.getExpiries()
+        expiry_list = dateUtils.getMonthExpiries()
         for anExpiry in expiry_list:
             self.comboBox_Expiry.addItem("")
             self.comboBox_Expiry.setItemText(orderNum, _translate("MainPyOptionsWindow", anExpiry))
@@ -401,6 +401,9 @@ class Ui_MainPyOptionsWindow(object):
         theStrikePriceMultiple = int(self.comboBox_StrikePriceMultiple.currentText())
         theMarketData = self.marketDataType()
         thePriceType = self.priceDataType()
+
+        if 
+        theExpiry = self.comboBox_Expiry.currentText()
 
         # Live -1 / Frozen 2 -
         # -Frozen market data is the last data recorded at market close.
@@ -439,7 +442,7 @@ class Ui_MainPyOptionsWindow(object):
 
             an_option_spread.buildGreeks()
             # todo -- this is next!
-            self.displayGreeks(an_option_spread)
+            #self.displayGreeks(an_option_spread)
             #an_option_spread.buildBullPandas()
 
 
@@ -521,8 +524,10 @@ class Ui_MainPyOptionsWindow(object):
         """
         if self.radioButton_Index.isChecked():
             a_underlying = Index(the_underlying, the_exchange, 'USD')
+            self.securityType = "IND"
         elif self.radioButton_Stock.isChecked():
             a_underlying = Stock(the_underlying, the_exchange, 'USD')
+            self.securityType = "STK"
         else:
             print('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
         return a_underlying

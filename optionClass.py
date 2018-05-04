@@ -69,16 +69,20 @@ class OptionSpreads:
         :param strikePriceMultiple: Define the price increment for price range
         :return:
         """
+        # print("<<in qualify_index_option_chain >>  ", end="")
+        # print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
         # ----get list of options
         # reqSecDefOptParams returns a list of expires and a list of strike prices.
         # In some cases it is possible there are combinations of strike and expiry that
         # would not give a valid option contract.
         listOptionChain = self.ib.reqSecDefOptParams(self.a_Contract.symbol, '', self.a_Contract.secType,
                                                 self.a_Contract.conId)
+        # print('>>> listOptionChain: \n', listOptionChain)
 
-        # filter out for SMART ????
         listSmartOptionChain = next(c for c in listOptionChain
                                       if c.exchange == 'SMART'and c.tradingClass == 'SPX')
+
+        print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
 
         [self.aTicker] = self.ib.reqTickers(self.a_Contract)
 
@@ -101,6 +105,8 @@ class OptionSpreads:
                                         exchange='SMART', multiplier='100'))
                                 for right in self.rights for expiration in self.theExpirations for strike in self.theStrikes]
 
+        # print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
+        # print('<-----------------------------------------------<<<optionContracts1:\n')
 
         # # Qualify the options
         self.ib.qualifyContracts(*allOptionContracts)
