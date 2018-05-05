@@ -9,5 +9,9 @@
         <file>resources/icons/ib2.png</file>
         <file>resources/icons/pic.png</file>
         <file>resources/icons/py_pic.png</file>
+        <file>resources/icons/green2Dollar.png</file>
+        <file>resources/icons/greendollar.jpg</file>
+        <file>resources/icons/kripto-currUSD-b.png</file>
+        <file>resources/icons/No_Dollars2.png</file>
     </qresource>
 </RCC>

@@ -154,7 +154,7 @@ class OptionSpreads:
                                                                          - self.bullCallSpreads.loc[
                                                                              (aStrikeL, aStrikeH), 'Loss$'])
     def buildGreeks(self):
-        headerPrice = ['Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal', 'conId']
+        headerPrice = ['ID', 'Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal']
         indexRangeList = list(itertools.product(self.right, [self.theExpiration], self.theStrikes))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Expiry', 'Strike'])
@@ -170,6 +170,9 @@ class OptionSpreads:
             print('aRight: ', aContract.right, 'Strike: ', aContract.strike,
                   'Expiry: ', aContract.lastTradeDateOrContractMonth)
             print('theReqTicker: ', theReqTicker, 'theGreeks', theGreeks, )
+
+            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+                                       'ID'] = aContract.conId
 
             self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Delta'] = theGreeks.delta

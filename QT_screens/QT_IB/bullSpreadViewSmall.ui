@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>MainPyOptionsWindow</class>
+ <widget class="QMainWindow" name="MainPyOptionsWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1196</width>
-    <height>742</height>
+    <width>1109</width>
+    <height>774</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,24 +23,24 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1111</width>
-      <height>661</height>
+      <width>1091</width>
+      <height>691</height>
      </rect>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="getStuff_tab">
+    <widget class="QWidget" name="qualifyContracts_tab">
      <attribute name="title">
-      <string>Option Contracts </string>
+      <string>Option Contracts / Greeks</string>
      </attribute>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>20</x>
         <y>10</y>
         <width>291</width>
-        <height>221</height>
+        <height>261</height>
        </rect>
       </property>
       <property name="title">
@@ -49,21 +49,21 @@
       <widget class="QPushButton" name="updateQualifyClose">
        <property name="geometry">
         <rect>
-         <x>180</x>
-         <y>180</y>
-         <width>91</width>
+         <x>160</x>
+         <y>220</y>
+         <width>111</width>
          <height>23</height>
         </rect>
        </property>
        <property name="text">
-        <string>Qualify Close</string>
+        <string>Qualify Contracts</string>
        </property>
       </widget>
       <widget class="QSplitter" name="splitter">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>20</y>
+         <y>30</y>
          <width>185</width>
          <height>17</height>
         </rect>
@@ -93,8 +93,8 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>40</y>
+         <x>17</x>
+         <y>81</y>
          <width>250</width>
          <height>50</height>
         </rect>
@@ -102,6 +102,12 @@
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
          <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <italic>false</italic>
+            <underline>true</underline>
+           </font>
+          </property>
           <property name="text">
            <string>Underlying:</string>
           </property>
@@ -112,6 +118,11 @@
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="labelExchange">
+          <property name="font">
+           <font>
+            <underline>true</underline>
+           </font>
+          </property>
           <property name="whatsThis">
            <string/>
           </property>
@@ -122,6 +133,11 @@
         </item>
         <item row="0" column="2">
          <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <underline>true</underline>
+           </font>
+          </property>
           <property name="text">
            <string>Expiry</string>
           </property>
@@ -192,23 +208,33 @@
       <widget class="QGroupBox" name="groupBox_StrikePrice">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>130</y>
+         <x>17</x>
+         <y>140</y>
          <width>251</width>
-         <height>41</height>
+         <height>51</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="title">
-        <string>Strkie Price</string>
+        <string>Strike Price</string>
        </property>
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>20</y>
+          <x>10</x>
+          <y>30</y>
           <width>41</width>
           <height>16</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <underline>false</underline>
+         </font>
         </property>
         <property name="text">
          <string>Range</string>
@@ -217,11 +243,16 @@
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>20</y>
+          <x>120</x>
+          <y>30</y>
           <width>51</width>
           <height>16</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <underline>false</underline>
+         </font>
         </property>
         <property name="text">
          <string>Multiple</string>
@@ -230,8 +261,8 @@
        <widget class="QComboBox" name="comboBox_StrikePriceRange">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>20</y>
+          <x>50</x>
+          <y>30</y>
           <width>51</width>
           <height>16</height>
          </rect>
@@ -290,8 +321,8 @@
        <widget class="QComboBox" name="comboBox_StrikePriceMultiple">
         <property name="geometry">
          <rect>
-          <x>180</x>
-          <y>20</y>
+          <x>170</x>
+          <y>30</y>
           <width>51</width>
           <height>16</height>
          </rect>
@@ -321,8 +352,8 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>98</y>
+         <x>19</x>
+         <y>50</y>
          <width>121</width>
          <height>25</height>
         </rect>
@@ -347,14 +378,74 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>17</x>
+         <y>220</y>
+         <width>120</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_CallPut_2">
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="radioButton_MktDataType_Frozen">
+          <property name="text">
+           <string>Frozen</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QRadioButton" name="radioButton_MktDataType_Live">
+          <property name="text">
+           <string>Live</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="Line" name="line_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>40</y>
+         <width>191</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>200</y>
+         <width>111</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Market Data Type</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>10</y>
+        <y>40</y>
         <width>481</width>
-        <height>601</height>
+        <height>221</height>
        </rect>
       </property>
       <property name="font">
@@ -371,6 +462,12 @@
       </property>
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
       </property>
       <property name="sortingEnabled">
        <bool>true</bool>
@@ -415,18 +512,13 @@
       <column/>
       <column/>
      </widget>
-    </widget>
-    <widget class="QWidget" name="greek_tab">
-     <attribute name="title">
-      <string>The Greeks</string>
-     </attribute>
      <widget class="QTableWidget" name="tableWidget_OptionGreeks">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>20</y>
+        <x>30</x>
+        <y>310</y>
         <width>1051</width>
-        <height>581</height>
+        <height>341</height>
        </rect>
       </property>
       <property name="font">
@@ -435,7 +527,7 @@
        </font>
       </property>
       <property name="editTriggers">
-       <set>QAbstractItemView::DoubleClicked</set>
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
@@ -444,21 +536,35 @@
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
       <property name="gridStyle">
-       <enum>Qt::NoPen</enum>
+       <enum>Qt::SolidLine</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
       </property>
       <property name="rowCount">
        <number>6</number>
       </property>
       <property name="columnCount">
-       <number>10</number>
+       <number>9</number>
       </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>90</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>30</number>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>19</number>
+      </attribute>
       <row/>
       <row/>
       <row/>
       <row/>
       <row/>
       <row/>
-      <column/>
       <column/>
       <column/>
       <column/>
@@ -469,10 +575,55 @@
       <column/>
       <column/>
      </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>290</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MathJax_Main</family>
+        <pointsize>14</pointsize>
+        <italic>false</italic>
+       </font>
+      </property>
+      <property name="text">
+       <string>The Greeks</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>20</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MathJax_Main</family>
+        <pointsize>14</pointsize>
+        <italic>false</italic>
+       </font>
+      </property>
+      <property name="text">
+       <string>Contracts</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="bullSpread_tab">
      <attribute name="title">
-      <string>Bear Spreads</string>
+      <string>Bull Spread</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="bearSpread_tab">
+     <attribute name="title">
+      <string>Bear Spread</string>
      </attribute>
      <widget class="QTableWidget" name="tableWidget_2">
       <property name="geometry">
@@ -602,22 +753,5 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>underlyingText</sender>
-   <signal>editingFinished()</signal>
-   <receiver>comboBox_Expiry</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>98</x>
-     <y>154</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>267</x>
-     <y>154</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
