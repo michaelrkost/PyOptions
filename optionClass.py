@@ -125,18 +125,16 @@ class OptionSpreads:
         headerLM = ['Loss$', 'Max$']
         colStrikeHL = ['StrikeL', 'StrikeH']
 
-        print('in bull ')
-
         indexRangeList = list(itertools.product(self.theStrikes, self.theStrikes))
         # indexRangeList
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList, names=colStrikeHL)
-        print("multiIndexRange\n", multiIndexRange)
+        print("\nmultiIndexRange\n", multiIndexRange)
         type(multiIndexRange)
-        print("multiIndexRange.names\n", multiIndexRange.names)
-        print("multiIndexRange.labels\n", multiIndexRange.labels)
 
         self.bullCallSpreads = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
         print('bullCallSpreads\n', self.bullCallSpreads)
+        self.populateBullSpread()
+        print('POP bullCallSpreads\n', self.bullCallSpreads)
 
     def populateBullSpread(self):
         #TODO need to update "closeSPXOptionPrices" to reflect the data from buildGreeks
@@ -146,13 +144,17 @@ class OptionSpreads:
                     self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = float('nan')
                     self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = float('nan')
                 else:
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = self.closeOptionPrices.loc[
-                                                                             (self.callRight, 'Price'), aStrikeL] - \
-                                                                         self.closeOptionPrices.loc[
-                                                                             (self.callRight, 'Price'), aStrikeH]
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = ((aStrikeH - aStrikeL)
-                                                                         - self.bullCallSpreads.loc[
-                                                                             (aStrikeL, aStrikeH), 'Loss$'])
+                    # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
+                    # Max Loss = -(aStrikeH.Price) + aStrikeL.price
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] \
+                        = self.closeOptionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'] \
+                          - self.closeOptionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price']
+
+                    # Max Profit = difference between strike prices minus cost of spread ie.Loss
+                    # Max Profit = (aStrikeH - aStrikeL) - Max Loss
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = \
+                        (aStrikeH - aStrikeL) - self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$']
+
     def buildGreeks(self):
         headerPrice = ['ID', 'Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal']
         indexRangeList = list(itertools.product(self.right, [self.theExpiration], self.theStrikes))

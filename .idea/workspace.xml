@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optionClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/optionClass.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,32 +14,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4939378">
+    <splitter split-orientation="horizontal" split-proportion="0.48444912">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="958">
-                  <caret line="466" column="35" lean-forward="true" selection-start-line="466" selection-start-column="35" selection-end-line="466" selection-end-column="35" />
+                <state relative-caret-position="283">
+                  <caret line="516" selection-start-line="516" selection-end-line="516" />
+                  <folding>
+                    <element signature="e#879#18748#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="configIB.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/configIB.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="34" selection-start-line="34" selection-end-line="34" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/optionClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="292">
-                  <caret line="155" selection-start-line="155" selection-end-line="155" />
+                <state relative-caret-position="547">
+                  <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
                   <folding>
                     <element signature="e#19#76#0" expanded="true" />
                   </folding>
@@ -75,8 +69,8 @@
           <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2190">
-                  <caret line="498" column="14" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
+                <state relative-caret-position="292">
+                  <caret line="517" selection-start-line="517" selection-end-line="517" />
                 </state>
               </provider>
             </entry>
@@ -84,8 +78,8 @@
           <file leaf-file-name="optionClass.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/optionClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="13">
-                  <caret line="55" column="89" selection-start-line="55" selection-start-column="63" selection-end-line="55" selection-end-column="89" />
+                <state relative-caret-position="540">
+                  <caret line="181" column="113" selection-start-line="181" selection-start-column="40" selection-end-line="181" selection-end-column="113" />
                   <folding>
                     <element signature="e#19#76#0" expanded="true" />
                   </folding>
@@ -131,11 +125,11 @@
       <find>(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth)</find>
       <find>frozen</find>
       <find>timeval</find>
-      <find>print</find>
       <find>8</find>
       <find>clear</find>
-      <find>theUnderlyingReqTickerData</find>
       <find>lineEdit_underlying</find>
+      <find>theUnderlyingReqTickerData</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>self.contract</replace>
@@ -168,8 +162,8 @@
         <option value="$PROJECT_DIR$/PyOption.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/configIB.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py" />
-        <option value="$PROJECT_DIR$/optionClass.py" />
         <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
+        <option value="$PROJECT_DIR$/optionClass.py" />
       </list>
     </option>
   </component>
@@ -354,14 +348,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="1922" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16710596" />
       <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.3259958" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info active="true" anchor="bottom" x="101" y="3" width="1695" height="1017" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
+      <window_info anchor="bottom" x="101" y="3" width="1695" height="1017" id="Run" order="2" sideWeight="0.6525" type="FLOATING" weight="0.45865634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32723358" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -412,34 +405,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>516</line>
-          <option name="timeStamp" value="115" />
+          <url>file://$PROJECT_DIR$/optionClass.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>526</line>
-          <option name="timeStamp" value="116" />
+          <url>file://$PROJECT_DIR$/optionClass.py</url>
+          <line>148</line>
+          <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>518</line>
-          <option name="timeStamp" value="117" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>525</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>523</line>
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bullSpreadViewSmall.py</url>
-          <line>469</line>
-          <option name="timeStamp" value="124" />
+          <url>file://$PROJECT_DIR$/optionClass.py</url>
+          <line>154</line>
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -452,7 +430,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="125" />
+      <option name="time" value="128" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -645,20 +623,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optionClass.py">
+    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
+        <state relative-caret-position="283">
+          <caret line="516" selection-start-line="516" selection-end-line="516" />
           <folding>
-            <element signature="e#19#76#0" expanded="true" />
+            <element signature="e#879#18748#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+    <entry file="file://$PROJECT_DIR$/optionClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="958">
-          <caret line="466" column="35" lean-forward="true" selection-start-line="466" selection-start-column="35" selection-end-line="466" selection-end-column="35" />
+        <state relative-caret-position="547">
+          <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
+          <folding>
+            <element signature="e#19#76#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

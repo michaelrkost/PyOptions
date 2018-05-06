@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="qualifyContracts_tab">
      <attribute name="title">
@@ -470,7 +470,7 @@
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
       <property name="sortingEnabled">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="rowCount">
        <number>10</number>
@@ -539,7 +539,7 @@
        <enum>Qt::SolidLine</enum>
       </property>
       <property name="sortingEnabled">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="rowCount">
        <number>6</number>

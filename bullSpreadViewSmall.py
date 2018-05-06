@@ -472,12 +472,12 @@ class Ui_MainPyOptionsWindow(object):
 
             # Display Underlying price
             self.lineEdit_underlying.setText(the_underlyingOutput)
-            print("Build Greeks")
+            print("\nBuild Greeks")
             an_option_spread.buildGreeks()
             # todo -- this is next!
-            print("display Greeks")
+            print("\nDisplay Greeks\n\n")
             self.displayGreeks(an_option_spread)
-            #an_option_spread.buildBullPandas()
+            an_option_spread.buildBullPandas()
 
 
     def displayContracts(self, contracts):
