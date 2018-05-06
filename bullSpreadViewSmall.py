@@ -6,6 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 # todo change the name of this module from bullSpreadViewSmall to QTmgnt or something
+# todo use return key to activate "Qualify Contracts"
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
@@ -24,14 +25,14 @@ class Ui_MainPyOptionsWindow(object):
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui      -- goes here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def setupUi(self, MainPyOptionsWindow):
         MainPyOptionsWindow.setObjectName("MainPyOptionsWindow")
-        MainPyOptionsWindow.resize(1109, 774)
+        MainPyOptionsWindow.resize(925, 774)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/resources/icons/ib.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainPyOptionsWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainPyOptionsWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget_Contracts = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 1091, 691))
+        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 841, 691))
         self.tabWidget_Contracts.setObjectName("tabWidget_Contracts")
         self.qualifyContracts_tab = QtWidgets.QWidget()
         self.qualifyContracts_tab.setObjectName("qualifyContracts_tab")
@@ -63,7 +64,7 @@ class Ui_MainPyOptionsWindow(object):
         font.setItalic(False)
         font.setUnderline(True)
         self.label_8.setFont(font)
-        self.label_8.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_8.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_8.setObjectName("label_8")
         self.gridLayout.addWidget(self.label_8, 0, 0, 1, 1)
         self.labelExchange = QtWidgets.QLabel(self.layoutWidget)
@@ -177,7 +178,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.tableWidget = QtWidgets.QTableWidget(self.qualifyContracts_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(410, 40, 481, 221))
+        self.tableWidget.setGeometry(QtCore.QRect(320, 30, 461, 221))
         font = QtGui.QFont()
         font.setFamily("Monospace")
         font.setPointSize(10)
@@ -197,7 +198,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget.verticalHeader().setDefaultSectionSize(19)
         self.tableWidget.verticalHeader().setMinimumSectionSize(18)
         self.tableWidget_OptionGreeks = QtWidgets.QTableWidget(self.qualifyContracts_tab)
-        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 310, 1051, 341))
+        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 310, 761, 341))
         font = QtGui.QFont()
         font.setFamily("Noto Mono")
         self.tableWidget_OptionGreeks.setFont(font)
@@ -206,7 +207,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_OptionGreeks.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget_OptionGreeks.setGridStyle(QtCore.Qt.SolidLine)
         self.tableWidget_OptionGreeks.setRowCount(6)
-        self.tableWidget_OptionGreeks.setColumnCount(10)
+        self.tableWidget_OptionGreeks.setColumnCount(9)
         self.tableWidget_OptionGreeks.setObjectName("tableWidget_OptionGreeks")
         self.tableWidget_OptionGreeks.horizontalHeader().setDefaultSectionSize(90)
         self.tableWidget_OptionGreeks.horizontalHeader().setMinimumSectionSize(30)
@@ -221,7 +222,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.label_7 = QtWidgets.QLabel(self.qualifyContracts_tab)
-        self.label_7.setGeometry(QtCore.QRect(410, 20, 101, 17))
+        self.label_7.setGeometry(QtCore.QRect(320, 10, 101, 17))
         font = QtGui.QFont()
         font.setFamily("MathJax_Main")
         font.setPointSize(14)
@@ -231,6 +232,16 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.addTab(self.qualifyContracts_tab, "")
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
+        self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
+        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 40, 791, 591))
+        self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_BullSpread.setAlternatingRowColors(True)
+        self.tableWidget_BullSpread.setRowCount(5)
+        self.tableWidget_BullSpread.setColumnCount(5)
+        self.tableWidget_BullSpread.setObjectName("tableWidget_BullSpread")
+        self.tableWidget_BullSpread.horizontalHeader().setDefaultSectionSize(90)
+        self.tableWidget_BullSpread.horizontalHeader().setMinimumSectionSize(11)
+        self.tableWidget_BullSpread.verticalHeader().setDefaultSectionSize(25)
         self.tabWidget_Contracts.addTab(self.bullSpread_tab, "")
         self.bearSpread_tab = QtWidgets.QWidget()
         self.bearSpread_tab.setObjectName("bearSpread_tab")
@@ -257,27 +268,32 @@ class Ui_MainPyOptionsWindow(object):
         self.connectToIB.setCheckable(True)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectNo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.On)
         icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Active, QtGui.QIcon.On)
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected,
+                        QtGui.QIcon.On)
         self.connectToIB.setIcon(icon1)
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainPyOptionsWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestIB.setIcon(icon2)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainPyOptionsWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIBToolbar.addAction(self.connectToIB)
 
         self.retranslateUi(MainPyOptionsWindow)
-        self.tabWidget_Contracts.setCurrentIndex(0)
+        self.tabWidget_Contracts.setCurrentIndex(1)
+        self.tableWidget.cellClicked['int', 'int'].connect(self.tableWidget_OptionGreeks.selectRow)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
         MainPyOptionsWindow.setTabOrder(self.tabWidget_Contracts, self.underlyingText)
         MainPyOptionsWindow.setTabOrder(self.underlyingText, self.radioButton_Index)
@@ -349,9 +365,12 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_OptionGreeks.setSortingEnabled(True)
         self.label_2.setText(_translate("MainPyOptionsWindow", "The Greeks"))
         self.label_7.setText(_translate("MainPyOptionsWindow", "Contracts"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab), _translate("MainPyOptionsWindow", "Bear Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab),
+                                            _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab),
+                                            _translate("MainPyOptionsWindow", "Bull Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab),
+                                            _translate("MainPyOptionsWindow", "Bear Spread"))
         self.actionIBToolbar.setWindowTitle(_translate("MainPyOptionsWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainPyOptionsWindow", "Connect to IB "))
         self.connectToIB.setToolTip(_translate("MainPyOptionsWindow", "Connect to IB api"))
@@ -374,7 +393,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget.setAlternatingRowColors(True)
 
         headerGreeks = ['ID', 'Right', 'Expiry','Strike', 'Price', 'ImpliedVol', 'Gamma',
-                        'Delta', 'TimeVal', 'conId']
+                        'Delta', 'TimeVal', 'cat']
         self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
         self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
@@ -448,8 +467,10 @@ class Ui_MainPyOptionsWindow(object):
             # Display the contracts
             self.displayContracts(an_option_spread.optionContracts)
 
+            print("Build Greeks")
             an_option_spread.buildGreeks()
             # todo -- this is next!
+            print("display Greeks")
             self.displayGreeks(an_option_spread)
             #an_option_spread.buildBullPandas()
 
@@ -457,7 +478,10 @@ class Ui_MainPyOptionsWindow(object):
     def displayContracts(self, contracts):
         contractsLen = len(contracts)
         self.tableWidget.setRowCount(contractsLen)
+
+        # clear the tables for new data...
         self.tableWidget.clearContents()
+        self.tableWidget_OptionGreeks.clearContents()
         # Items are created outside the table (with no parent widget)
         # and inserted into the table with setItem():
         theRow = 0
@@ -477,7 +501,9 @@ class Ui_MainPyOptionsWindow(object):
             theRow = theRow + 1
 
     def displayGreeks(self, contracts):
-        # contractsLen = len(contracts)
+        # contractsLen = len(contracts)]
+
+
         greeksLen = len(contracts.right) * ( len(contracts.theStrikes * len(contracts.theExpiration)))
         self.tableWidget_OptionGreeks.setRowCount(greeksLen)
         self.tableWidget_OptionGreeks.clearContents()
@@ -491,7 +517,7 @@ class Ui_MainPyOptionsWindow(object):
                     # todo use .format to get the proper formatting...
                     # todo ID is not printing out in form
                     self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
-                        '{7:0f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'ID'])))
+                        '{:d}'.format(int(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
                     self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aRight))
                     self.tableWidget_OptionGreeks.setItem(theRow, 2,
                                                           QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))

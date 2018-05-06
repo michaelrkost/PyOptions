@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1109</width>
+    <width>925</width>
     <height>774</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1091</width>
+      <width>871</width>
       <height>691</height>
      </rect>
     </property>
@@ -442,9 +442,9 @@
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>40</y>
-        <width>481</width>
+        <x>320</x>
+        <y>30</y>
+        <width>461</width>
         <height>221</height>
        </rect>
       </property>
@@ -517,7 +517,7 @@
        <rect>
         <x>30</x>
         <y>310</y>
-        <width>1051</width>
+        <width>841</width>
         <height>341</height>
        </rect>
       </property>
@@ -598,8 +598,8 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>20</y>
+        <x>320</x>
+        <y>10</y>
         <width>101</width>
         <height>17</height>
        </rect>
@@ -620,6 +620,47 @@
      <attribute name="title">
       <string>Bull Spread</string>
      </attribute>
+     <widget class="QTableWidget" name="tableWidget_BullSpread">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>791</width>
+        <height>591</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="rowCount">
+       <number>5</number>
+      </property>
+      <property name="columnCount">
+       <number>5</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>90</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>11</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>25</number>
+      </attribute>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
     </widget>
     <widget class="QWidget" name="bearSpread_tab">
      <attribute name="title">
@@ -753,5 +794,22 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>tableWidget</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>tableWidget_OptionGreeks</receiver>
+   <slot>selectRow(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>482</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
