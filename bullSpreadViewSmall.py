@@ -32,7 +32,7 @@ class Ui_MainPyOptionsWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainPyOptionsWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget_Contracts = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 841, 691))
+        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 871, 691))
         self.tabWidget_Contracts.setObjectName("tabWidget_Contracts")
         self.qualifyContracts_tab = QtWidgets.QWidget()
         self.qualifyContracts_tab.setObjectName("qualifyContracts_tab")
@@ -198,7 +198,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget.verticalHeader().setDefaultSectionSize(19)
         self.tableWidget.verticalHeader().setMinimumSectionSize(18)
         self.tableWidget_OptionGreeks = QtWidgets.QTableWidget(self.qualifyContracts_tab)
-        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 310, 761, 341))
+        self.tableWidget_OptionGreeks.setGeometry(QtCore.QRect(30, 310, 841, 341))
         font = QtGui.QFont()
         font.setFamily("Noto Mono")
         self.tableWidget_OptionGreeks.setFont(font)
@@ -229,6 +229,10 @@ class Ui_MainPyOptionsWindow(object):
         font.setItalic(False)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
+        self.lineEdit_underlying = QtWidgets.QLineEdit(self.qualifyContracts_tab)
+        self.lineEdit_underlying.setGeometry(QtCore.QRect(320, 270, 271, 25))
+        self.lineEdit_underlying.setReadOnly(True)
+        self.lineEdit_underlying.setObjectName("lineEdit_underlying")
         self.tabWidget_Contracts.addTab(self.qualifyContracts_tab, "")
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
@@ -292,7 +296,7 @@ class Ui_MainPyOptionsWindow(object):
         self.actionIBToolbar.addAction(self.connectToIB)
 
         self.retranslateUi(MainPyOptionsWindow)
-        self.tabWidget_Contracts.setCurrentIndex(1)
+        self.tabWidget_Contracts.setCurrentIndex(0)
         self.tableWidget.cellClicked['int', 'int'].connect(self.tableWidget_OptionGreeks.selectRow)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
         MainPyOptionsWindow.setTabOrder(self.tabWidget_Contracts, self.underlyingText)
@@ -365,12 +369,9 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_OptionGreeks.setSortingEnabled(True)
         self.label_2.setText(_translate("MainPyOptionsWindow", "The Greeks"))
         self.label_7.setText(_translate("MainPyOptionsWindow", "Contracts"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab),
-                                            _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab),
-                                            _translate("MainPyOptionsWindow", "Bull Spread"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab),
-                                            _translate("MainPyOptionsWindow", "Bear Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab), _translate("MainPyOptionsWindow", "Bear Spread"))
         self.actionIBToolbar.setWindowTitle(_translate("MainPyOptionsWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainPyOptionsWindow", "Connect to IB "))
         self.connectToIB.setToolTip(_translate("MainPyOptionsWindow", "Connect to IB api"))
@@ -378,7 +379,6 @@ class Ui_MainPyOptionsWindow(object):
         self.actiontestIB.setToolTip(_translate("MainPyOptionsWindow", "Bark"))
         self.actiontestCheckableIB.setText(_translate("MainPyOptionsWindow", "testCheckable"))
         self.actiontestCheckableIB.setToolTip(_translate("MainPyOptionsWindow", "Meow"))
-
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -393,7 +393,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget.setAlternatingRowColors(True)
 
         headerGreeks = ['ID', 'Right', 'Expiry','Strike', 'Price', 'ImpliedVol', 'Gamma',
-                        'Delta', 'TimeVal', 'cat']
+                        'Delta', 'TimeVal']
         self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
         self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
@@ -467,6 +467,11 @@ class Ui_MainPyOptionsWindow(object):
             # Display the contracts
             self.displayContracts(an_option_spread.optionContracts)
 
+            the_underlyingOutput = ' {} / Close Price: {:>7.2f}'.format(an_option_spread.a_Contract.symbol,
+                an_option_spread.theUnderlyingReqTickerData.close)
+
+            # Display Underlying price
+            self.lineEdit_underlying.setText(the_underlyingOutput)
             print("Build Greeks")
             an_option_spread.buildGreeks()
             # todo -- this is next!

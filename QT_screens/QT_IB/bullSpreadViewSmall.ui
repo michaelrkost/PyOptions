@@ -615,6 +615,19 @@
        <string>Contracts</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="lineEdit_underlying">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>270</y>
+        <width>271</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="bullSpread_tab">
      <attribute name="title">
