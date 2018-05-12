@@ -119,8 +119,8 @@ class OptionSpreads:
             if c.conId != 0:
                 self.optionContracts.append(c)
 
-
     def buildBullPandas(self):
+
         headerLM = ['Loss$', 'Max$']
         colStrikeHL = ['StrikeL', 'StrikeH']
 
@@ -156,6 +156,14 @@ class OptionSpreads:
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
                     self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$']
+        self.oneUnderlying = self.bullCallSpreads.copy(deep=True)
+        self.updateBullSpread()
+
+    def updateBullSpread(self, contracts=1):
+
+        self.bullCallSpreads.update(self.oneUnderlying.loc[:,:]*(100*contracts))
+        print(self.bullCallSpreads)
+        print(self.oneUnderlying )
 
     def buildGreeks(self):
         """
@@ -182,7 +190,7 @@ class OptionSpreads:
 
             self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Delta'] = theGreeks.delta
-            # close is yesterdays close - messes up calculations
+            # close is yesterdays close - mess up calculations
             #An option's time value is equal to its premium (the cost of the option) minus its intrinsic value
             # (the difference between the strike price and the price of the underlying).
             self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),

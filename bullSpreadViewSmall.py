@@ -10,6 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
+
 util.useQt()
 
 # Option management class for PyOptions - mrk
@@ -18,6 +19,9 @@ import optionClass
 from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
 
 class Ui_MainPyOptionsWindow(object):
+    """
+    an_option_spread is the created option spread
+    """
     def __init__(self):
         self.ib = IB()
         self.ib.setCallback('error', errorHandler.onError)
@@ -39,9 +43,9 @@ class Ui_MainPyOptionsWindow(object):
         self.groupBox_2 = QtWidgets.QGroupBox(self.qualifyContracts_tab)
         self.groupBox_2.setGeometry(QtCore.QRect(20, 10, 291, 261))
         self.groupBox_2.setObjectName("groupBox_2")
-        self.updateQualifyClose = QtWidgets.QPushButton(self.groupBox_2)
-        self.updateQualifyClose.setGeometry(QtCore.QRect(160, 220, 111, 23))
-        self.updateQualifyClose.setObjectName("updateQualifyClose")
+        self.qualifyContracts = QtWidgets.QPushButton(self.groupBox_2)
+        self.qualifyContracts.setGeometry(QtCore.QRect(160, 220, 111, 23))
+        self.qualifyContracts.setObjectName("qualifyContracts")
         self.splitter = QtWidgets.QSplitter(self.groupBox_2)
         self.splitter.setGeometry(QtCore.QRect(20, 30, 185, 17))
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
@@ -237,15 +241,33 @@ class Ui_MainPyOptionsWindow(object):
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
         self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 40, 791, 591))
+        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 30, 791, 591))
         self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget_BullSpread.setAlternatingRowColors(True)
+        self.tableWidget_BullSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget_BullSpread.setRowCount(5)
-        self.tableWidget_BullSpread.setColumnCount(5)
+        self.tableWidget_BullSpread.setColumnCount(4)
         self.tableWidget_BullSpread.setObjectName("tableWidget_BullSpread")
         self.tableWidget_BullSpread.horizontalHeader().setDefaultSectionSize(90)
         self.tableWidget_BullSpread.horizontalHeader().setMinimumSectionSize(11)
         self.tableWidget_BullSpread.verticalHeader().setDefaultSectionSize(25)
+        self.layoutWidget2 = QtWidgets.QWidget(self.bullSpread_tab)
+        self.layoutWidget2.setGeometry(QtCore.QRect(171, 10, 260, 28))
+        self.layoutWidget2.setObjectName("layoutWidget2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget2)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_6 = QtWidgets.QLabel(self.layoutWidget2)
+        self.label_6.setObjectName("label_6")
+        self.horizontalLayout.addWidget(self.label_6)
+        self.spinBox_numberOfContracts = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinBox_numberOfContracts.setMinimum(1)
+        self.spinBox_numberOfContracts.setMaximum(15)
+        self.spinBox_numberOfContracts.setObjectName("spinBox_numberOfContracts")
+        self.horizontalLayout.addWidget(self.spinBox_numberOfContracts)
+        self.pushButton_updateNumberOfContracts = QtWidgets.QPushButton(self.layoutWidget2)
+        self.pushButton_updateNumberOfContracts.setObjectName("pushButton_updateNumberOfContracts")
+        self.horizontalLayout.addWidget(self.pushButton_updateNumberOfContracts)
         self.tabWidget_Contracts.addTab(self.bullSpread_tab, "")
         self.bearSpread_tab = QtWidgets.QWidget()
         self.bearSpread_tab.setObjectName("bearSpread_tab")
@@ -296,8 +318,9 @@ class Ui_MainPyOptionsWindow(object):
         self.actionIBToolbar.addAction(self.connectToIB)
 
         self.retranslateUi(MainPyOptionsWindow)
-        self.tabWidget_Contracts.setCurrentIndex(0)
+        self.tabWidget_Contracts.setCurrentIndex(1)
         self.tableWidget.cellClicked['int', 'int'].connect(self.tableWidget_OptionGreeks.selectRow)
+        self.tableWidget_OptionGreeks.cellClicked['int', 'int'].connect(self.tableWidget.selectRow)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
         MainPyOptionsWindow.setTabOrder(self.tabWidget_Contracts, self.underlyingText)
         MainPyOptionsWindow.setTabOrder(self.underlyingText, self.radioButton_Index)
@@ -309,8 +332,8 @@ class Ui_MainPyOptionsWindow(object):
         MainPyOptionsWindow.setTabOrder(self.radioButton_Call, self.radioButton_Put)
         MainPyOptionsWindow.setTabOrder(self.radioButton_Put, self.comboBox_StrikePriceRange)
         MainPyOptionsWindow.setTabOrder(self.comboBox_StrikePriceRange, self.comboBox_StrikePriceMultiple)
-        MainPyOptionsWindow.setTabOrder(self.comboBox_StrikePriceMultiple, self.updateQualifyClose)
-        MainPyOptionsWindow.setTabOrder(self.updateQualifyClose, self.tableWidget)
+        MainPyOptionsWindow.setTabOrder(self.comboBox_StrikePriceMultiple, self.qualifyContracts)
+        MainPyOptionsWindow.setTabOrder(self.qualifyContracts, self.tableWidget)
         MainPyOptionsWindow.setTabOrder(self.tableWidget, self.tableWidget_2)
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -328,7 +351,7 @@ class Ui_MainPyOptionsWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainPyOptionsWindow.setWindowTitle(_translate("MainPyOptionsWindow", "IB Options"))
         self.groupBox_2.setTitle(_translate("MainPyOptionsWindow", "Underlying"))
-        self.updateQualifyClose.setText(_translate("MainPyOptionsWindow", "Qualify Contracts"))
+        self.qualifyContracts.setText(_translate("MainPyOptionsWindow", "Qualify Contracts"))
         self.radioButton_Index.setText(_translate("MainPyOptionsWindow", "Index"))
         self.radioButton_Stock.setText(_translate("MainPyOptionsWindow", "Stock "))
         self.radioButton_Option.setText(_translate("MainPyOptionsWindow", "Option"))
@@ -365,13 +388,18 @@ class Ui_MainPyOptionsWindow(object):
         self.radioButton_MktDataType_Frozen.setText(_translate("MainPyOptionsWindow", "Frozen"))
         self.radioButton_MktDataType_Live.setText(_translate("MainPyOptionsWindow", "Live"))
         self.label_5.setText(_translate("MainPyOptionsWindow", "Market Data Type"))
-        self.tableWidget.setSortingEnabled(True)
-        self.tableWidget_OptionGreeks.setSortingEnabled(True)
+        self.tableWidget.setSortingEnabled(False)
+        self.tableWidget_OptionGreeks.setSortingEnabled(False)
         self.label_2.setText(_translate("MainPyOptionsWindow", "The Greeks"))
         self.label_7.setText(_translate("MainPyOptionsWindow", "Contracts"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab), _translate("MainPyOptionsWindow", "Bear Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab),
+                                            _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
+        self.label_6.setText(_translate("MainPyOptionsWindow", "Number Of Contracts"))
+        self.pushButton_updateNumberOfContracts.setText(_translate("MainPyOptionsWindow", "Update"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab),
+                                            _translate("MainPyOptionsWindow", "Bull Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab),
+                                            _translate("MainPyOptionsWindow", "Bear Spread"))
         self.actionIBToolbar.setWindowTitle(_translate("MainPyOptionsWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainPyOptionsWindow", "Connect to IB "))
         self.connectToIB.setToolTip(_translate("MainPyOptionsWindow", "Connect to IB api"))
@@ -468,25 +496,25 @@ class Ui_MainPyOptionsWindow(object):
             self.statusbar.showMessage(str(a_qualified_contract))
 
             # create a new optionClass instance
-            an_option_spread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
+            self.an_option_spread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
             # Fully qualify the option
-            an_option_spread.qualify_option_chain(self.right(), theExpiry, theStrikePriceRange, theStrikePriceMultiple)
+            self.an_option_spread.qualify_option_chain(self.right(), theExpiry, theStrikePriceRange, theStrikePriceMultiple)
 
             # Display the contracts
-            self.displayContracts(an_option_spread.optionContracts)
+            self.displayContracts(self.an_option_spread.optionContracts)
 
-            the_underlyingOutput = ' {} / Last Price: {:>7.2f}'.format(an_option_spread.a_Contract.symbol,
-                an_option_spread.theUnderlyingReqTickerData.last)
+            the_underlyingOutput = ' {} / Last Price: {:>7.2f}'.format(self.an_option_spread.a_Contract.symbol,
+                self.an_option_spread.theUnderlyingReqTickerData.last)
 
             # Display Underlying price
             self.lineEdit_underlying.setText(the_underlyingOutput)
             print("\nBuild Greeks")
-            an_option_spread.buildGreeks()
+            self.an_option_spread.buildGreeks()
 
             print("\nDisplay Greeks\n\n")
-            self.displayGreeks(an_option_spread)
-            an_option_spread.buildBullPandas()
-            self.displayBullSpread(an_option_spread)
+            self.displayGreeks(self.an_option_spread)
+            self.an_option_spread.buildBullPandas()
+            self.displayBullSpread(self.an_option_spread)
 
 
     def displayContracts(self, contracts):
@@ -515,7 +543,6 @@ class Ui_MainPyOptionsWindow(object):
             theRow = theRow + 1
 
     def displayGreeks(self, contracts):
-        # contractsLen = len(contracts)]
 
         greeksLen = len(contracts.right) * ( len(contracts.theStrikes * len(contracts.theExpiration)))
         self.tableWidget_OptionGreeks.setRowCount(greeksLen)
@@ -555,6 +582,7 @@ class Ui_MainPyOptionsWindow(object):
         theRow = 0
         for aStrikeL in contracts.theStrikes:
             self.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
+            self.tableWidget_BullSpread.item(theRow, 0).setBackground(QtGui.QColor("lightBlue"))
             for aStrikeH in contracts.theStrikes:
                 if aStrikeL < aStrikeH:
                     self.tableWidget_BullSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
@@ -604,8 +632,23 @@ class Ui_MainPyOptionsWindow(object):
         return a_underlying
 
     def updateConnect(self):
-        self.updateQualifyClose.clicked.connect(self.get_underlying_info)
+        self.qualifyContracts.clicked.connect(self.get_underlying_info)
         self.connectToIB.triggered.connect(self.onConnectButtonClicked)
+        self.pushButton_updateNumberOfContracts.clicked.connect(self.updateBullContracts)
+        # line 315
+        #         self.pushButton_updateNumberOfContracts.clicked.connect(self.tableWidget_BullSpread.update)
+
+    def updateBullContracts(self):
+        try:
+            self.an_option_spread
+        except NameError:
+            print(".....need to get a contract first.....")
+        else:
+            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+            self.an_option_spread.updateBullSpread(self.spinBox_numberOfContracts.value())
+            self.displayBullSpread(self.an_option_spread)
+
+
 
     def onConnectButtonClicked(self):
         if self.connectToIB.isChecked():

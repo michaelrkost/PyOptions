@@ -878,5 +878,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_updateNumberOfContracts</sender>
+   <signal>clicked()</signal>
+   <receiver>tableWidget_BullSpread</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>
