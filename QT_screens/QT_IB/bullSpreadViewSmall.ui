@@ -46,7 +46,7 @@
       <property name="title">
        <string>Underlying</string>
       </property>
-      <widget class="QPushButton" name="updateQualifyClose">
+      <widget class="QPushButton" name="qualifyContracts">
        <property name="geometry">
         <rect>
          <x>160</x>
@@ -648,11 +648,14 @@
       <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
       <property name="rowCount">
        <number>5</number>
       </property>
       <property name="columnCount">
-       <number>5</number>
+       <number>4</number>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>90</number>
@@ -672,7 +675,42 @@
       <column/>
       <column/>
       <column/>
-      <column/>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>171</x>
+        <y>10</y>
+        <width>260</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Number Of Contracts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_numberOfContracts">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>15</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_updateNumberOfContracts">
+         <property name="text">
+          <string>Update</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="bearSpread_tab">
@@ -800,7 +838,7 @@
   <tabstop>radioButton_Put</tabstop>
   <tabstop>comboBox_StrikePriceRange</tabstop>
   <tabstop>comboBox_StrikePriceMultiple</tabstop>
-  <tabstop>updateQualifyClose</tabstop>
+  <tabstop>qualifyContracts</tabstop>
   <tabstop>tableWidget</tabstop>
   <tabstop>tableWidget_2</tabstop>
  </tabstops>
@@ -821,6 +859,38 @@
     <hint type="destinationlabel">
      <x>76</x>
      <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_updateNumberOfContracts</sender>
+   <signal>clicked()</signal>
+   <receiver>tableWidget_BullSpread</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>403</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tableWidget_OptionGreeks</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>tableWidget</receiver>
+   <slot>selectRow(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>438</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>483</x>
+     <y>251</y>
     </hint>
    </hints>
   </connection>

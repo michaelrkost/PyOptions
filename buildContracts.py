@@ -45,7 +45,7 @@ def get_underlying_info(self):
         print('self.comboBoxExchange.currentText(): ', self.comboBoxExchange.currentText())
         a_qualified_contract = get_underlying.pop()
         self.statusbar.showMessage(str(a_qualified_contract))
-        contracts = buildOptionMatrices.qualify_option_chain_close(self.ib, a_qualified_contract,
+        contracts = buildOptionMatrices.qualify_option_chain(self.ib, a_qualified_contract,
                                                                    self.right(), self.comboBoxExchange.currentText())
         print("=================================Contracts: \n", contracts)
         self.displayContracts(contracts)

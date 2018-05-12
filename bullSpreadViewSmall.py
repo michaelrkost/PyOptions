@@ -397,6 +397,10 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
         self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
+        headerBullSpread = ['Strike Low', 'Strike High', 'Max Loss','Max Profit']
+        self.tableWidget_BullSpread.setHorizontalHeaderLabels(headerBullSpread)
+        self.tableWidget_BullSpread.setAlternatingRowColors(True)
+
 
     def doExpiry(self, _translate):
         """Create a list of 18 Months of Option Fridays
@@ -457,8 +461,6 @@ class Ui_MainPyOptionsWindow(object):
             a_qualified_contract = get_underlying.pop()
             self.statusbar.showMessage(str(a_qualified_contract))
 
-            #TODO: add check for time and date - whether to use close(market closed) or last(active market)
-
             # create a new optionClass instance
             an_option_spread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
             # Fully qualify the option
@@ -467,17 +469,18 @@ class Ui_MainPyOptionsWindow(object):
             # Display the contracts
             self.displayContracts(an_option_spread.optionContracts)
 
-            the_underlyingOutput = ' {} / Close Price: {:>7.2f}'.format(an_option_spread.a_Contract.symbol,
-                an_option_spread.theUnderlyingReqTickerData.close)
+            the_underlyingOutput = ' {} / Last Price: {:>7.2f}'.format(an_option_spread.a_Contract.symbol,
+                an_option_spread.theUnderlyingReqTickerData.last)
 
             # Display Underlying price
             self.lineEdit_underlying.setText(the_underlyingOutput)
             print("\nBuild Greeks")
             an_option_spread.buildGreeks()
-            # todo -- this is next!
+
             print("\nDisplay Greeks\n\n")
             self.displayGreeks(an_option_spread)
             an_option_spread.buildBullPandas()
+            self.displayBullSpread(an_option_spread)
 
 
     def displayContracts(self, contracts):
@@ -500,14 +503,13 @@ class Ui_MainPyOptionsWindow(object):
             self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
             self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
                 dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
-            self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aContract.strike)))
+            self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem('{:>7.0f}'.format(aContract.strike)))
             self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
             #
             theRow = theRow + 1
 
     def displayGreeks(self, contracts):
         # contractsLen = len(contracts)]
-
 
         greeksLen = len(contracts.right) * ( len(contracts.theStrikes * len(contracts.theExpiration)))
         self.tableWidget_OptionGreeks.setRowCount(greeksLen)
@@ -518,28 +520,45 @@ class Ui_MainPyOptionsWindow(object):
         anExpriy = contracts.theExpiration
         for aRight in contracts.right:
             for aStrike in contracts.theStrikes:
-
-                    # todo use .format to get the proper formatting...
-                    # todo ID is not printing out in form
                     self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
-                        '{:d}'.format(int(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
+                        '{:d}'.format(int(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
                     self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aRight))
                     self.tableWidget_OptionGreeks.setItem(theRow, 2,
                                                           QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
                     self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aStrike)))
                     self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
-                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
+                        '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
-                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
+                        '{:>2.2%}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
-                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
+                        '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
-                        '{:.6f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
+                        '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
                     self.tableWidget_OptionGreeks.setItem(theRow, 8, QtWidgets.QTableWidgetItem(
-                        '{:>7.2f}'.format(contracts.closeOptionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
+                        '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
                     
                     theRow += 1
 
+    def displayBullSpread(self, contracts):
+        # todo does this work for Puts??
+
+        self.tableWidget_BullSpread.setRowCount(contracts.bullCallSpreads.shape[0])
+
+        self.tableWidget_BullSpread.clearContents()
+
+        theRow = 0
+        for aStrikeL in contracts.theStrikes:
+            self.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
+            for aStrikeH in contracts.theStrikes:
+ #               self.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('-'))
+                self.tableWidget_BullSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
+                self.tableWidget_BullSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                                                    '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                                                                     aStrikeH),'Loss$'])))
+                self.tableWidget_BullSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
+                                                    '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                                                                     aStrikeH),'Max$'])))
+                theRow += 1
 
     def right(self):
         if self.radioButton_Call.isChecked():

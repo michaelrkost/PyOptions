@@ -24,7 +24,7 @@ class OptionSpreads:
     #     theStrikes - the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
     #     aTicker - the contracts ticker / a snapshot ticker of the given contract.
     #     bullCallSpreads - Pandas dataframe for spread info
-    #     closeOptionPrices - Pandas dataframe for greeks/option price
+    #     optionPrices - Pandas dataframe for greeks/option price
     #
     # putRight = 'P'
     # callRight = 'C'
@@ -53,12 +53,12 @@ class OptionSpreads:
         self.a_Contract = a_qualified_contract
         self.ib = anIB
         self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
-        print('self.theUnderlyingReqTickerData.close:  ', self.theUnderlyingReqTickerData.close)
+        print('self.theUnderlyingReqTickerData.last:  ', self.theUnderlyingReqTickerData.last)
         self.optionContracts = []
         self.theStrikes =[]
         self.contractReqTickers = []
         self.theExpiration = []
-        self.closeOptionPrices = []
+        self.optionPrices = []
         self.right = []
 
     def qualify_option_chain(self, aRight, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
@@ -89,9 +89,8 @@ class OptionSpreads:
         #[self.aTicker] = self.ib.reqTickers(self.a_Contract)
 
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
-        # using close price
-        #TODO update so not using close price / add last price functionality
-        self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.theUnderlyingReqTickerData.close,
+        # Updated so not using close price / added last price functionality
+        self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.theUnderlyingReqTickerData.last,
                                        strikePriceRange, strikePriceMultiple)
 
         #todo need to put in more logic to get existing expiries as they do not extend out logically
@@ -132,23 +131,26 @@ class OptionSpreads:
         type(multiIndexRange)
 
         self.bullCallSpreads = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
+
+        # todo remove all unessary print outs
+        # todo determine how to use logging
         print('bullCallSpreads\n', self.bullCallSpreads)
         self.populateBullSpread()
         print('POP bullCallSpreads\n', self.bullCallSpreads)
 
     def populateBullSpread(self):
-        #TODO need to update "closeSPXOptionPrices" to reflect the data from buildGreeks
+# todo does this work for Puts???
         for aStrikeL in self.theStrikes:
             for aStrikeH in self.theStrikes:
                 if aStrikeH <= aStrikeL:
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = float('nan')
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = float('nan')
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0 #float('nan')
+                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = 0 #float('nan')
                 else:
                     # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
                     # Max Loss = -(aStrikeH.Price) + aStrikeL.price
                     self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] \
-                        = self.closeOptionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'] \
-                          - self.closeOptionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price']
+                        = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'] \
+                          - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price']
 
                     # Max Profit = difference between strike prices minus cost of spread ie.Loss
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
@@ -161,9 +163,9 @@ class OptionSpreads:
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Expiry', 'Strike'])
         print('\nmultiIndexRange:\n ', multiIndexRange)
-        self.closeOptionPrices = pd.DataFrame(0.0, index=multiIndexRange,
-                                            columns=headerPrice)
-        print('\ncloseOptionPrices\n', self.closeOptionPrices)
+        self.optionPrices = pd.DataFrame(0.0, index=multiIndexRange,
+                                         columns=headerPrice)
+        print('\noptionPrices\n', self.optionPrices)
         print("\nProcessing Greeks", end="")
 
         for aContract in self.optionContracts:
@@ -171,25 +173,25 @@ class OptionSpreads:
             theGreeks = theReqTicker.modelGreeks
             self.contractReqTickers.append(theReqTicker)
 
-            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'ID'] = aContract.conId
 
-            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Delta'] = theGreeks.delta
-            # TODO need to determine if we should use close or last - close is yesterdays close - messing up calculations
+            # close is yesterdays close - messes up calculations
             #An option's time value is equal to its premium (the cost of the option) minus its intrinsic value
             # (the difference between the strike price and the price of the underlying).
-            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
-                                       'TimeVal'] = theReqTicker.close - abs(self.theUnderlyingReqTickerData.close
+            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+                                       'TimeVal'] = theReqTicker.last - abs(self.theUnderlyingReqTickerData.last
                                                                              - aContract.strike)
-            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'ImpliedVol'] = theGreeks.impliedVol
-            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Gamma'] = theGreeks.gamma
-            self.closeOptionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
-                                       'Price'] = theReqTicker.close
+            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+                                       'Price'] = theReqTicker.last
             print('.', end="")
-        print('\n=== Greeks Built\n\n', self.closeOptionPrices)
+        print('\n=== Greeks Built\n\n', self.optionPrices)
 
 
 
