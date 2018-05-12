@@ -84,7 +84,7 @@ class OptionSpreads:
         listSmartOptionChain = next(c for c in listOptionChain
                                       if c.exchange == 'SMART')
 
-        print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
+        # print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
 
         #[self.aTicker] = self.ib.reqTickers(self.a_Contract)
 
@@ -98,7 +98,7 @@ class OptionSpreads:
         # as it is not always the third thursday/friday
         theExpirationList = sorted(exp for exp in listSmartOptionChain.expirations
                                    if exp[:6] == self.theExpiration[:6])
-        print("sorted Expirations: ", theExpirationList)
+        # print("sorted Expirations: ", theExpirationList)
         self.theExpiration = theExpirationList.pop()
 
         # Build requested options based on expiry and price range
@@ -127,16 +127,16 @@ class OptionSpreads:
         indexRangeList = list(itertools.product(self.theStrikes, self.theStrikes))
         # indexRangeList
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList, names=colStrikeHL)
-        print("\nmultiIndexRange\n", multiIndexRange)
+        # print("\nmultiIndexRange\n", multiIndexRange)
         type(multiIndexRange)
 
         self.bullCallSpreads = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
 
-        # todo remove all unessary print outs
+        # todo remove all unnecessary print outs
         # todo determine how to use logging
-        print('bullCallSpreads\n', self.bullCallSpreads)
+        # print('bullCallSpreads\n', self.bullCallSpreads)
         self.populateBullSpread()
-        print('POP bullCallSpreads\n', self.bullCallSpreads)
+        # print('POP bullCallSpreads\n', self.bullCallSpreads)
 
     def populateBullSpread(self):
 # todo does this work for Puts???
@@ -158,15 +158,19 @@ class OptionSpreads:
                         (aStrikeH - aStrikeL) - self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$']
 
     def buildGreeks(self):
+        """
+        Create Panda DF for Greeks add Greeks to DF
+        :return:
+        """
         headerPrice = ['ID', 'Price', 'ImpliedVol', 'Gamma', 'Delta', 'TimeVal']
         indexRangeList = list(itertools.product(self.right, [self.theExpiration], self.theStrikes))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Expiry', 'Strike'])
-        print('\nmultiIndexRange:\n ', multiIndexRange)
+#print('\nmultiIndexRange:\n ', multiIndexRange)
         self.optionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                          columns=headerPrice)
-        print('\noptionPrices\n', self.optionPrices)
-        print("\nProcessing Greeks", end="")
+        # print('\noptionPrices\n', self.optionPrices)
+        # print("\nProcessing Greeks", end="")
 
         for aContract in self.optionContracts:
             [theReqTicker] = self.ib.reqTickers(aContract)
@@ -191,7 +195,7 @@ class OptionSpreads:
             self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Price'] = theReqTicker.last
             print('.', end="")
-        print('\n=== Greeks Built\n\n', self.optionPrices)
+        print('\n=== Greeks Built =========\n', self.optionPrices, '================')
 
 
 

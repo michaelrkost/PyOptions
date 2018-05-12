@@ -420,6 +420,12 @@ class Ui_MainPyOptionsWindow(object):
         #TODO drop/queue history/ any existing instance of contracts if new instance is created
         #TODO filter out or combine Weekly or Monthly at the UI level
         self.statusbar.clearMessage()
+
+        #clear contents for feed back to user - new call
+        self.tableWidget_BullSpread.clearContents()
+        self.tableWidget_OptionGreeks.clearContents()
+        self.tableWidget_BullSpread.clearContents()
+
         the_underlying = self.underlyingText.text()
         the_exchange = self.comboBoxExchange.currentText()
         theStrikePriceRange = int(self.comboBox_StrikePriceRange.currentText())
@@ -520,24 +526,24 @@ class Ui_MainPyOptionsWindow(object):
         anExpriy = contracts.theExpiration
         for aRight in contracts.right:
             for aStrike in contracts.theStrikes:
-                    self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
-                        '{:d}'.format(int(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aRight))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 2,
-                                                          QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aStrike)))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
-                        '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
-                        '{:>2.2%}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
-                        '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
-                        '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
-                    self.tableWidget_OptionGreeks.setItem(theRow, 8, QtWidgets.QTableWidgetItem(
-                        '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
-                    
-                    theRow += 1
+                self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
+                    '{:d}'.format(int(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
+                self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aRight))
+                self.tableWidget_OptionGreeks.setItem(theRow, 2,
+                                                      QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
+                self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aStrike)))
+                self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
+                    '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
+                    '{:>2.2%}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
+                    '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
+                    '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 8, QtWidgets.QTableWidgetItem(
+                    '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
+
+                theRow += 1
 
     def displayBullSpread(self, contracts):
         # todo does this work for Puts??
@@ -550,15 +556,17 @@ class Ui_MainPyOptionsWindow(object):
         for aStrikeL in contracts.theStrikes:
             self.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
             for aStrikeH in contracts.theStrikes:
- #               self.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('-'))
-                self.tableWidget_BullSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
-                self.tableWidget_BullSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
-                                                    '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
-                                                                                                     aStrikeH),'Loss$'])))
-                self.tableWidget_BullSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
-                                                    '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
-                                                                                                     aStrikeH),'Max$'])))
-                theRow += 1
+                if aStrikeL < aStrikeH:
+                    self.tableWidget_BullSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
+                    self.tableWidget_BullSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                                                        '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                                                                         aStrikeH),
+                                                                                                        'Loss$'])))
+                    self.tableWidget_BullSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
+                                                        '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                                                                         aStrikeH),
+                                                                                                        'Max$'])))
+                    theRow += 1
 
     def right(self):
         if self.radioButton_Call.isChecked():
