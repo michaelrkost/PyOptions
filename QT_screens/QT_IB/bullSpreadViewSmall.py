@@ -223,7 +223,7 @@ class Ui_MainPyOptionsWindow(object):
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
         self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 30, 791, 591))
+        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 50, 791, 571))
         self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget_BullSpread.setAlternatingRowColors(True)
         self.tableWidget_BullSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)

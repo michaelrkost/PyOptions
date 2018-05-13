@@ -55,11 +55,13 @@ class OptionSpreads:
         self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
         print('self.theUnderlyingReqTickerData.last:  ', self.theUnderlyingReqTickerData.last)
         self.optionContracts = []
-        self.theStrikes =[]
+        self.theStrikes = []
         self.contractReqTickers = []
         self.theExpiration = []
         self.optionPrices = []
         self.right = []
+        self.oneOptionUnit = None
+        self.bullCallSpreads = None
 
     def qualify_option_chain(self, aRight, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
         """Fully qualify the given contracts in-place. close not last
@@ -156,14 +158,12 @@ class OptionSpreads:
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
                     self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$']
-        self.oneUnderlying = self.bullCallSpreads.copy(deep=True)
+        self.oneOptionUnit = self.bullCallSpreads.copy(deep=True)
         self.updateBullSpread()
 
     def updateBullSpread(self, contracts=1):
 
-        self.bullCallSpreads.update(self.oneUnderlying.loc[:,:]*(100*contracts))
-        print(self.bullCallSpreads)
-        print(self.oneUnderlying )
+        self.bullCallSpreads.update(self.oneOptionUnit.loc[:, :] * (100 * contracts))
 
     def buildGreeks(self):
         """
@@ -174,7 +174,7 @@ class OptionSpreads:
         indexRangeList = list(itertools.product(self.right, [self.theExpiration], self.theStrikes))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Expiry', 'Strike'])
-#print('\nmultiIndexRange:\n ', multiIndexRange)
+        #print('\nmultiIndexRange:\n ', multiIndexRange)
         self.optionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                          columns=headerPrice)
         # print('\noptionPrices\n', self.optionPrices)

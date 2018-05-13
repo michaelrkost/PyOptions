@@ -241,7 +241,7 @@ class Ui_MainPyOptionsWindow(object):
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
         self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 30, 791, 591))
+        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 50, 791, 571))
         self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget_BullSpread.setAlternatingRowColors(True)
         self.tableWidget_BullSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
@@ -425,7 +425,7 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
         self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
-        headerBullSpread = ['Strike Low', 'Strike High', 'Max Loss','Max Profit']
+        headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss','Max$ Profit']
         self.tableWidget_BullSpread.setHorizontalHeaderLabels(headerBullSpread)
         self.tableWidget_BullSpread.setAlternatingRowColors(True)
 
@@ -450,9 +450,10 @@ class Ui_MainPyOptionsWindow(object):
         self.statusbar.clearMessage()
 
         #clear contents for feed back to user - new call
-        self.tableWidget_BullSpread.clearContents()
+        self.tableWidget.clearContents()
         self.tableWidget_OptionGreeks.clearContents()
         self.tableWidget_BullSpread.clearContents()
+        self.spinBox_numberOfContracts.setValue(1)
 
         the_underlying = self.underlyingText.text()
         the_exchange = self.comboBoxExchange.currentText()
@@ -644,7 +645,6 @@ class Ui_MainPyOptionsWindow(object):
         except NameError:
             print(".....need to get a contract first.....")
         else:
-            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
             self.an_option_spread.updateBullSpread(self.spinBox_numberOfContracts.value())
             self.displayBullSpread(self.an_option_spread)
 
