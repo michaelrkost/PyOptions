@@ -2,10 +2,15 @@ from ib_insync import *
 import bullSpreadViewSmall as bsv
 import sys
 from PyQt5 import QtCore, QtWidgets
-# ========================================================
+
+from localUtilities import logger
+
+
+# ======== Logging ================================================
 
 
 def main():
+    logger.init_logger_singleton()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = bsv.Ui_MainPyOptionsWindow()

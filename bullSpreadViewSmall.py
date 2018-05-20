@@ -11,12 +11,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from ib_insync import *
 
+# need to give QT the async from ib_insync
 util.useQt()
 
 # Option management class for PyOptions - mrk
-import optionClass
+import optionSpreadsClass
 
-from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
+from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils, logger
 
 class Ui_MainPyOptionsWindow(object):
     """
@@ -29,14 +30,14 @@ class Ui_MainPyOptionsWindow(object):
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui      -- goes here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def setupUi(self, MainPyOptionsWindow):
         MainPyOptionsWindow.setObjectName("MainPyOptionsWindow")
-        MainPyOptionsWindow.resize(925, 774)
+        MainPyOptionsWindow.resize(963, 838)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/resources/icons/ib.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainPyOptionsWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainPyOptionsWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget_Contracts = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 0, 871, 691))
+        self.tabWidget_Contracts.setGeometry(QtCore.QRect(0, 60, 951, 691))
         self.tabWidget_Contracts.setObjectName("tabWidget_Contracts")
         self.qualifyContracts_tab = QtWidgets.QWidget()
         self.qualifyContracts_tab.setObjectName("qualifyContracts_tab")
@@ -233,26 +234,22 @@ class Ui_MainPyOptionsWindow(object):
         font.setItalic(False)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
-        self.lineEdit_underlying = QtWidgets.QLineEdit(self.qualifyContracts_tab)
-        self.lineEdit_underlying.setGeometry(QtCore.QRect(320, 270, 271, 25))
-        self.lineEdit_underlying.setReadOnly(True)
-        self.lineEdit_underlying.setObjectName("lineEdit_underlying")
         self.tabWidget_Contracts.addTab(self.qualifyContracts_tab, "")
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
         self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 50, 791, 571))
+        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 70, 451, 571))
         self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget_BullSpread.setAlternatingRowColors(True)
         self.tableWidget_BullSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget_BullSpread.setRowCount(5)
         self.tableWidget_BullSpread.setColumnCount(4)
         self.tableWidget_BullSpread.setObjectName("tableWidget_BullSpread")
-        self.tableWidget_BullSpread.horizontalHeader().setDefaultSectionSize(90)
+        self.tableWidget_BullSpread.horizontalHeader().setDefaultSectionSize(105)
         self.tableWidget_BullSpread.horizontalHeader().setMinimumSectionSize(11)
         self.tableWidget_BullSpread.verticalHeader().setDefaultSectionSize(25)
         self.layoutWidget2 = QtWidgets.QWidget(self.bullSpread_tab)
-        self.layoutWidget2.setGeometry(QtCore.QRect(171, 10, 260, 28))
+        self.layoutWidget2.setGeometry(QtCore.QRect(20, 10, 260, 28))
         self.layoutWidget2.setObjectName("layoutWidget2")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget2)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -268,6 +265,33 @@ class Ui_MainPyOptionsWindow(object):
         self.pushButton_updateNumberOfContracts = QtWidgets.QPushButton(self.layoutWidget2)
         self.pushButton_updateNumberOfContracts.setObjectName("pushButton_updateNumberOfContracts")
         self.horizontalLayout.addWidget(self.pushButton_updateNumberOfContracts)
+        self.label_9 = QtWidgets.QLabel(self.bullSpread_tab)
+        self.label_9.setGeometry(QtCore.QRect(480, 50, 191, 20))
+        self.label_9.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
+                                   "color: rgb(32, 74, 135);")
+        self.label_9.setObjectName("label_9")
+        self.tableWidget_FrontRatioCallSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
+        self.tableWidget_FrontRatioCallSpread.setGeometry(QtCore.QRect(480, 70, 451, 571))
+        self.tableWidget_FrontRatioCallSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_FrontRatioCallSpread.setAlternatingRowColors(True)
+        self.tableWidget_FrontRatioCallSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidget_FrontRatioCallSpread.setRowCount(5)
+        self.tableWidget_FrontRatioCallSpread.setColumnCount(4)
+        self.tableWidget_FrontRatioCallSpread.setObjectName("tableWidget_FrontRatioCallSpread")
+        self.tableWidget_FrontRatioCallSpread.horizontalHeader().setDefaultSectionSize(105)
+        self.tableWidget_FrontRatioCallSpread.horizontalHeader().setMinimumSectionSize(11)
+        self.tableWidget_FrontRatioCallSpread.verticalHeader().setDefaultSectionSize(25)
+        self.label_10 = QtWidgets.QLabel(self.bullSpread_tab)
+        self.label_10.setGeometry(QtCore.QRect(20, 50, 191, 20))
+        self.label_10.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
+                                    "color: rgb(32, 74, 135);")
+        self.label_10.setObjectName("label_10")
+        self.line = QtWidgets.QFrame(self.bullSpread_tab)
+        self.line.setGeometry(QtCore.QRect(20, 35, 271, 20))
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setLineWidth(3)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setObjectName("line")
         self.tabWidget_Contracts.addTab(self.bullSpread_tab, "")
         self.bearSpread_tab = QtWidgets.QWidget()
         self.bearSpread_tab.setObjectName("bearSpread_tab")
@@ -277,6 +301,21 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_2.setColumnCount(5)
         self.tableWidget_2.setObjectName("tableWidget_2")
         self.tabWidget_Contracts.addTab(self.bearSpread_tab, "")
+        self.widget = QtWidgets.QWidget(self.centralwidget)
+        self.widget.setGeometry(QtCore.QRect(20, 20, 241, 27))
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label_11 = QtWidgets.QLabel(self.widget)
+        self.label_11.setStyleSheet("font: 75 italic 12pt \"Ubuntu Mono\";\n"
+                                    "color: rgb(32, 74, 135);")
+        self.label_11.setObjectName("label_11")
+        self.horizontalLayout_2.addWidget(self.label_11)
+        self.lineEdit_underlying = QtWidgets.QLineEdit(self.widget)
+        self.lineEdit_underlying.setReadOnly(True)
+        self.lineEdit_underlying.setObjectName("lineEdit_underlying")
+        self.horizontalLayout_2.addWidget(self.lineEdit_underlying)
         MainPyOptionsWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainPyOptionsWindow)
         font = QtGui.QFont()
@@ -316,9 +355,10 @@ class Ui_MainPyOptionsWindow(object):
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIBToolbar.addAction(self.connectToIB)
+        self.actionIBToolbar.addSeparator()
 
         self.retranslateUi(MainPyOptionsWindow)
-        self.tabWidget_Contracts.setCurrentIndex(1)
+        self.tabWidget_Contracts.setCurrentIndex(0)
         self.tableWidget.cellClicked['int', 'int'].connect(self.tableWidget_OptionGreeks.selectRow)
         self.tableWidget_OptionGreeks.cellClicked['int', 'int'].connect(self.tableWidget.selectRow)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
@@ -396,10 +436,13 @@ class Ui_MainPyOptionsWindow(object):
                                             _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
         self.label_6.setText(_translate("MainPyOptionsWindow", "Number Of Contracts"))
         self.pushButton_updateNumberOfContracts.setText(_translate("MainPyOptionsWindow", "Update"))
+        self.label_9.setText(_translate("MainPyOptionsWindow", "Front Ratio Call Spread "))
+        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Spread "))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab),
                                             _translate("MainPyOptionsWindow", "Bull Spread"))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bearSpread_tab),
                                             _translate("MainPyOptionsWindow", "Bear Spread"))
+        self.label_11.setText(_translate("MainPyOptionsWindow", "Underlying: "))
         self.actionIBToolbar.setWindowTitle(_translate("MainPyOptionsWindow", "toolBar_2"))
         self.connectToIB.setText(_translate("MainPyOptionsWindow", "Connect to IB "))
         self.connectToIB.setToolTip(_translate("MainPyOptionsWindow", "Connect to IB api"))
@@ -477,11 +520,6 @@ class Ui_MainPyOptionsWindow(object):
         else: #Index
             theExpiry = dateUtils.getDateString(dateUtils.third_Thursday(expiryDate.year, expiryDate.month))
 
-
-        # To Use the Close price or Last price
-        #thePriceType = self.priceDataType()
-
-
         # Fully qualify the given contracts in-place.
         # This will fill in the missing fields in the contract, especially the conId.
         # Returns a list of contracts that have been successfully qualified.
@@ -497,7 +535,7 @@ class Ui_MainPyOptionsWindow(object):
             self.statusbar.showMessage(str(a_qualified_contract))
 
             # create a new optionClass instance
-            self.an_option_spread = optionClass.OptionSpreads(a_qualified_contract, self.ib)
+            self.an_option_spread = optionSpreadsClass.OptionSpreads(a_qualified_contract, self.ib)
             # Fully qualify the option
             self.an_option_spread.qualify_option_chain(self.right(), theExpiry, theStrikePriceRange, theStrikePriceMultiple)
 
@@ -509,13 +547,14 @@ class Ui_MainPyOptionsWindow(object):
 
             # Display Underlying price
             self.lineEdit_underlying.setText(the_underlyingOutput)
-            print("\nBuild Greeks")
+            logger.logger.info("Build Greeks")
             self.an_option_spread.buildGreeks()
 
-            print("\nDisplay Greeks\n\n")
+            logger.logger.info("Display Greeks")
             self.displayGreeks(self.an_option_spread)
             self.an_option_spread.buildBullPandas()
             self.displayBullSpread(self.an_option_spread)
+            self.an_option_spread.buildCallRatioSpread()
 
 
     def displayContracts(self, contracts):
@@ -629,7 +668,7 @@ class Ui_MainPyOptionsWindow(object):
             a_underlying = Stock(the_underlying, the_exchange, 'USD')
             self.securityType = "STK"
         else:
-            print('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
+            logger.logger.info('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
         return a_underlying
 
     def updateConnect(self):
@@ -643,10 +682,12 @@ class Ui_MainPyOptionsWindow(object):
         try:
             self.an_option_spread
         except NameError:
-            print(".....need to get a contract first.....")
+            self.statusbar.showMessage(".....need to get a contract first.....")
         else:
-            self.an_option_spread.updateBullSpread(self.spinBox_numberOfContracts.value())
+            theContractCount = self.spinBox_numberOfContracts.value()
+            self.an_option_spread.updateBullSpreads(theContractCount)
             self.displayBullSpread(self.an_option_spread)
+            self.an_option_spread.updateCallRatioSpread(theContractCount)
 
 
 

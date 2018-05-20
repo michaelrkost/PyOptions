@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>925</width>
-    <height>774</height>
+    <width>1221</width>
+    <height>838</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,13 +22,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>871</width>
+      <y>60</y>
+      <width>951</width>
       <height>691</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="qualifyContracts_tab">
      <attribute name="title">
@@ -615,19 +615,6 @@
        <string>Contracts</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_underlying">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>270</y>
-        <width>271</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="bullSpread_tab">
      <attribute name="title">
@@ -637,8 +624,8 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>50</y>
-        <width>791</width>
+        <y>70</y>
+        <width>451</width>
         <height>571</height>
        </rect>
       </property>
@@ -658,7 +645,7 @@
        <number>4</number>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>90</number>
+       <number>105</number>
       </attribute>
       <attribute name="horizontalHeaderMinimumSectionSize">
        <number>11</number>
@@ -679,7 +666,7 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>171</x>
+        <x>20</x>
         <y>10</y>
         <width>260</width>
         <height>28</height>
@@ -712,10 +699,106 @@
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>50</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 75 italic 11pt &quot;aakar&quot;;
+color: rgb(32, 74, 135);</string>
+      </property>
+      <property name="text">
+       <string>Front Ratio Call Spread </string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_FrontRatioCallSpread">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>70</y>
+        <width>451</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="rowCount">
+       <number>5</number>
+      </property>
+      <property name="columnCount">
+       <number>4</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>105</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>11</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>25</number>
+      </attribute>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 75 italic 11pt &quot;aakar&quot;;
+color: rgb(32, 74, 135);</string>
+      </property>
+      <property name="text">
+       <string>Bull Call Spread </string>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>35</y>
+        <width>271</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="bearSpread_tab">
+    <widget class="QWidget" name="ironCondor_tab">
      <attribute name="title">
-      <string>Bear Spread</string>
+      <string>Iron Condor</string>
      </attribute>
      <widget class="QTableWidget" name="tableWidget_2">
       <property name="geometry">
@@ -750,6 +833,36 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>341</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_11">
+       <property name="styleSheet">
+        <string notr="true">font: 75 italic 12pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+       </property>
+       <property name="text">
+        <string>Underlying: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_underlying">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="font">
@@ -776,6 +889,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="connectToIB"/>
+   <addaction name="separator"/>
   </widget>
   <action name="connectToIB">
    <property name="checkable">
