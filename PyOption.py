@@ -1,5 +1,5 @@
 from ib_insync import *
-import bullSpreadViewSmall as bsv
+import buildMainQT5View as bsv
 import sys
 from PyQt5 import QtCore, QtWidgets
 

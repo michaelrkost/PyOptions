@@ -685,6 +685,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../QT_IB/resources.qrc \
 		/home/michael/Qt/5.11.0/gcc_64/bin/rcc \
+		/home/michael/Pictures/ironC.ico \
+		/home/michael/Pictures/ironC.png \
 		../QT_IB/resources/icons/ConnectCreating.ico \
 		../QT_IB/resources/icons/pic.png \
 		../QT_IB/resources/icons/kripto-currUSD-b.png \

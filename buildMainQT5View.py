@@ -2,13 +2,32 @@
 
 # Form implementation generated from reading ui file 'bullSpreadViewSmall.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
+# todo change the name of this module from bullSpreadViewSmall to QTmgnt or something
+# todo use return key to activate "Qualify Contracts"
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, Qt
+from ib_insync import *
+
+# need to give QT the async from ib_insync
+util.useQt()
+
+# Option management class for PyOptions - mrk
+import buildMainQT5View, optionSpreadsClass
+
+from localUtilities import errorHandler, configIB, dateUtils, logger
 
 class Ui_MainPyOptionsWindow(object):
+    """
+    an_option_spread is the created option spread
+    """
+    def __init__(self):
+        self.ib = IB()
+        self.ib.setCallback('error', errorHandler.onError)
+
+    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui -- goes here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def setupUi(self, MainPyOptionsWindow):
         MainPyOptionsWindow.setObjectName("MainPyOptionsWindow")
         MainPyOptionsWindow.resize(1221, 838)
@@ -55,7 +74,7 @@ class Ui_MainPyOptionsWindow(object):
         font.setItalic(False)
         font.setUnderline(True)
         self.label_8.setFont(font)
-        self.label_8.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_8.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_8.setObjectName("label_8")
         self.gridLayout.addWidget(self.label_8, 0, 0, 1, 1)
         self.labelExchange = QtWidgets.QLabel(self.layoutWidget_2)
@@ -254,7 +273,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_9 = QtWidgets.QLabel(self.bullSpread_tab)
         self.label_9.setGeometry(QtCore.QRect(480, 50, 191, 20))
         self.label_9.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
-"color: rgb(32, 74, 135);")
+                                   "color: rgb(32, 74, 135);")
         self.label_9.setObjectName("label_9")
         self.tableWidget_FrontRatioCallSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
         self.tableWidget_FrontRatioCallSpread.setGeometry(QtCore.QRect(480, 70, 451, 571))
@@ -270,7 +289,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_10 = QtWidgets.QLabel(self.bullSpread_tab)
         self.label_10.setGeometry(QtCore.QRect(20, 50, 191, 20))
         self.label_10.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
-"color: rgb(32, 74, 135);")
+                                    "color: rgb(32, 74, 135);")
         self.label_10.setObjectName("label_10")
         self.line = QtWidgets.QFrame(self.bullSpread_tab)
         self.line.setGeometry(QtCore.QRect(20, 35, 271, 20))
@@ -295,7 +314,7 @@ class Ui_MainPyOptionsWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_11 = QtWidgets.QLabel(self.layoutWidget)
         self.label_11.setStyleSheet("font: 75 italic 12pt \"Ubuntu Mono\";\n"
-"color: rgb(32, 74, 135);")
+                                    "color: rgb(32, 74, 135);")
         self.label_11.setObjectName("label_11")
         self.horizontalLayout_2.addWidget(self.label_11)
         self.lineEdit_underlying = QtWidgets.QLineEdit(self.layoutWidget)
@@ -331,34 +350,38 @@ class Ui_MainPyOptionsWindow(object):
         self.connectToIB.setCheckable(True)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectNo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.On)
         icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Active, QtGui.QIcon.On)
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected,
+                        QtGui.QIcon.On)
         self.connectToIB.setIcon(icon1)
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainPyOptionsWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestIB.setIcon(icon2)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainPyOptionsWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"),
+                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIron_Condor = QtWidgets.QAction(MainPyOptionsWindow)
         self.actionIron_Condor.setCheckable(True)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/Pictures/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/resources/icons/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon4.addPixmap(QtGui.QPixmap(":/resources/icons/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.actionIron_Condor.setIcon(icon4)
         self.actionIron_Condor.setObjectName("actionIron_Condor")
         self.actionVertical_Spreads = QtWidgets.QAction(MainPyOptionsWindow)
         self.actionVertical_Spreads.setCheckable(True)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon5.addPixmap(QtGui.QPixmap(":/resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.actionVertical_Spreads.setIcon(icon5)
         self.actionVertical_Spreads.setObjectName("actionVertical_Spreads")
@@ -372,6 +395,12 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
 
+        # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        # ===================this is not part of the QT Creator for setupUi()===================
+        # These are the function connectors
+        self.updateConnect()
+
+        # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def retranslateUi(self, MainPyOptionsWindow):
         _translate = QtCore.QCoreApplication.translate
         MainPyOptionsWindow.setWindowTitle(_translate("MainPyOptionsWindow", "IB Options"))
@@ -436,14 +465,291 @@ class Ui_MainPyOptionsWindow(object):
         self.actionIron_Condor.setText(_translate("MainPyOptionsWindow", "Iron Condor"))
         self.actionVertical_Spreads.setText(_translate("MainPyOptionsWindow", "Vertical Spreads"))
 
+
+
+        # ================this is not part of the QT Creator for retranslateUi()===================
+        buildMainQT5View.doExpiry(self.comboBox_Expiry, _translate)
+        buildMainQT5View.trimTable(self.tableWidget, self.tableWidget_OptionGreeks, self.tableWidget_BullSpread)
+
+    #     # self.doExpiry(_translate)
+    #     # self.trimTable()
+    #
+    # def trimTable(self):
+    #     headers = ['ID', 'Symbol', 'Expriy', 'Strike', 'Right']
+    #     self.tableWidget.setColumnCount(len(headers))
+    #     self.tableWidget.setHorizontalHeaderLabels(headers)
+    #     self.tableWidget.setAlternatingRowColors(True)
+    #
+    #     headerGreeks = ['ID', 'Right', 'Expiry','Strike', 'Price', 'ImpliedVol', 'Gamma',
+    #                     'Delta', 'TimeVal']
+    #     self.tableWidget_OptionGreeks.setHorizontalHeaderLabels(headerGreeks)
+    #     self.tableWidget_OptionGreeks.setAlternatingRowColors(True)
+    #
+    #     headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss','Max$ Profit']
+    #     self.tableWidget_BullSpread.setHorizontalHeaderLabels(headerBullSpread)
+    #     self.tableWidget_BullSpread.setAlternatingRowColors(True)
+    # #
+    #
+    # def doExpiry(self, _translate):
+    #     """Create a list of 18 Months of Option Fridays
+    #     for the Expiry DropDown: comboBox_Expiry
+    #
+    #     Keyword arguments:
+    #     none
+    #     """
+    #     orderNum = 0
+    #     expiry_list = dateUtils.getMonthExpiries()
+    #     for anExpiry in expiry_list:
+    #         self.comboBox_Expiry.addItem("")
+    #         self.comboBox_Expiry.setItemText(orderNum, _translate("MainPyOptionsWindow", anExpiry))
+    #         orderNum += 1
+
+    # def get_underlying_info(self):
+    #     #TODO drop/queue history/ any existing instance of contracts if new instance is created
+    #     #TODO filter out or combine Weekly or Monthly at the UI level
+    #     self.statusbar.clearMessage()
+    #
+    #     #clear contents for feed back to user - new call
+    #     self.tableWidget.clearContents()
+    #     self.tableWidget_OptionGreeks.clearContents()
+    #     self.tableWidget_BullSpread.clearContents()
+    #     self.spinBox_numberOfContracts.setValue(1)
+    #
+    #     the_underlying = self.underlyingText.text()
+    #     the_exchange = self.comboBoxExchange.currentText()
+    #     theStrikePriceRange = int(self.comboBox_StrikePriceRange.currentText())
+    #     theStrikePriceMultiple = int(self.comboBox_StrikePriceMultiple.currentText())
+    #
+    #     # set the type of Price Data to receive
+    #     #   - Frozen market data is the last data recorded at market close.
+    #     #   - Last market data is the last data set, which may be empty after hours
+    #     self.ib.reqMarketDataType(self.marketDataType())
+    #
+    #     # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
+    #     # and create a Contract
+    #     aSecurityType=self.security_type(the_underlying, the_exchange)
+    #
+    #     # then if securityType == Stock get Friday Expiry if Index get Thursday Expiry
+    #     theExpiry = self.comboBox_Expiry.currentText()
+    #     expiryDate = dateUtils.getDateFromMonthYear(theExpiry)
+    #     if self.securityType == configIB.STOCK_TYPE:
+    #         theExpiry = dateUtils.getDateString(dateUtils.third_friday(expiryDate.year, expiryDate.month))
+    #     else: #Index
+    #         theExpiry = dateUtils.getDateString(dateUtils.third_Thursday(expiryDate.year, expiryDate.month))
+    #
+    #     # Fully qualify the given contracts in-place.
+    #     # This will fill in the missing fields in the contract, especially the conId.
+    #     # Returns a list of contracts that have been successfully qualified.
+    #     try:
+    #         get_underlying = self.ib.qualifyContracts(aSecurityType)
+    #     except ConnectionError: # are we connected?
+    #         self.statusbar.showMessage("NOT CONNECTED!!! Knucklehead!!!")
+    #         return
+    #     if not get_underlying:  # empty list - failed qualifyContract
+    #         self.statusbar.showMessage("Underlying: " + the_underlying + " not recognized!")
+    #     else:
+    #         a_qualified_contract = get_underlying.pop()
+    #         self.statusbar.showMessage(str(a_qualified_contract))
+    #
+    #         # create a new optionClass instance
+    #         self.an_option_spread = optionSpreadsClass.OptionSpreads(a_qualified_contract, self.ib)
+    #         # Fully qualify the option
+    #         self.an_option_spread.qualify_option_chain(self.right(), theExpiry, theStrikePriceRange, theStrikePriceMultiple)
+    #
+    #         # Display the contracts
+    #         self.displayContracts(self.an_option_spread.optionContracts)
+    #
+    #         the_underlyingOutput = ' {} / Last Price: {:>7.2f}'.format(self.an_option_spread.a_Contract.symbol,
+    #             self.an_option_spread.theUnderlyingReqTickerData.last)
+    #
+    #         # Display Underlying price
+    #         self.lineEdit_underlying.setText(the_underlyingOutput)
+    #         logger.logger.info("Build Greeks")
+    #         self.an_option_spread.buildGreeks()
+    #
+    #         logger.logger.info("Display Greeks")
+    #         self.displayGreeks(self.an_option_spread)
+    #         self.an_option_spread.buildBullPandas()
+    #         self.displayBullSpread(self.an_option_spread)
+    #         self.an_option_spread.buildCallRatioSpread()
+
+
+    def displayContracts(self, contracts):
+        contractsLen = len(contracts)
+        self.tableWidget.setRowCount(contractsLen)
+
+        # clear the tables for new data...
+        self.tableWidget.clearContents()
+        self.tableWidget_OptionGreeks.clearContents()
+        # Items are created outside the table (with no parent widget)
+        # and inserted into the table with setItem():
+        theRow = 0
+        for aContract in contracts:
+            # if Contract ID is 0 the Not Valid
+            if aContract.conId == 0:
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem('Not Valid Contract'))
+            else:
+                self.tableWidget.setItem(theRow, 0, QtWidgets.QTableWidgetItem(str(aContract.conId)))
+            # set the remaining data
+            self.tableWidget.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aContract.symbol))
+            self.tableWidget.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                dateUtils.month3Format(aContract.lastTradeDateOrContractMonth)))
+            self.tableWidget.setItem(theRow, 3, QtWidgets.QTableWidgetItem('{:>7.0f}'.format(aContract.strike)))
+            self.tableWidget.setItem(theRow, 4, QtWidgets.QTableWidgetItem(aContract.right))
+            #
+            theRow = theRow + 1
+
+    def displayGreeks(self, contracts):
+
+        greeksLen = len(contracts.right) * ( len(contracts.theStrikes * len(contracts.theExpiration)))
+        self.tableWidget_OptionGreeks.setRowCount(greeksLen)
+        self.tableWidget_OptionGreeks.clearContents()
+        # Items are created outside the table (with no parent widget)
+        # and inserted into the table with setItem():
+        theRow = 0
+        anExpriy = contracts.theExpiration
+        for aRight in contracts.right:
+            for aStrike in contracts.theStrikes:
+                self.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
+                    '{:d}'.format(int(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
+                self.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aRight))
+                self.tableWidget_OptionGreeks.setItem(theRow, 2,
+                                                      QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
+                self.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aStrike)))
+                self.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
+                    '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
+                    '{:>2.2%}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
+                    '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
+                    '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
+                self.tableWidget_OptionGreeks.setItem(theRow, 8, QtWidgets.QTableWidgetItem(
+                    '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
+
+                theRow += 1
+
+    def displayBullSpread(self, contracts):
+        # todo does this work for Puts??
+
+        self.tableWidget_BullSpread.setRowCount(contracts.bullCallSpreads.shape[0])
+
+        self.tableWidget_BullSpread.clearContents()
+
+        theRow = 0
+        for aStrikeL in contracts.theStrikes:
+            self.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
+            self.tableWidget_BullSpread.item(theRow, 0).setBackground(QtGui.QColor("lightBlue"))
+            for aStrikeH in contracts.theStrikes:
+                if aStrikeL < aStrikeH:
+                    self.tableWidget_BullSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
+                    self.tableWidget_BullSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                                                        '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                                                                         aStrikeH),
+                                                                                                        'Loss$'])))
+                    self.tableWidget_BullSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
+                                                        '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                                                                         aStrikeH),
+                                                                                                        'Max$'])))
+                    theRow += 1
+
+    def right(self):
+        if self.radioButton_Call.isChecked():
+            return configIB.CALL_RIGHT
+        else:
+            return configIB.PUT_RIGHT
+
+    def marketDataType(self):
+        if self.radioButton_MktDataType_Frozen.isChecked():
+            return configIB.MARKET_DATA_TYPE_FROZEN
+        else:
+            return configIB.MARKET_DATA_TYPE_LIVE
+
+    def priceDataType(self):
+        if self.radioButton_TradeClose.isChecked():
+            return configIB.CLOSE_PRICE
+        else:
+            return configIB.LAST_PRICE
+
+    def security_type(self, the_underlying, the_exchange):
+        """ from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying.
+        Create Contract.
+        :param the_underlying: Stock/Index
+        :param the_exchange: CBOE etc
+        :return:
+        """
+        if self.radioButton_Index.isChecked():
+            a_underlying = Index(the_underlying, the_exchange, 'USD')
+            self.securityType = "IND"
+        elif self.radioButton_Stock.isChecked():
+            a_underlying = Stock(the_underlying, the_exchange, 'USD')
+            self.securityType = "STK"
+        else:
+            logger.logger.info('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
+        return a_underlying
+
+    def updateConnect(self):
+        self.qualifyContracts.clicked.connect(lambda: buildMainQT5View.get_underlying_info(self))
+        self.pushButton_updateNumberOfContracts.clicked.connect(self.updateBullContracts)
+
+        self.connectToIB.triggered.connect(self.onConnectButtonClicked)
+        self.actionIron_Condor.triggered.connect(self.updateToIronCondorWidget)
+        self.actionVertical_Spreads.triggered.connect(self.updateToVerticalSpreadWidget)
+
+    def updateToIronCondorWidget(self):
+        if self.actionIron_Condor.isChecked():
+            self.stackedWidget.setCurrentIndex(1)
+            self.actionVertical_Spreads.setChecked(False)
+            self.actionIron_Condor.setChecked(True)
+        else:
+            self.stackedWidget.setCurrentIndex(0)
+            self.actionVertical_Spreads.setChecked(True)
+            self.actionIron_Condor.setChecked(False)
+
+    def updateToVerticalSpreadWidget(self):
+        if self.actionVertical_Spreads.isChecked():
+            self.stackedWidget.setCurrentIndex(0)
+            self.actionVertical_Spreads.setChecked(True)
+            self.actionIron_Condor.setChecked(False)
+        else:
+            self.stackedWidget.setCurrentIndex(1)
+            self.actionVertical_Spreads.setChecked(False)
+            self.actionIron_Condor.setChecked(True)
+
+
+    def updateBullContracts(self):
+        try:
+            self.an_option_spread
+        except NameError:
+            self.statusbar.showMessage(".....need to get a contract first.....")
+        else:
+            theContractCount = self.spinBox_numberOfContracts.value()
+            self.an_option_spread.updateBullSpreads(theContractCount)
+            self.displayBullSpread(self.an_option_spread)
+            self.an_option_spread.updateCallRatioSpread(theContractCount)
+
+
+
+    def onConnectButtonClicked(self):
+        if self.connectToIB.isChecked():
+            self.ib.connect(configIB.IB_API_HOST,
+                        configIB.IB_PAPER_TRADE_PORT,
+                        configIB.IB_API_CLIENTID_1)
+            # TODO automate the Close/Frozen data from the GUI and the Client ID
+            # todo add clientID to menu
+            self.statusbar.showMessage("Connected to IB Paper and client #1")
+        else:
+            self.ib.disconnect()
+            self.statusbar.showMessage("Disconnected from IB")
+
 import resources_rc
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainPyOptionsWindow = QtWidgets.QMainWindow()
+    MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainPyOptionsWindow()
-    ui.setupUi(MainPyOptionsWindow)
-    MainPyOptionsWindow.show()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
     sys.exit(app.exec_())
 

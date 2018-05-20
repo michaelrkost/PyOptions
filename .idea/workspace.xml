@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/QT_screens/QT_IB/resources/icons/download.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QT_screens/QT_IB/resources/icons/ironC.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buildVerticalSpreadViews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyOption.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyOption.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/bullSpreadViewSmall.ui.autosave" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildContracts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/bullSpreadViewSmall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optionClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/optionSpreadsClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/resources.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/resources.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/QT_IB" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/QT_IB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/QT_IB.debug" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/QT_IB.debug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/qrc_resources.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/qrc_resources.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/qrc_resources.o" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/build-QT_IB-Desktop_Qt_5_11_0_GCC_64bit-Debug/qrc_resources.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildContracts.py.old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bullSpreadViewSmall.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildMainQT5View.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,14 +27,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.46494466">
+    <splitter split-orientation="horizontal" split-proportion="0.5037975">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+          <file leaf-file-name="buildMainQT5View.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="552" column="26" selection-start-line="552" selection-start-column="26" selection-end-line="552" selection-end-column="26" />
+                <state relative-caret-position="431">
+                  <caret line="466" column="99" selection-start-line="466" selection-start-column="99" selection-end-line="466" selection-end-column="99" />
                   <folding>
                     <element signature="e#345#391#0" expanded="true" />
                   </folding>
@@ -35,23 +42,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="optionSpreadsClass.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
+          <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
+            <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="283">
-                  <caret line="224" column="15" selection-start-line="224" selection-start-column="10" selection-end-line="224" selection-end-column="15" />
-                  <folding>
-                    <element signature="e#19#84#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="255">
+                  <caret line="17" selection-start-line="17" selection-end-line="17" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="buildOptionMatrices.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
+          <file leaf-file-name="buildVerticalSpreadViews.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+                <state relative-caret-position="307">
+                  <caret line="223" column="66" selection-start-line="223" selection-start-column="66" selection-end-line="223" selection-end-column="66" />
+                  <folding>
+                    <element signature="e#1#47#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -60,11 +67,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="bullSpreadViewSmall.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+          <file leaf-file-name="buildMainQT5View.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="283">
-                  <caret line="19" column="87" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="87" />
+                <state relative-caret-position="1976">
+                  <caret line="398" selection-start-line="398" selection-end-line="398" />
                   <folding>
                     <element signature="e#345#391#0" expanded="true" />
                   </folding>
@@ -72,11 +79,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="optionSpreadsClass.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
+          <file leaf-file-name="buildVerticalSpreadViews.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="1" column="63" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="63" />
+                <state relative-caret-position="283">
+                  <caret line="234" column="69" selection-start-line="234" selection-start-column="69" selection-end-line="234" selection-end-column="69" />
+                  <folding>
+                    <element signature="e#1#47#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dateUtils.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2385">
+                  <caret line="216" column="21" selection-start-line="216" selection-start-column="21" selection-end-line="216" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -94,15 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gree</find>
-      <find>thestrike</find>
-      <find>closeSPXOptionPrices</find>
-      <find>aContract</find>
-      <find>current</find>
-      <find>pop</find>
-      <find>MainWindow</find>
-      <find>aRight, aStrike, anExpriy</find>
-      <find>(aContract.right, aContract.strike, aContract.lastTradeDateOrContractMonth)</find>
       <find>frozen</find>
       <find>timeval</find>
       <find>8</find>
@@ -122,8 +132,17 @@
       <find>clearContents</find>
       <find>loggg</find>
       <find>logge</find>
-      <find>logg</find>
       <find>print</find>
+      <find>logg</find>
+      <find>displayContracts</find>
+      <find>displayGreeks</find>
+      <find>right</find>
+      <find>right()</find>
+      <find>marketDataType</find>
+      <find>security_type</find>
+      <find>displayb</find>
+      <find>displayBullSpread</find>
+      <find>priceDataType</find>
     </findStrings>
     <replaceStrings>
       <replace>self.contract</replace>
@@ -155,13 +174,15 @@
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/configIB.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py" />
-        <option value="$PROJECT_DIR$/buildContracts.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py" />
         <option value="$PROJECT_DIR$/optionClass.py" />
         <option value="$PROJECT_DIR$/PyOption.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/logger.py" />
         <option value="$PROJECT_DIR$/optionSpreadsClass.py" />
         <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
+        <option value="$PROJECT_DIR$/buildContracts.py" />
+        <option value="$PROJECT_DIR$/buildVerticalSpreadViews.py" />
+        <option value="$PROJECT_DIR$/buildMainQT5View.py" />
       </list>
     </option>
   </component>
@@ -181,28 +202,6 @@
             <path>
               <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
               <item name="PyOptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (commonFiles) &gt;" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (commonFiles) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="local-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.6 (commonFiles) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="local-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="localUtilities" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -283,7 +282,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buildMainQT5View.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -380,26 +379,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="0" width="1922" height="1055" extended-state="7" />
+    <frame x="1919" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.16710596" />
       <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.32508072" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32723358" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info active="true" anchor="bottom" x="72" y="98" width="1244" height="907" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32723358" />
+      <window_info active="true" anchor="bottom" x="270" y="22" width="1248" height="907" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32723358" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" x="114" y="88" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
+      <window_info anchor="bottom" x="60" y="94" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32723358" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -456,6 +455,43 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>692</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>695</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>696</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>473</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>474</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>471</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildMainQT5View.py</url>
+          <line>470</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -466,7 +502,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="130" />
+      <option name="time" value="137" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -513,7 +549,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+    <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="74" selection-start-line="74" selection-end-line="74" />
@@ -550,13 +586,6 @@
     <entry file="file://P:/local-packages/localUtilities/buildOptionMatrices.py" />
     <entry file="file://P:/local-packages/localUtilities/errorHandler.py" />
     <entry file="file://P:/local-packages/ib_insync/util.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/errorHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -613,13 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="310" selection-start-line="310" selection-end-line="310" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -634,7 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buildContracts.py" />
     <entry file="file://$PROJECT_DIR$/../local-packages/ib_insync/contract.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2034" />
@@ -657,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="216" column="21" selection-start-line="216" selection-start-column="21" selection-end-line="216" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/configIB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -671,32 +685,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="913">
+          <caret line="224" column="15" selection-start-line="224" selection-start-column="10" selection-end-line="224" selection-end-column="15" />
+          <folding>
+            <element signature="e#19#84#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PyOption.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bullSpreadViewSmall.py">
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="552" column="26" selection-start-line="552" selection-start-column="26" selection-end-line="552" selection-end-column="26" />
+        <state relative-caret-position="2385">
+          <caret line="216" column="21" selection-start-line="216" selection-start-column="21" selection-end-line="216" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="223" column="66" selection-start-line="223" selection-start-column="66" selection-end-line="223" selection-end-column="66" />
           <folding>
-            <element signature="e#345#391#0" expanded="true" />
+            <element signature="e#1#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
+    <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="224" column="15" selection-start-line="224" selection-start-column="10" selection-end-line="224" selection-end-column="15" />
+        <state relative-caret-position="431">
+          <caret line="466" column="99" selection-start-line="466" selection-start-column="99" selection-end-line="466" selection-end-column="99" />
           <folding>
-            <element signature="e#19#84#0" expanded="true" />
+            <element signature="e#345#391#0" expanded="true" />
           </folding>
         </state>
       </provider>

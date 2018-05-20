@@ -13,5 +13,7 @@
         <file>resources/icons/greendollar.jpg</file>
         <file>resources/icons/kripto-currUSD-b.png</file>
         <file>resources/icons/No_Dollars2.png</file>
+        <file>resources/icons/ironC.ico</file>
+        <file>resources/icons/download.ico</file>
     </qresource>
 </RCC>
