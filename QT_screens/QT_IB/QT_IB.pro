@@ -21,4 +21,4 @@ RESOURCES += \
     resources.qrc
 
 FORMS += \
-    bullSpreadViewSmall.ui
+    buildMainQT5View.ui

@@ -1,8 +1,8 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets, Qt
+from PyQt5 import QtGui, QtWidgets
 from ib_insync import *
 
-from localUtilities import errorHandler, configIB, buildOptionMatrices, dateUtils
+from localUtilities import configIB, dateUtils, ibPyUtils
 import optionSpreadsClass
 
 # All the trimmings for the Vertical Spread View
@@ -56,7 +56,7 @@ def get_underlying_info(aTableWidget):
     # set the type of Price Data to receive
     #   - Frozen market data is the last data recorded at market close.
     #   - Last market data is the last data set, which may be empty after hours
-    aTableWidget.ib.reqMarketDataType(marketDataType(aTableWidget))
+    aTableWidget.ib.reqMarketDataType(ibPyUtils.marketDataType(aTableWidget))
 
     # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
     # and create a Contract
@@ -87,7 +87,7 @@ def get_underlying_info(aTableWidget):
         # create a new optionClass instance
         aTableWidget.an_option_spread = optionSpreadsClass.OptionSpreads(a_qualified_contract, aTableWidget.ib)
         # Fully qualify the option
-        aTableWidget.an_option_spread.qualify_option_chain(right(aTableWidget), theExpiry,
+        aTableWidget.an_option_spread.qualify_option_chain(ibPyUtils.right(aTableWidget), theExpiry,
                                                            theStrikePriceRange, theStrikePriceMultiple)
 
         # Display the contracts
@@ -186,17 +186,6 @@ def displayBullSpread(aTableWidget, contracts):
                                                                                                     'Max$'])))
                 theRow += 1
 
-def right(aTableWidget):
-    if aTableWidget.radioButton_Call.isChecked():
-        return configIB.CALL_RIGHT
-    else:
-        return configIB.PUT_RIGHT
-
-def marketDataType(aTableWidget):
-    if aTableWidget.radioButton_MktDataType_Frozen.isChecked():
-        return configIB.MARKET_DATA_TYPE_FROZEN
-    else:
-        return configIB.MARKET_DATA_TYPE_LIVE
 
 def security_type(aTableWidget, the_underlying, the_exchange):
     """ from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying.
@@ -215,12 +204,11 @@ def security_type(aTableWidget, the_underlying, the_exchange):
         print('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
     return a_underlying
 
-def updateConnect(aTableWidget):
+def updateConnectVS(aTableWidget):
     aTableWidget.qualifyContracts.clicked.connect(lambda: get_underlying_info(aTableWidget))
     aTableWidget.pushButton_updateNumberOfContracts.clicked.connect(lambda: updateBullContracts(aTableWidget))
 
     aTableWidget.connectToIB.triggered.connect(lambda: onConnectButtonClicked(aTableWidget))
-    aTableWidget.actionIron_Condor.triggered.connect(lambda: updateToIronCondorWidget(aTableWidget))
     aTableWidget.actionVertical_Spreads.triggered.connect(lambda: updateToVerticalSpreadWidget(aTableWidget))
 
 
@@ -248,15 +236,6 @@ def onConnectButtonClicked(self):
         self.ib.disconnect()
         self.statusbar.showMessage("Disconnected from IB")
 
-def updateToIronCondorWidget(aTableWidget):
-    if aTableWidget.actionIron_Condor.isChecked():
-        aTableWidget.stackedWidget.setCurrentIndex(1)
-        aTableWidget.actionVertical_Spreads.setChecked(False)
-        aTableWidget.actionIron_Condor.setChecked(True)
-    else:
-        aTableWidget.stackedWidget.setCurrentIndex(0)
-        aTableWidget.actionVertical_Spreads.setChecked(True)
-        aTableWidget.actionIron_Condor.setChecked(False)
 
 def updateToVerticalSpreadWidget(aTableWidget):
     if aTableWidget.actionVertical_Spreads.isChecked():
@@ -267,3 +246,16 @@ def updateToVerticalSpreadWidget(aTableWidget):
         aTableWidget.stackedWidget.setCurrentIndex(1)
         aTableWidget.actionVertical_Spreads.setChecked(False)
         aTableWidget.actionIron_Condor.setChecked(True)
+
+
+def right(aTableWidget):
+    if aTableWidget.radioButton_Call.isChecked():
+        return configIB.CALL_RIGHT
+    else:
+        return configIB.PUT_RIGHT
+
+def marketDataType(aTableWidget):
+    if aTableWidget.radioButton_MktDataType_Frozen.isChecked():
+        return configIB.MARKET_DATA_TYPE_FROZEN
+    else:
+        return configIB.MARKET_DATA_TYPE_LIVE
