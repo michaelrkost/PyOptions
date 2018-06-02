@@ -2,7 +2,7 @@
 from PyQt5 import QtGui, QtWidgets
 from ib_insync import *
 
-from localUtilities import configIB, dateUtils, ibPyUtils
+from localUtilities import configIB, dateUtils, ibPyUtils, ibPyViewUtils
 import optionSpreadsClass
 
 # All the trimmings for the Vertical Spread View
@@ -21,21 +21,7 @@ def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullSpread):
     headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss', 'Max$ Profit']
     tableWidget_BullSpread.setHorizontalHeaderLabels(headerBullSpread)
     tableWidget_BullSpread.setAlternatingRowColors(True)
-#
-#
-def doExpiry(comboBox_Expiry, a_translate):
-    """Create a list of 18 Months of Option Fridays
-    for the Expiry DropDown: comboBox_Expiry
 
-    Keyword arguments:
-    none
-    """
-    orderNum = 0
-    expiry_list = dateUtils.getMonthExpiries()
-    for anExpiry in expiry_list:
-        comboBox_Expiry.addItem("")
-        comboBox_Expiry.setItemText(orderNum, a_translate("MainWindow", anExpiry))
-        orderNum += 1
 
 def get_underlying_info(aTableWidget):
     #TODO drop/queue history/ any existing instance of contracts if new instance is created
@@ -56,11 +42,12 @@ def get_underlying_info(aTableWidget):
     # set the type of Price Data to receive
     #   - Frozen market data is the last data recorded at market close.
     #   - Last market data is the last data set, which may be empty after hours
-    aTableWidget.ib.reqMarketDataType(ibPyUtils.marketDataType(aTableWidget))
+    aTableWidget.ib.reqMarketDataType(ibPyUtils.marketDataType(aTableWidget.radioButton_MktDataType_Frozen))
+    print("frozenVS: ", aTableWidget.radioButton_MktDataType_Frozen.isChecked())
 
     # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
     # and create a Contract
-    aSecurityType = security_type(aTableWidget, the_underlying, the_exchange)
+    aSecurityType = ibPyUtils.security_type(aTableWidget, the_underlying, the_exchange)
 
     # then if securityType == Stock get Friday Expiry if Index get Thursday Expiry
     theExpiry = aTableWidget.comboBox_Expiry.currentText()
@@ -187,29 +174,15 @@ def displayBullSpread(aTableWidget, contracts):
                 theRow += 1
 
 
-def security_type(aTableWidget, the_underlying, the_exchange):
-    """ from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying.
-    Create Contract.
-    :param the_underlying: Stock/Index
-    :param the_exchange: CBOE etc
-    :return:
-    """
-    if aTableWidget.radioButton_Index.isChecked():
-        a_underlying = Index(the_underlying, the_exchange, 'USD')
-        aTableWidget.securityType = "IND"
-    elif aTableWidget.radioButton_Stock.isChecked():
-        a_underlying = Stock(the_underlying, the_exchange, 'USD')
-        aTableWidget.securityType = "STK"
-    else:
-        print('<<<< in bullSpreadViewSmall.get_underlying_info(self)>>>>> Option Radio not !completed!')
-    return a_underlying
-
-def updateConnectVS(aTableWidget):
+def updateConnectVS(aTableWidget, _translate):
     aTableWidget.qualifyContracts.clicked.connect(lambda: get_underlying_info(aTableWidget))
     aTableWidget.pushButton_updateNumberOfContracts.clicked.connect(lambda: updateBullContracts(aTableWidget))
 
+    ibPyUtils.doExpiry(aTableWidget.comboBox_Expiry, _translate)
+
+    # todo - this should be in another module it is IB Connections...
     aTableWidget.connectToIB.triggered.connect(lambda: onConnectButtonClicked(aTableWidget))
-    aTableWidget.actionVertical_Spreads.triggered.connect(lambda: updateToVerticalSpreadWidget(aTableWidget))
+    aTableWidget.actionVertical_Spreads.triggered.connect(lambda: aTableWidget.stackedWidget.setCurrentIndex(ibPyViewUtils.stackedWidgetView_VerticalSpread))
 
 
 def updateBullContracts(aTableWidget):
@@ -236,26 +209,3 @@ def onConnectButtonClicked(self):
         self.ib.disconnect()
         self.statusbar.showMessage("Disconnected from IB")
 
-
-def updateToVerticalSpreadWidget(aTableWidget):
-    if aTableWidget.actionVertical_Spreads.isChecked():
-        aTableWidget.stackedWidget.setCurrentIndex(0)
-        aTableWidget.actionVertical_Spreads.setChecked(True)
-        aTableWidget.actionIron_Condor.setChecked(False)
-    else:
-        aTableWidget.stackedWidget.setCurrentIndex(1)
-        aTableWidget.actionVertical_Spreads.setChecked(False)
-        aTableWidget.actionIron_Condor.setChecked(True)
-
-
-def right(aTableWidget):
-    if aTableWidget.radioButton_Call.isChecked():
-        return configIB.CALL_RIGHT
-    else:
-        return configIB.PUT_RIGHT
-
-def marketDataType(aTableWidget):
-    if aTableWidget.radioButton_MktDataType_Frozen.isChecked():
-        return configIB.MARKET_DATA_TYPE_FROZEN
-    else:
-        return configIB.MARKET_DATA_TYPE_LIVE

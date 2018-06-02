@@ -5,7 +5,6 @@
 # Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
-# todo change the name of this module from bullSpreadViewSmall to QTmgnt or something
 # todo use return key to activate "Qualify Contracts"
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
@@ -14,7 +13,7 @@ from ib_insync import *
 # need to give QT the async from ib_insync
 util.useQt()
 
-# Option management class for PyOptions - mrk
+# Option management classes for PyOptions - mrk
 import buildVerticalSpreadViews, buildIronCondorViews
 
 from localUtilities import errorHandler, configIB, dateUtils, logger
@@ -36,8 +35,9 @@ class Ui_MainPyOptionsWindow(object):
         MainPyOptionsWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainPyOptionsWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(QtCore.QRect(-10, 0, 1181, 761))
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_optionSpreads = QtWidgets.QWidget()
         self.page_optionSpreads.setObjectName("page_optionSpreads")
@@ -503,6 +503,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_18.setGeometry(QtCore.QRect(520, 360, 54, 17))
         self.label_18.setObjectName("label_18")
         self.stackedWidget.addWidget(self.page_ironCondor)
+        self.verticalLayout.addWidget(self.stackedWidget)
         MainPyOptionsWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainPyOptionsWindow)
         font = QtGui.QFont()
@@ -542,14 +543,12 @@ class Ui_MainPyOptionsWindow(object):
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIron_Condor = QtWidgets.QAction(MainPyOptionsWindow)
-        self.actionIron_Condor.setCheckable(True)
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(":/Pictures/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon4.addPixmap(QtGui.QPixmap(":/resources/icons/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.actionIron_Condor.setIcon(icon4)
         self.actionIron_Condor.setObjectName("actionIron_Condor")
         self.actionVertical_Spreads = QtWidgets.QAction(MainPyOptionsWindow)
-        self.actionVertical_Spreads.setCheckable(True)
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon5.addPixmap(QtGui.QPixmap(":/resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
@@ -561,13 +560,13 @@ class Ui_MainPyOptionsWindow(object):
         self.actionIBToolbar.addAction(self.actionVertical_Spreads)
 
         self.retranslateUi(MainPyOptionsWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget_Contracts.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- from here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     def retranslateUi(self, MainPyOptionsWindow):
         _translate = QtCore.QCoreApplication.translate
         MainPyOptionsWindow.setWindowTitle(_translate("MainPyOptionsWindow", "IB Options"))
@@ -613,16 +612,13 @@ class Ui_MainPyOptionsWindow(object):
         self.tableWidget_OptionGreeks.setSortingEnabled(False)
         self.label_2.setText(_translate("MainPyOptionsWindow", "The Greeks"))
         self.label_7.setText(_translate("MainPyOptionsWindow", "Contracts"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab),
-                                            _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
         self.label_6.setText(_translate("MainPyOptionsWindow", "Number Of Contracts"))
         self.pushButton_updateNumberOfContracts.setText(_translate("MainPyOptionsWindow", "Update"))
         self.label_9.setText(_translate("MainPyOptionsWindow", "Front Ratio Call Spread "))
         self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Spread "))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab),
-                                            _translate("MainPyOptionsWindow", "Bull Spread"))
-        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab3),
-                                            _translate("MainPyOptionsWindow", "Tab3"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
+        self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab3), _translate("MainPyOptionsWindow", "Tab3"))
         self.label_11.setText(_translate("MainPyOptionsWindow", "Underlying: "))
         self.label_12.setText(_translate("MainPyOptionsWindow", "Vertical Spreads "))
         self.label_14.setText(_translate("MainPyOptionsWindow", "Iron Condor"))
@@ -675,16 +671,18 @@ class Ui_MainPyOptionsWindow(object):
         self.actionIron_Condor.setText(_translate("MainPyOptionsWindow", "Iron Condor"))
         self.actionVertical_Spreads.setText(_translate("MainPyOptionsWindow", "Vertical Spreads"))
 
-        # ================this is not part of the QT Creator for retranslateUi()===================
+        # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        # ======== Below ========this is not part of the QT Creator for retranslateUi()===================
         # ===================this is not part of the QT Creator for setupUi()===================
         # These are the function connectors
-        buildVerticalSpreadViews.updateConnectVS(self)
+        buildVerticalSpreadViews.updateConnectVS(self, _translate)
 
-        buildVerticalSpreadViews.doExpiry(self.comboBox_Expiry, _translate)
+        #buildVerticalSpreadViews.doExpiry(self.comboBox_Expiry, _translate)
         buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks, self.tableWidget_BullSpread)
 
-        buildIronCondorViews.doExpiry(self.comboBox_Expiry_IC, _translate)
-        buildIronCondorViews.updateConnectIC(self)
+        #buildIronCondorViews.doExpiry(self.comboBox_Expiry_IC, _translate)
+        buildIronCondorViews.updateConnectIC(self, _translate)
 
 
 import resources_rc
