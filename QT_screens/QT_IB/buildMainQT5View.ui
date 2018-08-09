@@ -726,10 +726,10 @@
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Bull Put Vertical Spread</string>
+         <string>Bull PUT Vertical Spread</string>
         </property>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_FrontRatioCallSpread">
+       <widget class="QTableWidget" name="tableWidget_BullPutSpread">
         <property name="geometry">
          <rect>
           <x>480</x>
@@ -781,12 +781,22 @@ color: rgb(32, 74, 135);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>aakar</family>
+          <pointsize>11</pointsize>
+          <weight>9</weight>
+          <italic>true</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">font: 75 italic 11pt &quot;aakar&quot;;
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Bull Call Vertical Spread </string>
+         <string>Bull CALL Vertical Spread </string>
         </property>
        </widget>
        <widget class="Line" name="line">
@@ -1433,7 +1443,7 @@ color: rgb(32, 74, 135);</string>
   <action name="actiontestIB">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../local-packages/localUtilities/icons/py_pic.png</normaloff>../../../../../local-packages/localUtilities/icons/py_pic.png</iconset>
+     <normaloff>../../../../../../../../local-packages/localUtilities/icons/py_pic.png</normaloff>../../../../../../../../local-packages/localUtilities/icons/py_pic.png</iconset>
    </property>
    <property name="text">
     <string>test</string>
@@ -1451,7 +1461,7 @@ color: rgb(32, 74, 135);</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../local-packages/localUtilities/icons/about.gif</normaloff>../../../../../local-packages/localUtilities/icons/about.gif</iconset>
+     <normaloff>../../../../../../../../local-packages/localUtilities/icons/about.gif</normaloff>../../../../../../../../local-packages/localUtilities/icons/about.gif</iconset>
    </property>
    <property name="text">
     <string>testCheckable</string>
@@ -1479,8 +1489,8 @@ color: rgb(32, 74, 135);</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>resources/icons/download.ico</normaloff>
-     <normalon>:/resources/icons/download.ico</normalon>resources/icons/download.ico</iconset>
+     <normaloff>../../../../../.designer/backup/resources/icons/download.ico</normaloff>
+     <normalon>:/resources/icons/download.ico</normalon>../../../../../.designer/backup/resources/icons/download.ico</iconset>
    </property>
    <property name="text">
     <string>Vertical Spreads</string>

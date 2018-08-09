@@ -7,7 +7,7 @@ import optionSpreadsClass
 
 # All the table trimmings for the Vertical Spread View
 
-def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullSpread):
+def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullPutSpread, tableWidget_BullCallSpread):
     headers = ['ID', 'Symbol', 'Expriy', 'Strike', 'Right']
     tableWidget.setColumnCount(len(headers))
     tableWidget.setHorizontalHeaderLabels(headers)
@@ -19,8 +19,12 @@ def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullSpread):
     tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
     headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss', 'Max$ Profit']
-    tableWidget_BullSpread.setHorizontalHeaderLabels(headerBullSpread)
-    tableWidget_BullSpread.setAlternatingRowColors(True)
+    tableWidget_BullCallSpread.setHorizontalHeaderLabels(headerBullSpread)
+    tableWidget_BullCallSpread.setAlternatingRowColors(True)
+
+    headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss', 'Max$ Profit']
+    tableWidget_BullPutSpread.setHorizontalHeaderLabels(headerBullSpread)
+    tableWidget_BullPutSpread.setAlternatingRowColors(True)
 
 
 def get_underlying_info(aTableWidget):
@@ -90,8 +94,10 @@ def get_underlying_info(aTableWidget):
 
         # logger.logger.info("Display Greeks")
         displayGreeks(aTableWidget, aTableWidget.an_option_spread)
+
         aTableWidget.an_option_spread.buildPandasBullVerticalSpreads()
         displayBullSpread(aTableWidget, aTableWidget.an_option_spread)
+
         #aTableWidget.an_option_spread.buildCallRatioSpread()
 
 def displayContracts(aTableWidget, contracts):
@@ -150,6 +156,11 @@ def displayGreeks(aTableWidget, contracts):
             theRow += 1
 
 def displayBullSpread(aTableWidget, contracts):
+
+    displayBullCallVerticalSpread(aTableWidget, contracts)
+
+def displayBullCallVerticalSpread(aTableWidget, contracts):
+
     # todo does this work for Puts??
 
     aTableWidget.tableWidget_BullCallSpread.setRowCount(contracts.pandasBullCallVerticalSpread.shape[0])
@@ -207,7 +218,7 @@ def updateBullContracts(aTableWidget):
         theContractCount = aTableWidget.spinBox_numberOfContracts.value()
         aTableWidget.an_option_spread.updateBullSpreads(theContractCount)
         displayBullSpread(aTableWidget, aTableWidget.an_option_spread)
-        aTableWidget.an_option_spread.updateCallRatioSpread(theContractCount)
+        #aTableWidget.an_option_spread.updateCallRatioSpread(theContractCount)
 
 
 def onConnectButtonClicked(self):

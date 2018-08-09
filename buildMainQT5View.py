@@ -274,19 +274,27 @@ class Ui_MainPyOptionsWindow(object):
         self.label_9.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
 "color: rgb(32, 74, 135);")
         self.label_9.setObjectName("label_9")
-        self.tableWidget_FrontRatioCallSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_FrontRatioCallSpread.setGeometry(QtCore.QRect(480, 70, 451, 571))
-        self.tableWidget_FrontRatioCallSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableWidget_FrontRatioCallSpread.setAlternatingRowColors(True)
-        self.tableWidget_FrontRatioCallSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.tableWidget_FrontRatioCallSpread.setRowCount(5)
-        self.tableWidget_FrontRatioCallSpread.setColumnCount(4)
-        self.tableWidget_FrontRatioCallSpread.setObjectName("tableWidget_FrontRatioCallSpread")
-        self.tableWidget_FrontRatioCallSpread.horizontalHeader().setDefaultSectionSize(105)
-        self.tableWidget_FrontRatioCallSpread.horizontalHeader().setMinimumSectionSize(11)
-        self.tableWidget_FrontRatioCallSpread.verticalHeader().setDefaultSectionSize(25)
+        self.tableWidget_BullPutSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
+        self.tableWidget_BullPutSpread.setGeometry(QtCore.QRect(480, 70, 451, 571))
+        self.tableWidget_BullPutSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_BullPutSpread.setAlternatingRowColors(True)
+        self.tableWidget_BullPutSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidget_BullPutSpread.setRowCount(5)
+        self.tableWidget_BullPutSpread.setColumnCount(4)
+        self.tableWidget_BullPutSpread.setObjectName("tableWidget_BullPutSpread")
+        self.tableWidget_BullPutSpread.horizontalHeader().setDefaultSectionSize(105)
+        self.tableWidget_BullPutSpread.horizontalHeader().setMinimumSectionSize(11)
+        self.tableWidget_BullPutSpread.verticalHeader().setDefaultSectionSize(25)
         self.label_10 = QtWidgets.QLabel(self.bullSpread_tab)
         self.label_10.setGeometry(QtCore.QRect(20, 50, 191, 20))
+        font = QtGui.QFont()
+        font.setFamily("aakar")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setItalic(True)
+        font.setUnderline(False)
+        font.setWeight(9)
+        self.label_10.setFont(font)
         self.label_10.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
 "color: rgb(32, 74, 135);")
         self.label_10.setObjectName("label_10")
@@ -526,14 +534,14 @@ class Ui_MainPyOptionsWindow(object):
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainPyOptionsWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../../../../../../../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestIB.setIcon(icon2)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainPyOptionsWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("../../../../../../../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIron_Condor = QtWidgets.QAction(MainPyOptionsWindow)
@@ -546,7 +554,7 @@ class Ui_MainPyOptionsWindow(object):
         self.actionVertical_Spreads = QtWidgets.QAction(MainPyOptionsWindow)
         self.actionVertical_Spreads.setCheckable(True)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap("../../../../../.designer/backup/resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon5.addPixmap(QtGui.QPixmap(":/resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.actionVertical_Spreads.setIcon(icon5)
         self.actionVertical_Spreads.setObjectName("actionVertical_Spreads")
@@ -559,6 +567,7 @@ class Ui_MainPyOptionsWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         self.tabWidget_Contracts.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
+
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -611,8 +620,8 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
         self.label_6.setText(_translate("MainPyOptionsWindow", "Number Of Contracts"))
         self.pushButton_updateNumberOfContracts.setText(_translate("MainPyOptionsWindow", "Update"))
-        self.label_9.setText(_translate("MainPyOptionsWindow", "Bull Put Vertical Spread"))
-        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Vertical Spread "))
+        self.label_9.setText(_translate("MainPyOptionsWindow", "Bull PUT Vertical Spread"))
+        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull CALL Vertical Spread "))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab3), _translate("MainPyOptionsWindow", "Tab3"))
         self.label_11.setText(_translate("MainPyOptionsWindow", "Underlying: "))
@@ -666,7 +675,6 @@ class Ui_MainPyOptionsWindow(object):
         self.actiontestCheckableIB.setToolTip(_translate("MainPyOptionsWindow", "Meow"))
         self.actionIron_Condor.setText(_translate("MainPyOptionsWindow", "Iron Condor"))
         self.actionVertical_Spreads.setText(_translate("MainPyOptionsWindow", "Vertical Spreads"))
-
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         # ======== Below ========this is not part of the QT Creator for retranslateUi()===================
@@ -677,7 +685,8 @@ class Ui_MainPyOptionsWindow(object):
         #buildVerticalSpreadViews.doExpiry(self.comboBox_Expiry, _translate)
 
         #set up table trimmings
-        buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks, self.tableWidget_BullCallSpread)
+        buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks,
+                                           self.tableWidget_BullCallSpread, self.tableWidget_BullPutSpread)
 
         #buildIronCondorViews.doExpiry(self.comboBox_Expiry_IC, _translate)
         buildIronCondorViews.updateConnectIC(self, _translate)

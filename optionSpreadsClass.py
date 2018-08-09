@@ -57,7 +57,8 @@ class OptionVerticalSpreads:
         self.theExpiration = []
         self.optionPrices = []
         self.right = []
-        self.oneBullSpreadOptionUnit = None
+        self.oneBullCallVerticalSpreadOptionUnit = None
+        self.oneBullPutVerticalSpreadOptionUnit = None
         self.oneCallRatioSpreadOptionUnit = None
         self.pandasBullCallVerticalSpread = None
         self.pandasBullPutVerticalSpread = None
@@ -138,7 +139,7 @@ class OptionVerticalSpreads:
         # todo determine how to use logging
         # print('bullCallSpreads\n', self.bullCallSpreads)
         self.populateBullCallVerticalSpread()
-        #self.populateBullPutVerticalSpread()
+        self.populateBullPutVerticalSpread()
         # print('POP bullCallSpreads\n', self.bullCallSpreads)
 
     def populateBullPutVerticalSpread(self):
@@ -168,7 +169,7 @@ class OptionVerticalSpreads:
                     # Max Loss = (aStrikeH - aStrikeL) - Max Loss
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$']
-        self.oneBullSpreadOptionUnit = self.pandasBullPutVerticalSpread.copy(deep=True)
+        self.oneBullPutVerticalSpreadOptionUnit = self.pandasBullPutVerticalSpread.copy(deep=True)
         self.updateBullSpreads()
 
 
@@ -199,12 +200,13 @@ class OptionVerticalSpreads:
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
-        self.oneBullSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
+        self.oneBullCallVerticalSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
         self.updateBullSpreads()
 
     def updateBullSpreads(self, contracts=1):
 
-        self.pandasBullCallVerticalSpread.update(self.oneBullSpreadOptionUnit.loc[:, :] * (100 * contracts))
+        self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
+        #self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
 
     def buildGreeks(self):
         """
