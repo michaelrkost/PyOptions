@@ -5,7 +5,7 @@ from ib_insync import *
 from localUtilities import configIB, dateUtils, ibPyUtils, ibPyViewUtils
 import optionSpreadsClass
 
-# All the trimmings for the Vertical Spread View
+# All the table trimmings for the Vertical Spread View
 
 def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullSpread):
     headers = ['ID', 'Symbol', 'Expriy', 'Strike', 'Right']
@@ -31,7 +31,7 @@ def get_underlying_info(aTableWidget):
     #clear contents for feed back to user - new call
     aTableWidget.tableWidget.clearContents()
     aTableWidget.tableWidget_OptionGreeks.clearContents()
-    aTableWidget.tableWidget_BullSpread.clearContents()
+    aTableWidget.tableWidget_BullCallSpread.clearContents()
     aTableWidget.spinBox_numberOfContracts.setValue(1)
 
     the_underlying = aTableWidget.underlyingText.text()
@@ -72,7 +72,7 @@ def get_underlying_info(aTableWidget):
         aTableWidget.statusbar.showMessage(str(a_qualified_contract))
 
         # create a new optionClass instance
-        aTableWidget.an_option_spread = optionSpreadsClass.OptionSpreads(a_qualified_contract, aTableWidget.ib)
+        aTableWidget.an_option_spread = optionSpreadsClass.OptionVerticalSpreads(a_qualified_contract, aTableWidget.ib)
         # Fully qualify the option
         aTableWidget.an_option_spread.qualify_option_chain(ibPyUtils.right(aTableWidget), theExpiry,
                                                            theStrikePriceRange, theStrikePriceMultiple)
@@ -90,7 +90,7 @@ def get_underlying_info(aTableWidget):
 
         # logger.logger.info("Display Greeks")
         displayGreeks(aTableWidget, aTableWidget.an_option_spread)
-        aTableWidget.an_option_spread.buildBullPandas()
+        aTableWidget.an_option_spread.buildPandasBullVerticalSpreads()
         displayBullSpread(aTableWidget, aTableWidget.an_option_spread)
         aTableWidget.an_option_spread.buildCallRatioSpread()
 
@@ -152,29 +152,37 @@ def displayGreeks(aTableWidget, contracts):
 def displayBullSpread(aTableWidget, contracts):
     # todo does this work for Puts??
 
-    aTableWidget.tableWidget_BullSpread.setRowCount(contracts.bullCallSpreads.shape[0])
+    aTableWidget.tableWidget_BullCallSpread.setRowCount(contracts.pandasBullCallVerticalSpread.shape[0])
 
-    aTableWidget.tableWidget_BullSpread.clearContents()
+    aTableWidget.tableWidget_BullCallSpread.clearContents()
 
     theRow = 0
     for aStrikeL in contracts.theStrikes:
-        aTableWidget.tableWidget_BullSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
-        aTableWidget.tableWidget_BullSpread.item(theRow, 0).setBackground(QtGui.QColor("lightBlue"))
+        aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
+        aTableWidget.tableWidget_BullCallSpread.item(theRow, 0).setBackground(QtGui.QColor("lightBlue"))
         for aStrikeH in contracts.theStrikes:
             if aStrikeL < aStrikeH:
-                aTableWidget.tableWidget_BullSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
-                aTableWidget.tableWidget_BullSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
+                aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
                                                     '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
                                                                                                      aStrikeH),
                                                                                                     'Loss$'])))
-                aTableWidget.tableWidget_BullSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
+                aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
                                                     '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
                                                                                                      aStrikeH),
                                                                                                     'Max$'])))
                 theRow += 1
-
+#
 
 def updateConnectVS(aTableWidget, _translate):
+    """
+    This sets up the button connectors i.e. connect
+    lambda provides button action routine
+
+    :param aTableWidget:
+    :param _translate:
+    :return:
+    """
     aTableWidget.qualifyContracts.clicked.connect(lambda: get_underlying_info(aTableWidget))
     aTableWidget.pushButton_updateNumberOfContracts.clicked.connect(lambda: updateBullContracts(aTableWidget))
 
@@ -186,6 +194,11 @@ def updateConnectVS(aTableWidget, _translate):
 
 
 def updateBullContracts(aTableWidget):
+    """
+
+    :param aTableWidget:
+    :return:
+    """
     try:
         aTableWidget.an_option_spread
     except NameError:

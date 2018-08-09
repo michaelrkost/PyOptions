@@ -2,71 +2,88 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/PyOptions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PyOptions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/QT_IB.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/buildMainQT5View.py" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/buildMainQT5View.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QT_screens/QT_IB/buildMainQT5View.ui" beforeDir="false" afterPath="$PROJECT_DIR$/QT_screens/QT_IB/buildMainQT5View.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildIronCondorViews.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildIronCondorViews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildMainQT5View.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildMainQT5View.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildVerticalSpreadViews.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildVerticalSpreadViews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optionSpreadsClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/optionSpreadsClass.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-954569589">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.3" value="4" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Python Console" value="4" />
+          <entry key="dummy" value="99" />
+          <entry key="py" value="511" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="99" />
+          <entry key="Python" value="515" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="PyOptions" />
+  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49130204">
+    <splitter split-orientation="horizontal" split-proportion="0.5037975">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="buildMainQT5View.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/PyOption.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3030">
-                  <caret line="203" column="57" selection-start-line="203" selection-start-column="57" selection-end-line="203" selection-end-column="57" />
+                <state relative-caret-position="165">
+                  <caret line="16" selection-start-line="16" selection-end-line="16" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="optionSpreadsClass.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-11">
-                  <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="buildVerticalSpreadViews.py" pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="182">
-                  <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#1#35#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="375">
+                  <caret line="92" column="45" selection-start-line="92" selection-start-column="38" selection-end-line="92" selection-end-column="68" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="buildIronCondorViews.py" pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/buildIronCondorViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="277">
-                  <caret line="31" column="82" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
-                  <folding>
-                    <element signature="e#1#35#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dateUtils.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/dateUtils.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="292">
-                  <caret line="34" selection-start-line="34" selection-end-line="34" />
-                </state>
+                <state relative-caret-position="-101" />
               </provider>
             </entry>
           </file>
@@ -74,34 +91,31 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="buildMainQT5View.py" pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="283">
-                  <caret line="483" column="43" selection-start-line="483" selection-start-column="13" selection-end-line="483" selection-end-column="43" />
+                <state relative-caret-position="301">
+                  <caret line="243" column="13" selection-start-line="243" selection-start-column="13" selection-end-line="243" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="buildVerticalSpreadViews.py" pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="298">
-                  <caret line="45" column="79" selection-start-line="45" selection-start-column="79" selection-end-line="45" selection-end-column="79" />
-                  <folding>
-                    <element signature="e#1#35#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="76">
+                  <caret line="151" column="21" lean-forward="true" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="buildIronCondorViews.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/buildIronCondorViews.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="741">
-                  <caret line="62" selection-start-line="62" selection-end-line="62" />
+                <state relative-caret-position="-2085">
+                  <caret line="62" column="41" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="41" />
                   <folding>
-                    <element signature="e#1#35#0" expanded="true" />
+                    <element signature="e#19#63#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -120,8 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>theUnderlyingReqTickerData</find>
-      <find>close</find>
       <find>ualifyContracts.clicked.connect</find>
       <find>ualifyContracts</find>
       <find>connect</find>
@@ -150,6 +162,8 @@
       <find>marketDataType</find>
       <find>radioButton_MktDataType_Frozen</find>
       <find>frozen</find>
+      <find>updateConnectVS</find>
+      <find>qualifycontracts</find>
     </findStrings>
     <replaceStrings>
       <replace>self.contract</replace>
@@ -187,25 +201,27 @@
         <option value="$PROJECT_DIR$/bullSpreadViewSmall.py" />
         <option value="$PROJECT_DIR$/buildContracts.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py" />
-        <option value="$PROJECT_DIR$/optionSpreadsClass.py" />
-        <option value="$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/ibPyViewUtils.py" />
-        <option value="$PROJECT_DIR$/buildMainQT5View.py" />
-        <option value="$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/ibPyUtils.py" />
-        <option value="$PROJECT_DIR$/buildVerticalSpreadViews.py" />
+        <option value="$PROJECT_DIR$/../local-packages/localUtilities/ibPyViewUtils.py" />
+        <option value="$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py" />
         <option value="$PROJECT_DIR$/buildIronCondorViews.py" />
+        <option value="$PROJECT_DIR$/buildMainQT5View.py" />
+        <option value="$PROJECT_DIR$/optionSpreadsClass.py" />
+        <option value="$PROJECT_DIR$/buildVerticalSpreadViews.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1761" />
-    <option name="width" value="1594" />
-    <option name="height" value="871" />
+    <option name="x" value="785" />
+    <option name="y" value="1080" />
+    <option name="width" value="2562" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,20 +229,35 @@
               <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
               <item name="PyOptions" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="PyOptions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="localUtilities" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="tableWidget_BullSpread&#9;null&#9;null&#10;updateConnectVS&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../../anaconda/local-packages/localUtilities" />
+      <recent name="$PROJECT_DIR$/../local-packages/localUtilities" />
       <recent name="P:\local-packages\localUtilities\icons" />
       <recent name="P:\local-packages\localUtilities\picts" />
       <recent name="P:\PyOptions" />
@@ -249,9 +280,6 @@
       <module name="PyOptions" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -262,6 +290,9 @@
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="buildOptionMatrices" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyOptions" />
@@ -280,6 +311,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="bullSpreadViewSmall" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyOptions" />
@@ -298,6 +332,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="dateUtils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyOptions" />
@@ -316,6 +353,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="optionClass" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyOptions" />
@@ -334,6 +374,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.PyOption" />
@@ -390,44 +433,45 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="0" width="1922" height="1055" extended-state="6" />
+    <frame x="878" y="1080" width="2562" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16657881" />
-      <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.32508072" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32723358" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32723358" />
+      <window_info content_ui="combo" x="1936" y="37" width="511" height="957" id="Project" order="0" type="FLOATING" visible="true" weight="0.16633819" />
+      <window_info x="2787" y="33" width="796" height="979" id="Structure" order="1" sideWeight="0.49947754" type="FLOATING" visible="true" weight="0.24990146" />
+      <window_info id="Favorites" order="2" sideWeight="0.5005225" side_tool="true" weight="0.24990146" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" x="882" y="1463" width="2553" height="321" id="Find" order="1" type="WINDOWED" weight="0.32706374" />
       <window_info anchor="bottom" x="39" y="70" width="1248" height="884" id="Run" order="2" sideWeight="0.6525" type="FLOATING" weight="0.45865634" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49524415" weight="0.32723358" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" x="111" y="149" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" type="FLOATING" weight="0.32508072" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49524415" weight="0.32706374" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
+      <window_info active="true" anchor="bottom" x="63" y="0" width="1835" height="999" id="Python Console" order="10" sideWeight="0.49947312" type="FLOATING" visible="true" weight="0.32672232" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16710596" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32723358" />
+      <window_info anchor="bottom" x="72" y="109" width="1244" height="907" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
+      <window_info anchor="bottom" x="114" y="88" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.32508072" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" x="72" y="109" width="1244" height="907" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32723358" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" x="114" y="88" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49524415" weight="0.32723358" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -465,6 +509,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/buildVerticalSpreadViews.py</url>
+          <line>154</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -475,7 +526,6 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="143" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -487,22 +537,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://P:/local-packages/localUtilities/ibPyUtils.py" />
-    <entry file="file://P:/local-packages/localUtilities/showVersions.py" />
-    <entry file="file://P:/local-packages/localUtilities/configIB.py" />
-    <entry file="file://P:/local-packages/localUtilities/widgetIB.py" />
-    <entry file="file://$PROJECT_DIR$/PyOption.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://P:/local-packages/localUtilities/showVersions.py" />
-    <entry file="file://P:/local-packages/localUtilities/configIB.py" />
-    <entry file="file://P:/local-packages/localUtilities/ibPyUtils.py" />
-    <entry file="file://P:/local-packages/localUtilities/showVersions.py" />
-    <entry file="file://P:/local-packages/localUtilities/configIB.py" />
     <entry file="file://C:/Anaconda3/Lib/asyncio/tasks.py" />
     <entry file="file://C:/Anaconda3/Lib/asyncio/events.py" />
     <entry file="file://P:/local-packages/localUtilities/widgetIB.py" />
@@ -525,41 +559,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../local-packages/ibapi/client.py" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="1804" selection-start-line="1804" selection-end-line="1804" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/quamash/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="264" selection-start-line="264" selection-end-line="264" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/indexes/multi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1902" selection-start-line="1902" selection-end-line="1902" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/quamash/__init__.py" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/indexes/multi.py" />
     <entry file="file://$PROJECT_DIR$/../local-packages/ib_insync/ib.py" />
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py" />
     <entry file="file://$PROJECT_DIR$/../local-packages/ib_insync/contract.py" />
     <entry file="file://$PROJECT_DIR$/../local-packages/ib_insync/client.py" />
     <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/logger.py" />
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/configIB.py" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="310" selection-start-line="310" selection-end-line="310" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -567,7 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_import_hook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -575,9 +581,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/widgetIB.py">
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/widgetIB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-383" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/configIB.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/ibPyViewUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildIronCondorViews.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-101" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PyOption.py">
@@ -587,73 +625,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/configIB.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/buildOptionMatrices.py">
+    <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/ibPyViewUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/dateUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="301">
+          <caret line="243" column="13" selection-start-line="243" selection-start-column="13" selection-end-line="243" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3030">
-          <caret line="203" column="57" selection-start-line="203" selection-start-column="57" selection-end-line="203" selection-end-column="57" />
+        <state relative-caret-position="-2085">
+          <caret line="62" column="41" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="41" />
+          <folding>
+            <element signature="e#19#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
-          <folding>
-            <element signature="e#1#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../anaconda/local-packages/localUtilities/ibPyUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildIronCondorViews.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="31" column="82" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
-          <folding>
-            <element signature="e#1#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="76">
+          <caret line="151" column="21" lean-forward="true" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="21" />
         </state>
       </provider>
     </entry>

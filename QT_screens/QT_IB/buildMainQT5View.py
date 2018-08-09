@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'buildMainQT5View.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -223,17 +223,17 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.addTab(self.qualifyContracts_tab, "")
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
-        self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 70, 451, 571))
-        self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableWidget_BullSpread.setAlternatingRowColors(True)
-        self.tableWidget_BullSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.tableWidget_BullSpread.setRowCount(5)
-        self.tableWidget_BullSpread.setColumnCount(4)
-        self.tableWidget_BullSpread.setObjectName("tableWidget_BullSpread")
-        self.tableWidget_BullSpread.horizontalHeader().setDefaultSectionSize(105)
-        self.tableWidget_BullSpread.horizontalHeader().setMinimumSectionSize(11)
-        self.tableWidget_BullSpread.verticalHeader().setDefaultSectionSize(25)
+        self.tableWidget_BullCallSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
+        self.tableWidget_BullCallSpread.setGeometry(QtCore.QRect(20, 70, 451, 571))
+        self.tableWidget_BullCallSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_BullCallSpread.setAlternatingRowColors(True)
+        self.tableWidget_BullCallSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidget_BullCallSpread.setRowCount(5)
+        self.tableWidget_BullCallSpread.setColumnCount(4)
+        self.tableWidget_BullCallSpread.setObjectName("tableWidget_BullCallSpread")
+        self.tableWidget_BullCallSpread.horizontalHeader().setDefaultSectionSize(105)
+        self.tableWidget_BullCallSpread.horizontalHeader().setMinimumSectionSize(11)
+        self.tableWidget_BullCallSpread.verticalHeader().setDefaultSectionSize(25)
         self.layoutWidget_9 = QtWidgets.QWidget(self.bullSpread_tab)
         self.layoutWidget_9.setGeometry(QtCore.QRect(20, 10, 260, 28))
         self.layoutWidget_9.setObjectName("layoutWidget_9")
@@ -538,8 +538,8 @@ class Ui_MainPyOptionsWindow(object):
         self.actionIBToolbar.addAction(self.actionVertical_Spreads)
 
         self.retranslateUi(MainPyOptionsWindow)
-        self.stackedWidget.setCurrentIndex(1)
-        self.tabWidget_Contracts.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(0)
+        self.tabWidget_Contracts.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
 
     def retranslateUi(self, MainPyOptionsWindow):
@@ -590,8 +590,8 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
         self.label_6.setText(_translate("MainPyOptionsWindow", "Number Of Contracts"))
         self.pushButton_updateNumberOfContracts.setText(_translate("MainPyOptionsWindow", "Update"))
-        self.label_9.setText(_translate("MainPyOptionsWindow", "Front Ratio Call Spread "))
-        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Spread "))
+        self.label_9.setText(_translate("MainPyOptionsWindow", "Bull Put Vertical Spread"))
+        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Vertical Spread "))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab3), _translate("MainPyOptionsWindow", "Tab3"))
         self.label_11.setText(_translate("MainPyOptionsWindow", "Underlying: "))

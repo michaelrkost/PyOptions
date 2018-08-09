@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 # todo use return key to activate "Qualify Contracts"
 
-from PyQt5 import QtCore, QtGui, QtWidgets, Qt
+from PyQt5 import QtCore, QtGui, QtWidgets
 from ib_insync import *
 
 # need to give QT the async from ib_insync
@@ -35,9 +35,8 @@ class Ui_MainPyOptionsWindow(object):
         MainPyOptionsWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainPyOptionsWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
+        self.stackedWidget.setGeometry(QtCore.QRect(-10, 0, 1181, 761))
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_optionSpreads = QtWidgets.QWidget()
         self.page_optionSpreads.setObjectName("page_optionSpreads")
@@ -74,7 +73,7 @@ class Ui_MainPyOptionsWindow(object):
         font.setItalic(False)
         font.setUnderline(True)
         self.label_8.setFont(font)
-        self.label_8.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_8.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_8.setObjectName("label_8")
         self.gridLayout.addWidget(self.label_8, 0, 0, 1, 1)
         self.labelExchange = QtWidgets.QLabel(self.layoutWidget_2)
@@ -242,17 +241,17 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.addTab(self.qualifyContracts_tab, "")
         self.bullSpread_tab = QtWidgets.QWidget()
         self.bullSpread_tab.setObjectName("bullSpread_tab")
-        self.tableWidget_BullSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
-        self.tableWidget_BullSpread.setGeometry(QtCore.QRect(20, 70, 451, 571))
-        self.tableWidget_BullSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableWidget_BullSpread.setAlternatingRowColors(True)
-        self.tableWidget_BullSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.tableWidget_BullSpread.setRowCount(5)
-        self.tableWidget_BullSpread.setColumnCount(4)
-        self.tableWidget_BullSpread.setObjectName("tableWidget_BullSpread")
-        self.tableWidget_BullSpread.horizontalHeader().setDefaultSectionSize(105)
-        self.tableWidget_BullSpread.horizontalHeader().setMinimumSectionSize(11)
-        self.tableWidget_BullSpread.verticalHeader().setDefaultSectionSize(25)
+        self.tableWidget_BullCallSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
+        self.tableWidget_BullCallSpread.setGeometry(QtCore.QRect(20, 70, 451, 571))
+        self.tableWidget_BullCallSpread.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget_BullCallSpread.setAlternatingRowColors(True)
+        self.tableWidget_BullCallSpread.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidget_BullCallSpread.setRowCount(5)
+        self.tableWidget_BullCallSpread.setColumnCount(4)
+        self.tableWidget_BullCallSpread.setObjectName("tableWidget_BullCallSpread")
+        self.tableWidget_BullCallSpread.horizontalHeader().setDefaultSectionSize(105)
+        self.tableWidget_BullCallSpread.horizontalHeader().setMinimumSectionSize(11)
+        self.tableWidget_BullCallSpread.verticalHeader().setDefaultSectionSize(25)
         self.layoutWidget_9 = QtWidgets.QWidget(self.bullSpread_tab)
         self.layoutWidget_9.setGeometry(QtCore.QRect(20, 10, 260, 28))
         self.layoutWidget_9.setObjectName("layoutWidget_9")
@@ -273,7 +272,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_9 = QtWidgets.QLabel(self.bullSpread_tab)
         self.label_9.setGeometry(QtCore.QRect(480, 50, 191, 20))
         self.label_9.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
-                                   "color: rgb(32, 74, 135);")
+"color: rgb(32, 74, 135);")
         self.label_9.setObjectName("label_9")
         self.tableWidget_FrontRatioCallSpread = QtWidgets.QTableWidget(self.bullSpread_tab)
         self.tableWidget_FrontRatioCallSpread.setGeometry(QtCore.QRect(480, 70, 451, 571))
@@ -289,7 +288,7 @@ class Ui_MainPyOptionsWindow(object):
         self.label_10 = QtWidgets.QLabel(self.bullSpread_tab)
         self.label_10.setGeometry(QtCore.QRect(20, 50, 191, 20))
         self.label_10.setStyleSheet("font: 75 italic 11pt \"aakar\";\n"
-                                    "color: rgb(32, 74, 135);")
+"color: rgb(32, 74, 135);")
         self.label_10.setObjectName("label_10")
         self.line = QtWidgets.QFrame(self.bullSpread_tab)
         self.line.setGeometry(QtCore.QRect(20, 35, 271, 20))
@@ -314,7 +313,7 @@ class Ui_MainPyOptionsWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_11 = QtWidgets.QLabel(self.layoutWidget)
         self.label_11.setStyleSheet("font: 75 italic 12pt \"Ubuntu Mono\";\n"
-                                    "color: rgb(32, 74, 135);")
+"color: rgb(32, 74, 135);")
         self.label_11.setObjectName("label_11")
         self.horizontalLayout_2.addWidget(self.label_11)
         self.lineEdit_underlying = QtWidgets.QLineEdit(self.layoutWidget)
@@ -331,7 +330,7 @@ class Ui_MainPyOptionsWindow(object):
         font.setWeight(9)
         self.label_12.setFont(font)
         self.label_12.setStyleSheet("font: 75 italic 20pt \"Ubuntu Mono\";\n"
-                                    "color: rgb(32, 74, 135);")
+"color: rgb(32, 74, 135);")
         self.label_12.setObjectName("label_12")
         self.label_13 = QtWidgets.QLabel(self.page_optionSpreads)
         self.label_13.setGeometry(QtCore.QRect(830, 10, 71, 41))
@@ -356,7 +355,7 @@ class Ui_MainPyOptionsWindow(object):
         font.setWeight(9)
         self.label_14.setFont(font)
         self.label_14.setStyleSheet("font: 75 italic 20pt \"Ubuntu Mono\";\n"
-                                    "color: rgb(32, 74, 135);")
+"color: rgb(32, 74, 135);")
         self.label_14.setObjectName("label_14")
         self.groupBox_IC = QtWidgets.QGroupBox(self.page_ironCondor)
         self.groupBox_IC.setGeometry(QtCore.QRect(20, 10, 291, 261))
@@ -386,7 +385,7 @@ class Ui_MainPyOptionsWindow(object):
         font.setItalic(False)
         font.setUnderline(True)
         self.label_16.setFont(font)
-        self.label_16.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.label_16.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_16.setObjectName("label_16")
         self.gridLayout_IC.addWidget(self.label_16, 0, 0, 1, 1)
         self.labelExchange_2 = QtWidgets.QLabel(self.layoutWidget_3)
@@ -503,7 +502,6 @@ class Ui_MainPyOptionsWindow(object):
         self.label_18.setGeometry(QtCore.QRect(520, 360, 54, 17))
         self.label_18.setObjectName("label_18")
         self.stackedWidget.addWidget(self.page_ironCondor)
-        self.verticalLayout.addWidget(self.stackedWidget)
         MainPyOptionsWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainPyOptionsWindow)
         font = QtGui.QFont()
@@ -521,34 +519,32 @@ class Ui_MainPyOptionsWindow(object):
         self.connectToIB.setCheckable(True)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectNo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal,
-                        QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectEstablished.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Active, QtGui.QIcon.On)
-        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected,
-                        QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/icons/ConnectCreating.ico"), QtGui.QIcon.Selected, QtGui.QIcon.On)
         self.connectToIB.setIcon(icon1)
         self.connectToIB.setObjectName("connectToIB")
         self.actiontestIB = QtWidgets.QAction(MainPyOptionsWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"),
-                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/py_pic.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestIB.setIcon(icon2)
         self.actiontestIB.setObjectName("actiontestIB")
         self.actiontestCheckableIB = QtWidgets.QAction(MainPyOptionsWindow)
         self.actiontestCheckableIB.setCheckable(True)
         self.actiontestCheckableIB.setChecked(True)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"),
-                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("../../../../../local-packages/localUtilities/icons/about.gif"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actiontestCheckableIB.setIcon(icon3)
         self.actiontestCheckableIB.setObjectName("actiontestCheckableIB")
         self.actionIron_Condor = QtWidgets.QAction(MainPyOptionsWindow)
+        self.actionIron_Condor.setCheckable(True)
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(":/Pictures/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon4.addPixmap(QtGui.QPixmap(":/resources/icons/ironC.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.actionIron_Condor.setIcon(icon4)
         self.actionIron_Condor.setObjectName("actionIron_Condor")
         self.actionVertical_Spreads = QtWidgets.QAction(MainPyOptionsWindow)
+        self.actionVertical_Spreads.setCheckable(True)
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon5.addPixmap(QtGui.QPixmap(":/resources/icons/download.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
@@ -561,7 +557,7 @@ class Ui_MainPyOptionsWindow(object):
 
         self.retranslateUi(MainPyOptionsWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.tabWidget_Contracts.setCurrentIndex(0)
+        self.tabWidget_Contracts.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainPyOptionsWindow)
 
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def setup Ui --goes to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -615,8 +611,8 @@ class Ui_MainPyOptionsWindow(object):
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.qualifyContracts_tab), _translate("MainPyOptionsWindow", "Option Contracts / Greeks"))
         self.label_6.setText(_translate("MainPyOptionsWindow", "Number Of Contracts"))
         self.pushButton_updateNumberOfContracts.setText(_translate("MainPyOptionsWindow", "Update"))
-        self.label_9.setText(_translate("MainPyOptionsWindow", "Front Ratio Call Spread "))
-        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Spread "))
+        self.label_9.setText(_translate("MainPyOptionsWindow", "Bull Put Vertical Spread"))
+        self.label_10.setText(_translate("MainPyOptionsWindow", "Bull Call Vertical Spread "))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.bullSpread_tab), _translate("MainPyOptionsWindow", "Bull Spread"))
         self.tabWidget_Contracts.setTabText(self.tabWidget_Contracts.indexOf(self.tab3), _translate("MainPyOptionsWindow", "Tab3"))
         self.label_11.setText(_translate("MainPyOptionsWindow", "Underlying: "))
@@ -675,11 +671,13 @@ class Ui_MainPyOptionsWindow(object):
 
         # ======== Below ========this is not part of the QT Creator for retranslateUi()===================
         # ===================this is not part of the QT Creator for setupUi()===================
-        # These are the function connectors
+        # These is to set up the button connectors
         buildVerticalSpreadViews.updateConnectVS(self, _translate)
 
         #buildVerticalSpreadViews.doExpiry(self.comboBox_Expiry, _translate)
-        buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks, self.tableWidget_BullSpread)
+
+        #set up table trimmings
+        buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks, self.tableWidget_BullCallSpread)
 
         #buildIronCondorViews.doExpiry(self.comboBox_Expiry_IC, _translate)
         buildIronCondorViews.updateConnectIC(self, _translate)

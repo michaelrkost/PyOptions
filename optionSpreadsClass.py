@@ -8,7 +8,7 @@ import itertools
 
 from ib_insync import *
 
-class OptionSpreads:
+class OptionVerticalSpreads:
 
     # all the options Pandas builds and Calculations
     # ##### # #####
@@ -60,7 +60,8 @@ class OptionSpreads:
         self.right = []
         self.oneBullSpreadOptionUnit = None
         self.oneCallRatioSpreadOptionUnit = None
-        self.bullCallSpreads = None
+        self.pandasBullCallVerticalSpread = None
+        self.pandasBullPutVerticalSpread = None
         self.callRatioSpread = None
 
     def qualify_option_chain(self, aRight, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
@@ -120,7 +121,7 @@ class OptionSpreads:
             if c.conId != 0:
                 self.optionContracts.append(c)
 
-    def buildBullPandas(self):
+    def buildPandasBullVerticalSpreads(self):
 
         headerLM = ['Loss$', 'Max$']
         colStrikeHL = ['StrikeL', 'StrikeH']
@@ -131,38 +132,80 @@ class OptionSpreads:
         # print("\nmultiIndexRange\n", multiIndexRange)
         type(multiIndexRange)
 
-        self.bullCallSpreads = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
+        self.pandasBullCallVerticalSpread = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
+        self.pandasBullPutVerticalSpread = self.pandasBullCallVerticalSpread.copy()
 
         # todo remove all unnecessary print outs
         # todo determine how to use logging
         # print('bullCallSpreads\n', self.bullCallSpreads)
-        self.populateBullSpread()
+        self.populateBullSpreadCalls()
+        self.populateBullSpreadPuts()
         # print('POP bullCallSpreads\n', self.bullCallSpreads)
 
-    def populateBullSpread(self):
-# todo does this work for Puts???
+    def populateBullSpreadPuts(self):
+        """
+        Create & Display
+        Long Call Vertical Spread:
+            OptionA - buy a call option
+            OptionB  - write(sell) a call options w/a higher strike price than OptionA
+
+        Max potential Profit: Difference between strike A and strike B minus the net debit paid.
+        Max potential Loss:   Net Debit
+        :return:
+        """
         for aStrikeL in self.theStrikes:
             for aStrikeH in self.theStrikes:
                 if aStrikeH <= aStrikeL:
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
                 else:
                     # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
                     # Max Loss = -(aStrikeH.Price) + aStrikeL.price
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$'] \
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
                         = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'] \
                           - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price']
 
                     # Max Profit = difference between strike prices minus cost of spread ie.Loss
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
-                    self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Max$'] = \
-                        (aStrikeH - aStrikeL) - self.bullCallSpreads.loc[(aStrikeL, aStrikeH), 'Loss$']
-        self.oneBullSpreadOptionUnit = self.bullCallSpreads.copy(deep=True)
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
+                        (aStrikeH - aStrikeL) - self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
+        self.oneBullSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
+        self.updateBullSpreads()
+
+
+    def populateBullSpreadCalls(self):
+        """
+        Create & Display
+        Long Call Vertical Spread:
+            OptionA - buy a call option
+            OptionB  - write(sell) a call options w/a higher strike price than OptionA
+
+        Max potential Profit: Difference between strike A and strike B minus the net debit paid.
+        Max potential Loss:   Net Debit
+        :return:
+        """
+        for aStrikeL in self.theStrikes:
+            for aStrikeH in self.theStrikes:
+                if aStrikeH <= aStrikeL:
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
+                else:
+                    # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
+                    # Max Loss = -(aStrikeH.Price) + aStrikeL.price
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
+                        = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'] \
+                          - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price']
+
+                    # Max Profit = difference between strike prices minus cost of spread ie.Loss
+                    # Max Profit = (aStrikeH - aStrikeL) - Max Loss
+                    self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
+                        (aStrikeH - aStrikeL) - self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
+        self.oneBullSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
         self.updateBullSpreads()
 
     def updateBullSpreads(self, contracts=1):
 
-        self.bullCallSpreads.update(self.oneBullSpreadOptionUnit.loc[:, :] * (100 * contracts))
+        self.pandasBullCallVerticalSpread.update(self.oneBullSpreadOptionUnit.loc[:, :] * (100 * contracts))
 
     def buildGreeks(self):
         """

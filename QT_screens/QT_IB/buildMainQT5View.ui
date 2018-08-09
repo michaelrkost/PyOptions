@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_optionSpreads">
      <widget class="QTabWidget" name="tabWidget_Contracts">
@@ -41,7 +41,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="qualifyContracts_tab">
        <attribute name="title">
@@ -633,7 +633,7 @@
        <attribute name="title">
         <string>Bull Spread</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget_BullSpread">
+       <widget class="QTableWidget" name="tableWidget_BullCallSpread">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -726,7 +726,7 @@
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Front Ratio Call Spread </string>
+         <string>Bull Put Vertical Spread</string>
         </property>
        </widget>
        <widget class="QTableWidget" name="tableWidget_FrontRatioCallSpread">
@@ -786,7 +786,7 @@ color: rgb(32, 74, 135);</string>
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Bull Call Spread </string>
+         <string>Bull Call Vertical Spread </string>
         </property>
        </widget>
        <widget class="Line" name="line">
