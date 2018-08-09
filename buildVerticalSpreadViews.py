@@ -92,7 +92,7 @@ def get_underlying_info(aTableWidget):
         displayGreeks(aTableWidget, aTableWidget.an_option_spread)
         aTableWidget.an_option_spread.buildPandasBullVerticalSpreads()
         displayBullSpread(aTableWidget, aTableWidget.an_option_spread)
-        aTableWidget.an_option_spread.buildCallRatioSpread()
+        #aTableWidget.an_option_spread.buildCallRatioSpread()
 
 def displayContracts(aTableWidget, contracts):
     contractsLen = len(contracts)
@@ -164,11 +164,11 @@ def displayBullSpread(aTableWidget, contracts):
             if aStrikeL < aStrikeH:
                 aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
                 aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
-                                                    '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                    '{:>7.2f}'.format(contracts.pandasBullCallVerticalSpread.loc[(aStrikeL,
                                                                                                      aStrikeH),
                                                                                                     'Loss$'])))
                 aTableWidget.tableWidget_BullCallSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
-                                                    '{:>7.2f}'.format(contracts.bullCallSpreads.loc[(aStrikeL,
+                                                    '{:>7.2f}'.format(contracts.pandasBullCallVerticalSpread.loc[(aStrikeL,
                                                                                                      aStrikeH),
                                                                                                     'Max$'])))
                 theRow += 1
