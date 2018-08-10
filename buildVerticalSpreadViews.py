@@ -19,10 +19,10 @@ def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullPutSpread, 
     tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
     headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss', 'Max$ Profit']
+
     tableWidget_BullCallSpread.setHorizontalHeaderLabels(headerBullSpread)
     tableWidget_BullCallSpread.setAlternatingRowColors(True)
 
-    headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss', 'Max$ Profit']
     tableWidget_BullPutSpread.setHorizontalHeaderLabels(headerBullSpread)
     tableWidget_BullPutSpread.setAlternatingRowColors(True)
 
@@ -158,10 +158,32 @@ def displayGreeks(aTableWidget, contracts):
 def displayBullSpread(aTableWidget, contracts):
 
     displayBullCallVerticalSpread(aTableWidget, contracts)
+    displayBullPutVerticalSpread(aTableWidget, contracts)
+
+def displayBullPutVerticalSpread(aTableWidget, contracts):
+
+    aTableWidget.tableWidget_BullPutSpread.setRowCount(contracts.pandasBullPutVerticalSpread.shape[0])
+
+    aTableWidget.tableWidget_BullPutSpread.clearContents()
+
+    theRow = 0
+    for aStrikeL in contracts.theStrikes:
+        aTableWidget.tableWidget_BullPutSpread.setItem(theRow, 0, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeL)))
+        aTableWidget.tableWidget_BullPutSpread.item(theRow, 0).setBackground(QtGui.QColor("lightBlue"))
+        for aStrikeH in contracts.theStrikes:
+            if aStrikeL < aStrikeH:
+                aTableWidget.tableWidget_BullPutSpread.setItem(theRow, 1, QtWidgets.QTableWidgetItem('{:>d}'.format(aStrikeH)))
+                aTableWidget.tableWidget_BullPutSpread.setItem(theRow, 2, QtWidgets.QTableWidgetItem(
+                                                    '{:>7.2f}'.format(contracts.pandasBullPutVerticalSpread.loc[(aStrikeL,
+                                                                                                     aStrikeH),
+                                                                                                    'Loss$'])))
+                aTableWidget.tableWidget_BullPutSpread.setItem(theRow, 3,QtWidgets.QTableWidgetItem(
+                                                    '{:>7.2f}'.format(contracts.pandasBullPutVerticalSpread.loc[(aStrikeL,
+                                                                                                     aStrikeH),
+                                                                                                    'Max$'])))
+                theRow += 1
 
 def displayBullCallVerticalSpread(aTableWidget, contracts):
-
-    # todo does this work for Puts??
 
     aTableWidget.tableWidget_BullCallSpread.setRowCount(contracts.pandasBullCallVerticalSpread.shape[0])
 
@@ -183,7 +205,6 @@ def displayBullCallVerticalSpread(aTableWidget, contracts):
                                                                                                      aStrikeH),
                                                                                                     'Max$'])))
                 theRow += 1
-#
 
 def updateConnectVS(aTableWidget, _translate):
     """

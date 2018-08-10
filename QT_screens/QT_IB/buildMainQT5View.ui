@@ -637,8 +637,8 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>70</y>
-          <width>451</width>
+          <y>90</y>
+          <width>501</width>
           <height>571</height>
          </rect>
         </property>
@@ -715,26 +715,26 @@
        <widget class="QLabel" name="label_9">
         <property name="geometry">
          <rect>
-          <x>480</x>
-          <y>50</y>
-          <width>191</width>
+          <x>640</x>
+          <y>70</y>
+          <width>321</width>
           <height>20</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 75 italic 11pt &quot;aakar&quot;;
+         <string notr="true">font: 75 italic 16pt &quot;aakar&quot;;
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Bull PUT Vertical Spread</string>
+         <string>Bull PUT Vertical Spread - Credit Spread</string>
         </property>
        </widget>
        <widget class="QTableWidget" name="tableWidget_BullPutSpread">
         <property name="geometry">
          <rect>
-          <x>480</x>
-          <y>70</y>
-          <width>451</width>
+          <x>630</x>
+          <y>90</y>
+          <width>491</width>
           <height>571</height>
          </rect>
         </property>
@@ -776,23 +776,22 @@ color: rgb(32, 74, 135);</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>50</y>
-          <width>191</width>
+          <y>70</y>
+          <width>261</width>
           <height>20</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <family>aakar</family>
-          <pointsize>11</pointsize>
+          <pointsize>16</pointsize>
           <weight>9</weight>
           <italic>true</italic>
           <bold>false</bold>
-          <underline>false</underline>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 75 italic 11pt &quot;aakar&quot;;
+         <string notr="true">font: 75 italic 16pt &quot;aakar&quot;;
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">

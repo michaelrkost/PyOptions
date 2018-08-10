@@ -75,6 +75,16 @@ class OptionVerticalSpreads:
         :return:
         """
         self.theExpiration = anExpiry
+
+        #
+        # TODO get rid of CALL/PUT aRight
+        # if aTableWidget.radioButton_Call.isChecked():
+        #     return configIB.CALL_RIGHT
+        # else:
+        #     return configIB.PUT_RIGHT
+
+
+
         self.right = aRight
         # ----get list of options
         # reqSecDefOptParams returns a list of expires and a list of strike prices.
@@ -159,8 +169,7 @@ class OptionVerticalSpreads:
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
                 else:
-                    # Max Profit is the (cost of aStrikeH) minus (aStrikeL credit)
-                    # Max Profit = Difference between the strike prices minus the net credit
+                    # Max Profit = Higher Strike - Lower Strike for net credit
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] \
                         = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price'] \
                           - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price']
@@ -170,7 +179,7 @@ class OptionVerticalSpreads:
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$']
         self.oneBullPutVerticalSpreadOptionUnit = self.pandasBullPutVerticalSpread.copy(deep=True)
-        self.updateBullSpreads()
+        self.pandasBullPutVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * 1))
 
 
     def populateBullCallVerticalSpread(self):
@@ -201,12 +210,12 @@ class OptionVerticalSpreads:
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
         self.oneBullCallVerticalSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
-        self.updateBullSpreads()
+        self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * 1))
 
     def updateBullSpreads(self, contracts=1):
 
         self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
-        #self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
+        self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
 
     def buildGreeks(self):
         """
