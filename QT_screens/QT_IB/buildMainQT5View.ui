@@ -41,7 +41,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="qualifyContracts_tab">
        <attribute name="title">
@@ -483,7 +483,7 @@
          <enum>QAbstractItemView::SelectRows</enum>
         </property>
         <property name="sortingEnabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="rowCount">
          <number>10</number>
@@ -552,7 +552,7 @@
          <enum>Qt::SolidLine</enum>
         </property>
         <property name="sortingEnabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="rowCount">
          <number>6</number>
@@ -638,7 +638,7 @@
          <rect>
           <x>20</x>
           <y>90</y>
-          <width>501</width>
+          <width>521</width>
           <height>571</height>
          </rect>
         </property>
@@ -658,7 +658,7 @@
          <number>4</number>
         </property>
         <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>105</number>
+         <number>120</number>
         </attribute>
         <attribute name="horizontalHeaderMinimumSectionSize">
          <number>11</number>
@@ -732,9 +732,9 @@ color: rgb(32, 74, 135);</string>
        <widget class="QTableWidget" name="tableWidget_BullPutSpread">
         <property name="geometry">
          <rect>
-          <x>630</x>
+          <x>610</x>
           <y>90</y>
-          <width>491</width>
+          <width>521</width>
           <height>571</height>
          </rect>
         </property>
@@ -754,7 +754,7 @@ color: rgb(32, 74, 135);</string>
          <number>4</number>
         </property>
         <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>105</number>
+         <number>120</number>
         </attribute>
         <attribute name="horizontalHeaderMinimumSectionSize">
          <number>11</number>
@@ -1442,7 +1442,7 @@ color: rgb(32, 74, 135);</string>
   <action name="actiontestIB">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../../../../local-packages/localUtilities/icons/py_pic.png</normaloff>../../../../../../../../local-packages/localUtilities/icons/py_pic.png</iconset>
+     <normaloff>../../../../../../../../../../../local-packages/localUtilities/icons/py_pic.png</normaloff>../../../../../../../../../../../local-packages/localUtilities/icons/py_pic.png</iconset>
    </property>
    <property name="text">
     <string>test</string>
@@ -1460,7 +1460,7 @@ color: rgb(32, 74, 135);</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../../../../local-packages/localUtilities/icons/about.gif</normaloff>../../../../../../../../local-packages/localUtilities/icons/about.gif</iconset>
+     <normaloff>../../../../../../../../../../../local-packages/localUtilities/icons/about.gif</normaloff>../../../../../../../../../../../local-packages/localUtilities/icons/about.gif</iconset>
    </property>
    <property name="text">
     <string>testCheckable</string>
@@ -1488,16 +1488,70 @@ color: rgb(32, 74, 135);</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../.designer/backup/resources/icons/download.ico</normaloff>
-     <normalon>:/resources/icons/download.ico</normalon>../../../../../.designer/backup/resources/icons/download.ico</iconset>
+     <normaloff>../../../../../../../../.designer/backup/resources/icons/download.ico</normaloff>
+     <normalon>:/resources/icons/download.ico</normalon>../../../../../../../../.designer/backup/resources/icons/download.ico</iconset>
    </property>
    <property name="text">
     <string>Vertical Spreads</string>
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>underlyingText</tabstop>
+  <tabstop>comboBoxExchange</tabstop>
+  <tabstop>comboBox_Expiry</tabstop>
+  <tabstop>comboBox_StrikePriceRange</tabstop>
+  <tabstop>comboBox_StrikePriceMultiple</tabstop>
+  <tabstop>qualifyContracts</tabstop>
+  <tabstop>radioButton_Put</tabstop>
+  <tabstop>radioButton_Index</tabstop>
+  <tabstop>radioButton_Stock</tabstop>
+  <tabstop>radioButton_Option</tabstop>
+  <tabstop>radioButton_Call</tabstop>
+  <tabstop>radioButton_MktDataType_Live</tabstop>
+  <tabstop>tabWidget_Contracts</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>tableWidget_OptionGreeks</tabstop>
+  <tabstop>tableWidget_BullCallSpread</tabstop>
+  <tabstop>spinBox_numberOfContracts</tabstop>
+  <tabstop>pushButton_updateNumberOfContracts</tabstop>
+  <tabstop>tableWidget_BullPutSpread</tabstop>
+  <tabstop>tableWidget_2</tabstop>
+  <tabstop>lineEdit_underlying</tabstop>
+  <tabstop>qualifyIronCondor</tabstop>
+  <tabstop>radioButton_Index_IC</tabstop>
+  <tabstop>radioButton_MktDataType_Frozen</tabstop>
+  <tabstop>radioButton_Stock_IC</tabstop>
+  <tabstop>radioButton_Option_IC</tabstop>
+  <tabstop>underlyingText_IC</tabstop>
+  <tabstop>comboBoxExchange_IC</tabstop>
+  <tabstop>comboBox_Expiry_IC</tabstop>
+  <tabstop>comboBox_StrikePriceRange_IC</tabstop>
+  <tabstop>comboBox_StrikePriceMultiple_IC</tabstop>
+  <tabstop>radioButton_Call_IC</tabstop>
+  <tabstop>radioButton_Put_IC</tabstop>
+  <tabstop>radioButton_MktDataType_Frozen_IC</tabstop>
+  <tabstop>radioButton_MktDataType_Live_IC</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>tableWidget</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>tableWidget_OptionGreeks</receiver>
+   <slot>selectRow(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>579</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

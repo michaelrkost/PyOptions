@@ -2,7 +2,7 @@
 from PyQt5 import QtGui, QtWidgets
 from ib_insync import *
 
-from localUtilities import configIB, dateUtils, ibPyUtils, ibPyViewUtils
+from localUtilities import configIB, dateUtils, ibPyUtils, ibPyViewUtils, logger
 import optionSpreadsClass
 
 #todo need to move the Display code in to sepreate area in case we want to move out of QT5
@@ -49,7 +49,7 @@ def get_underlying_info(aTableWidget):
     #   - Frozen market data is the last data recorded at market close.
     #   - Last market data is the last data set, which may be empty after hours
     aTableWidget.ib.reqMarketDataType(ibPyUtils.marketDataType(aTableWidget.radioButton_MktDataType_Frozen))
-    print("frozenVS: ", aTableWidget.radioButton_MktDataType_Frozen.isChecked())
+    logger.logger.info("frozenVS:  %s", aTableWidget.radioButton_MktDataType_Frozen.isChecked())
 
     # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
     # and create a Contract
@@ -90,10 +90,9 @@ def get_underlying_info(aTableWidget):
 
         # Display Underlying price
         aTableWidget.lineEdit_underlying.setText(the_underlyingOutput)
-        # logger.logger.info("Build Greeks")
+
         aTableWidget.an_option_spread.buildGreeks()
 
-        # logger.logger.info("Display Greeks")
         displayGreeks(aTableWidget, aTableWidget.an_option_spread)
 
         aTableWidget.an_option_spread.buildPandasBullVerticalSpreads()
@@ -261,8 +260,7 @@ def onConnectButtonClicked(self):
         self.ib.connect(configIB.IB_API_HOST,
                     configIB.IB_PAPER_TRADE_PORT,
                     configIB.IB_API_CLIENTID_1)
-        # TODO automate the Close/Frozen data from the GUI and the Client ID
-        # todo add clientID to menu
+
         self.statusbar.showMessage("Connected to IB Paper and client #1")
     else:
         self.ib.disconnect()

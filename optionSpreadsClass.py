@@ -91,7 +91,6 @@ class OptionVerticalSpreads:
         self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.theUnderlyingReqTickerData.last,
                                        strikePriceRange, strikePriceMultiple)
 
-        #todo need to put in more logic to get existing expiries as they do not extend out logically
         # Get the SPX expiration set and find the proper expiration
         # as it is not always the third thursday/friday
         theExpirationList = sorted(exp for exp in listSmartOptionChain.expirations
@@ -126,8 +125,6 @@ class OptionVerticalSpreads:
             if c.conId != 0:
                 self.optionContracts.append(c)
 
-        print(self.optionContracts)
-
 
     def buildPandasBullVerticalSpreads(self):
 
@@ -137,18 +134,15 @@ class OptionVerticalSpreads:
         indexRangeList = list(itertools.product(self.theStrikes, self.theStrikes))
         # indexRangeList
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList, names=colStrikeHL)
-        # print("\nmultiIndexRange\n", multiIndexRange)
+
         type(multiIndexRange)
 
         self.pandasBullCallVerticalSpread = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
         self.pandasBullPutVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
 
-        # todo remove all unnecessary print outs
-        # todo determine how to use logging
-        # print('bullCallSpreads\n', self.bullCallSpreads)
         self.populateBullCallVerticalSpread()
         self.populateBullPutVerticalSpread()
-        # print('POP bullCallSpreads\n', self.bullCallSpreads)
+
 
     def populateBullPutVerticalSpread(self):
         """
@@ -224,11 +218,11 @@ class OptionVerticalSpreads:
         indexRangeList = list(itertools.product(self.right, [self.theExpiration], self.theStrikes))
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Expiry', 'Strike'])
-        #print('\nmultiIndexRange:\n ', multiIndexRange)
+
         self.optionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                          columns=headerPrice)
-        print('\noptionPrices\n', self.optionPrices)
-        print("\nProcessing Greeks", end="")
+
+        logger.logger.info("Processing Greeks")
 
         for aContract in self.optionContracts:
             [theReqTicker] = self.ib.reqTickers(aContract)
@@ -253,7 +247,6 @@ class OptionVerticalSpreads:
             self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Price'] = theReqTicker.last
 
-        print("self.optionPrinces\n", self.optionPrices)
         logger.logger.info('=== Greeks Built =========')
 
     def buildCallRatioSpread(self):
@@ -269,11 +262,8 @@ class OptionVerticalSpreads:
 
         self.callRatioSpread = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
 
-        # todo remove all unnecessary print outs
-        # todo determine how to use logging
-        # print('bullCallSpreads\n', self.bullCallSpreads)
         self.populateCallRatioSpread()
-        # print('POP bullCallSpreads\n', self.bullCallSpreads)
+
 
     def populateCallRatioSpread(self):
         """
@@ -297,7 +287,6 @@ class OptionVerticalSpreads:
         :return:
         """
 
-        # todo does this work for Puts???
         for aStrikeL in self.theStrikes:
             for aStrikeH in self.theStrikes:
                 if aStrikeH <= aStrikeL:
