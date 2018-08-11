@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1221</width>
+    <width>1494</width>
     <height>838</height>
    </rect>
   </property>
@@ -21,9 +21,9 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>0</y>
-      <width>1181</width>
+      <x>0</x>
+      <y>10</y>
+      <width>1461</width>
       <height>761</height>
      </rect>
     </property>
@@ -36,7 +36,7 @@
        <rect>
         <x>20</x>
         <y>40</y>
-        <width>1161</width>
+        <width>1441</width>
         <height>711</height>
        </rect>
       </property>
@@ -47,23 +47,29 @@
        <attribute name="title">
         <string>Option Contracts / Greeks</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox_2">
+       <widget class="QFrame" name="frame_2">
         <property name="geometry">
          <rect>
           <x>20</x>
           <y>10</y>
-          <width>291</width>
-          <height>261</height>
+          <width>361</width>
+          <height>251</height>
          </rect>
         </property>
-        <property name="title">
-         <string>Underlying</string>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>4</number>
         </property>
         <widget class="QPushButton" name="qualifyContracts">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>220</y>
+           <x>220</x>
+           <y>200</y>
            <width>111</width>
            <height>23</height>
           </rect>
@@ -78,7 +84,7 @@
            <x>20</x>
            <y>30</y>
            <width>185</width>
-           <height>17</height>
+           <height>30</height>
           </rect>
          </property>
          <property name="orientation">
@@ -106,9 +112,9 @@
         <widget class="QWidget" name="layoutWidget_2">
          <property name="geometry">
           <rect>
-           <x>17</x>
-           <y>81</y>
-           <width>250</width>
+           <x>18</x>
+           <y>65</y>
+           <width>327</width>
            <height>50</height>
           </rect>
          </property>
@@ -222,7 +228,7 @@
          <property name="geometry">
           <rect>
            <x>17</x>
-           <y>140</y>
+           <y>120</y>
            <width>251</width>
            <height>51</height>
           </rect>
@@ -362,42 +368,13 @@
           </item>
          </widget>
         </widget>
-        <widget class="QWidget" name="layoutWidget_7">
-         <property name="geometry">
-          <rect>
-           <x>19</x>
-           <y>50</y>
-           <width>121</width>
-           <height>25</height>
-          </rect>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_CallPut">
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="radioButton_Call">
-            <property name="text">
-             <string>Call</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="radioButton_Put">
-            <property name="text">
-             <string>Put</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
         <widget class="QWidget" name="layoutWidget_8">
          <property name="geometry">
           <rect>
            <x>17</x>
-           <y>220</y>
-           <width>120</width>
-           <height>25</height>
+           <y>200</y>
+           <width>163</width>
+           <height>29</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_CallPut_2">
@@ -426,7 +403,7 @@
            <x>20</x>
            <y>40</y>
            <width>191</width>
-           <height>16</height>
+           <height>30</height>
           </rect>
          </property>
          <property name="orientation">
@@ -437,7 +414,7 @@
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>200</y>
+           <y>180</y>
            <width>111</width>
            <height>17</height>
           </rect>
@@ -451,14 +428,40 @@
           <string>Market Data Type</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_36">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Ubuntu Mono</family>
+           <pointsize>14</pointsize>
+           <weight>9</weight>
+           <italic>true</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 italic 14pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+         </property>
+         <property name="text">
+          <string>Underlying</string>
+         </property>
+        </widget>
        </widget>
        <widget class="QTableWidget" name="tableWidget">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>30</y>
+          <x>10</x>
+          <y>300</y>
           <width>461</width>
-          <height>221</height>
+          <height>220</height>
          </rect>
         </property>
         <property name="font">
@@ -528,16 +531,14 @@
        <widget class="QTableWidget" name="tableWidget_OptionGreeks">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>310</y>
+          <x>510</x>
+          <y>300</y>
           <width>841</width>
-          <height>341</height>
+          <height>331</height>
          </rect>
         </property>
-        <property name="font">
-         <font>
-          <family>Noto Mono</family>
-         </font>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
@@ -591,18 +592,15 @@
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>290</y>
+          <x>520</x>
+          <y>280</y>
           <width>101</width>
           <height>17</height>
          </rect>
         </property>
-        <property name="font">
-         <font>
-          <family>MathJax_Main</family>
-          <pointsize>14</pointsize>
-          <italic>false</italic>
-         </font>
+        <property name="styleSheet">
+         <string notr="true">font: 75 italic 14pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
          <string>The Greeks</string>
@@ -611,22 +609,442 @@
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>10</y>
+          <x>20</x>
+          <y>280</y>
           <width>101</width>
           <height>17</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>MathJax_Main</family>
+          <family>Ubuntu Mono</family>
           <pointsize>14</pointsize>
-          <italic>false</italic>
+          <weight>9</weight>
+          <italic>true</italic>
+          <bold>false</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 italic 14pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
          <string>Contracts</string>
         </property>
+       </widget>
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>10</y>
+          <width>371</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>4</number>
+        </property>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>321</width>
+           <height>191</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>Volatility USD$</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_27">
+            <property name="text">
+             <string>$ Range (+) Up</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_25">
+            <property name="text">
+             <string>% Range +/-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="percentRange_30Day"/>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="percentRange_45Day"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_26">
+            <property name="text">
+             <string>$ Range +/-</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_31">
+            <property name="styleSheet">
+             <string notr="true">font: italic 12pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>30 Days</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLineEdit" name="dollarRangeUp_45Day"/>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_32">
+            <property name="styleSheet">
+             <string notr="true">font: italic 12pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+            </property>
+            <property name="lineWidth">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>45 Days</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="indent">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_28">
+            <property name="text">
+             <string>$ Range (-) Down</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="dollarRangeDown_30Day"/>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLineEdit" name="dollarRangeDown_45Day"/>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLineEdit" name="dollarRange_45Day"/>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="dollarRangeUp_30Day"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="VolPercent_30Day"/>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="dollarRange_30Day"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="volUSD_30Day"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="VolPercent_45Day"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="volUSD_45Day"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_30">
+            <property name="text">
+             <string>Volatiltiy %</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>4</number>
+            </property>
+            <property name="indent">
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QLabel" name="label_29">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>211</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Ubuntu Mono</family>
+           <pointsize>14</pointsize>
+           <weight>9</weight>
+           <italic>true</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 italic 14pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+         </property>
+         <property name="text">
+          <string>Projected Volatility</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame_2">
+        <property name="geometry">
+         <rect>
+          <x>860</x>
+          <y>10</y>
+          <width>481</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>4</number>
+        </property>
+        <widget class="QLabel" name="label_33">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>201</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Ubuntu Mono</family>
+           <pointsize>14</pointsize>
+           <weight>9</weight>
+           <italic>true</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 italic 14pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+         </property>
+         <property name="text">
+          <string>Underlying Details</string>
+         </property>
+        </widget>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>441</width>
+           <height>191</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <property name="horizontalSpacing">
+           <number>10</number>
+          </property>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_37">
+            <property name="text">
+             <string>Put Open Interest</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="totalOpenInterest"/>
+          </item>
+          <item row="4" column="2">
+           <widget class="QLabel" name="label_45">
+            <property name="text">
+             <string>Call Volume</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2">
+           <widget class="QLabel" name="daysTExpiry">
+            <property name="text">
+             <string>Days to Expiry</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_39">
+            <property name="text">
+             <string>Implied Vol. </string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_42">
+            <property name="text">
+             <string>Total Open Interest</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="label_44">
+            <property name="text">
+             <string>Total Volume</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3">
+           <widget class="QLineEdit" name="historicVol"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_40">
+            <property name="text">
+             <string>Call Open Interest</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_35">
+            <property name="text">
+             <string>Stock Close</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_34">
+            <property name="text">
+             <string>Stock Last</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QLabel" name="label_38">
+            <property name="text">
+             <string>Historic Vol.</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="callOpenInterest"/>
+          </item>
+          <item row="4" column="3">
+           <widget class="QLineEdit" name="callVolume"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="stockLast"/>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLineEdit" name="stockClose"/>
+          </item>
+          <item row="7" column="3">
+           <widget class="QLineEdit" name="daysToExpiry"/>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="putOpenInterest"/>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="label_41">
+            <property name="text">
+             <string>Put Volume</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="3">
+           <widget class="QLineEdit" name="putVolume"/>
+          </item>
+          <item row="6" column="3">
+           <widget class="QLineEdit" name="totalVolume"/>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="impliedVol"/>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="bullSpread_tab">
@@ -717,7 +1135,7 @@
          <rect>
           <x>640</x>
           <y>70</y>
-          <width>321</width>
+          <width>411</width>
           <height>20</height>
          </rect>
         </property>
@@ -888,7 +1306,7 @@ color: rgb(32, 74, 135);</string>
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>910</x>
+        <x>1120</x>
         <y>10</y>
         <width>231</width>
         <height>41</height>
@@ -914,7 +1332,7 @@ color: rgb(32, 74, 135);</string>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>830</x>
+        <x>1040</x>
         <y>10</y>
         <width>71</width>
         <height>41</height>
@@ -1503,11 +1921,9 @@ color: rgb(32, 74, 135);</string>
   <tabstop>comboBox_StrikePriceRange</tabstop>
   <tabstop>comboBox_StrikePriceMultiple</tabstop>
   <tabstop>qualifyContracts</tabstop>
-  <tabstop>radioButton_Put</tabstop>
   <tabstop>radioButton_Index</tabstop>
   <tabstop>radioButton_Stock</tabstop>
   <tabstop>radioButton_Option</tabstop>
-  <tabstop>radioButton_Call</tabstop>
   <tabstop>radioButton_MktDataType_Live</tabstop>
   <tabstop>tabWidget_Contracts</tabstop>
   <tabstop>tableWidget</tabstop>

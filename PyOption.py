@@ -7,7 +7,10 @@ from localUtilities import logger
 
 
 # ======== Logging ================================================
+# todo 1- connect COntract row with The Greeks Row in Vertical Spreads
+# todo 2- click on Contract and it will be highlighted in The greeks
 
+#todo move out Call/Put button in Vertical Spreads
 
 def main():
     logger.init_logger_singleton()

@@ -56,8 +56,8 @@ def get_underlying_info(aTableWidget):
     aSecurityType = ibPyUtils.security_type(aTableWidget, the_underlying, the_exchange)
 
     # then if securityType == Stock get Friday Expiry if Index get Thursday Expiry
-    theExpiry = aTableWidget.comboBox_Expiry.currentText()
-    expiryDate = dateUtils.getDateFromMonthYear(theExpiry)
+    theExpiryStr = aTableWidget.comboBox_Expiry.currentText()
+    expiryDate = dateUtils.getDateFromMonthYear(theExpiryStr)
     if aTableWidget.securityType == configIB.STOCK_TYPE:
         theExpiry = dateUtils.getDateString(dateUtils.third_friday(expiryDate.year, expiryDate.month))
     else: #Index
@@ -87,9 +87,14 @@ def get_underlying_info(aTableWidget):
 
         the_underlyingOutput = ' {} / Last Price: {:>7.2f}'.format(aTableWidget.an_option_spread.a_Contract.symbol,
                                                                    aTableWidget.an_option_spread.theUnderlyingReqTickerData.last)
-
         # Display Underlying price
         aTableWidget.lineEdit_underlying.setText(the_underlyingOutput)
+
+        # Display underlying details
+        displayUnderlyingDetails(aTableWidget, theExpiry)
+
+        # Display Projected Volatility Frame
+        buildProjectedVolatility(aTableWidget, theExpiry)
 
         aTableWidget.an_option_spread.buildGreeks()
 
@@ -265,4 +270,33 @@ def onConnectButtonClicked(self):
     else:
         self.ib.disconnect()
         self.statusbar.showMessage("Disconnected from IB")
+
+def buildProjectedVolatility(aTableWidget, expiryDate):
+
+    volPercent30Day = '{}'.format(aTableWidget.an_option_spread.a_Contract.symbol)
+    aTableWidget.VolPercent_30Day.setText(volPercent30Day)
+
+def displayUnderlyingDetails(aTableWidget, expiryDate):
+
+    aTableWidget.stockLast.setText('{:>7.2f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.last))
+
+    aTableWidget.stockClose.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.close))
+
+    aTableWidget.putOpenInterest.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.putOpenInterest))
+
+    aTableWidget.callOpenInterest.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.callOpenInterest))
+
+    totalOpenInterest = aTableWidget.an_option_spread.theUnderlyingReqTickerData.callOpenInterest + \
+                        aTableWidget.an_option_spread.theUnderlyingReqTickerData.putOpenInterest
+    aTableWidget.totalOpenInterest.setText('{:>7.0f}'.format(totalOpenInterest))
+
+    aTableWidget.callVolume.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.callVolume))
+
+    aTableWidget.putVolume.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.putVolume))
+
+    totalVol = aTableWidget.an_option_spread.theUnderlyingReqTickerData.putVolume + \
+               aTableWidget.an_option_spread.theUnderlyingReqTickerData.callVolume
+    aTableWidget.totalVolume.setText('{:>7.0f}'.format(totalVol))
+
+    aTableWidget.daysToExpiry.setText('{:>7.0f}'.format(dateUtils.daysToExpiry(expiryDate)))
 
