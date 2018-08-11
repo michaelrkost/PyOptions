@@ -5,6 +5,8 @@ from ib_insync import *
 from localUtilities import configIB, dateUtils, ibPyUtils, ibPyViewUtils
 import optionSpreadsClass
 
+#todo need to move the Display code in to sepreate area in case we want to move out of QT5
+
 # All the table trimmings for the Vertical Spread View
 
 def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullPutSpread, tableWidget_BullCallSpread):
@@ -78,8 +80,7 @@ def get_underlying_info(aTableWidget):
         # create a new optionClass instance
         aTableWidget.an_option_spread = optionSpreadsClass.OptionVerticalSpreads(a_qualified_contract, aTableWidget.ib)
         # Fully qualify the option
-        aTableWidget.an_option_spread.qualify_option_chain(ibPyUtils.right(aTableWidget), theExpiry,
-                                                           theStrikePriceRange, theStrikePriceMultiple)
+        aTableWidget.an_option_spread.qualify_option_chain(theExpiry, theStrikePriceRange, theStrikePriceMultiple)
 
         # Display the contracts
         displayContracts(aTableWidget, aTableWidget.an_option_spread.optionContracts)
@@ -127,14 +128,21 @@ def displayContracts(aTableWidget, contracts):
 
 def displayGreeks(aTableWidget, contracts):
 
-    greeksLen = len(contracts.right) * ( len(contracts.theStrikes * len(contracts.theExpiration)))
+    # calculate the number of table rows needed
+    greeksLen = len(contracts.optionContracts)
+
     aTableWidget.tableWidget_OptionGreeks.setRowCount(greeksLen)
     aTableWidget.tableWidget_OptionGreeks.clearContents()
+
     # Items are created outside the table (with no parent widget)
     # and inserted into the table with setItem():
     theRow = 0
+
+    # get the properly formated Expiry "Aug'16'18"
     anExpriy = contracts.theExpiration
-    for aRight in contracts.right:
+
+    # for P and C in contracts.rights do
+    for aRight in contracts.rights:
         for aStrike in contracts.theStrikes:
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
                 '{:d}'.format(int(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
@@ -215,9 +223,15 @@ def updateConnectVS(aTableWidget, _translate):
     :param _translate:
     :return:
     """
+
+    # Button to Connect to IB Gateway
     aTableWidget.qualifyContracts.clicked.connect(lambda: get_underlying_info(aTableWidget))
+
+    # Button to Start the program
     aTableWidget.pushButton_updateNumberOfContracts.clicked.connect(lambda: updateBullContracts(aTableWidget))
 
+    #Create a list of 18 Months of Option Fridays
+    #for the Expiry DropDown: comboBox_Expiry
     ibPyUtils.doExpiry(aTableWidget.comboBox_Expiry, _translate)
 
     # todo - this should be in another module it is IB Connections...

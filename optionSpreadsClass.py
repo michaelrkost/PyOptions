@@ -23,9 +23,9 @@ class OptionVerticalSpreads:
     #     bullCallSpreads - Pandas dataframe for spread info
     #     optionPrices - Pandas dataframe for greeks/option price
     #
-    # putRight = 'P'
-    # callRight = 'C'
-    # rights = [putRight, callRight]
+    putRight = 'P'
+    callRight = 'C'
+    rights = [putRight, callRight]
     #
     #
 
@@ -55,7 +55,7 @@ class OptionVerticalSpreads:
         self.theStrikes = []
         self.contractReqTickers = []
         self.theExpiration = []
-        self.optionPrices = []
+        self.optionPrices = [] #todo change name to greekValues
         self.right = []
         self.oneBullCallVerticalSpreadOptionUnit = None
         self.oneBullPutVerticalSpreadOptionUnit = None
@@ -64,7 +64,7 @@ class OptionVerticalSpreads:
         self.pandasBullPutVerticalSpread = None
         self.callRatioSpread = None
 
-    def qualify_option_chain(self, aRight, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
+    def qualify_option_chain(self, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
         """Fully qualify the given contracts in-place. close not last
         This will fill in the missing fields in the contract, especially the conId.
 
@@ -76,29 +76,15 @@ class OptionVerticalSpreads:
         """
         self.theExpiration = anExpiry
 
-        #
-        # TODO get rid of CALL/PUT aRight
-        # if aTableWidget.radioButton_Call.isChecked():
-        #     return configIB.CALL_RIGHT
-        # else:
-        #     return configIB.PUT_RIGHT
-
-
-
-        self.right = aRight
         # ----get list of options
         # reqSecDefOptParams returns a list of expires and a list of strike prices.
         # In some cases it is possible there are combinations of strike and expiry that
         # would not give a valid option contract.
         listOptionChain = self.ib.reqSecDefOptParams(self.a_Contract.symbol, '', self.a_Contract.secType,
                                                 self.a_Contract.conId)
-        # print('>>> listOptionChain: \n', listOptionChain)
 
         listSmartOptionChain = next(c for c in listOptionChain
                                       if c.exchange == 'SMART')
-
-        # print("\n>>> listSmartOptionChain: \n", listSmartOptionChain)
-
 
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
         # Updated so not using close price / added last price functionality
@@ -106,30 +92,42 @@ class OptionVerticalSpreads:
                                        strikePriceRange, strikePriceMultiple)
 
         #todo need to put in more logic to get existing expiries as they do not extend out logically
-        # Get the SPX expiration set and find the proper experiation
+        # Get the SPX expiration set and find the proper expiration
         # as it is not always the third thursday/friday
         theExpirationList = sorted(exp for exp in listSmartOptionChain.expirations
                                    if exp[:6] == self.theExpiration[:6])
-        # print("sorted Expirations: ", theExpirationList)
+
         self.theExpiration = theExpirationList.pop()
 
         # Build requested options based on expiry and price range
         # Most common approach is to use "SMART" as the exchange
-        allOptionContracts = [(Option(self.a_Contract.symbol, self.theExpiration, strike, self.right,
+        allCallOptionContracts = [(Option(self.a_Contract.symbol, self.theExpiration, strike, ibPyUtils.call_right(),
                                         exchange='SMART', multiplier='100'))
                               for strike in self.theStrikes]
 
-        # print('>----------------------------------------------->>>optionContracts1:\n', allOptionContracts)
-        # print('<-----------------------------------------------<<<optionContracts1:\n')
+        allPutOptionContracts = [(Option(self.a_Contract.symbol, self.theExpiration, strike, ibPyUtils.put_right(),
+                                        exchange='SMART', multiplier='100'))
+                              for strike in self.theStrikes]
 
         # # Qualify the options
-        self.ib.qualifyContracts(*allOptionContracts)
+        self.ib.qualifyContracts(*allCallOptionContracts)
+        self.ib.qualifyContracts(*allPutOptionContracts)
 
         # filter for Contract Numbers
         # and set attribute optionContracts
-        for c in allOptionContracts:
+        # at this point self.optionContracts will have all the contracts P/C
+        for c in allCallOptionContracts:
             if c.conId != 0:
                 self.optionContracts.append(c)
+
+        # filter for Contract Numbers
+        # and set attribute optionContracts
+        for c in allPutOptionContracts:
+            if c.conId != 0:
+                self.optionContracts.append(c)
+
+        print(self.optionContracts)
+
 
     def buildPandasBullVerticalSpreads(self):
 
@@ -171,8 +169,8 @@ class OptionVerticalSpreads:
                 else:
                     # Max Profit = Higher Strike - Lower Strike for net credit
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] \
-                        = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price'] \
-                          - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price']
+                        = self.optionPrices.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeH), 'Price'] \
+                          - self.optionPrices.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeL), 'Price']
 
                     # Max Loss = difference between strike prices minus cost of spread ie.Loss
                     # Max Loss = (aStrikeH - aStrikeL) - Max Loss
@@ -202,8 +200,8 @@ class OptionVerticalSpreads:
                     # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
                     # Max Loss = -(aStrikeH.Price) + aStrikeL.price
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
-                        = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'] \
-                          - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price']
+                        = self.optionPrices.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeL), 'Price'] \
+                          - self.optionPrices.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeH), 'Price']
 
                     # Max Profit = difference between strike prices minus cost of spread ie.Loss
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
@@ -229,8 +227,8 @@ class OptionVerticalSpreads:
         #print('\nmultiIndexRange:\n ', multiIndexRange)
         self.optionPrices = pd.DataFrame(0.0, index=multiIndexRange,
                                          columns=headerPrice)
-        # print('\noptionPrices\n', self.optionPrices)
-        # print("\nProcessing Greeks", end="")
+        print('\noptionPrices\n', self.optionPrices)
+        print("\nProcessing Greeks", end="")
 
         for aContract in self.optionContracts:
             [theReqTicker] = self.ib.reqTickers(aContract)
@@ -255,7 +253,7 @@ class OptionVerticalSpreads:
             self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Price'] = theReqTicker.last
 
-
+        print("self.optionPrinces\n", self.optionPrices)
         logger.logger.info('=== Greeks Built =========')
 
     def buildCallRatioSpread(self):

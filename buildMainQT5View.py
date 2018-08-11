@@ -678,17 +678,17 @@ class Ui_MainPyOptionsWindow(object):
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< def retranslateUi -- to here:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         # ======== Below ========this is not part of the QT Creator for retranslateUi()===================
-        # ===================this is not part of the QT Creator for setupUi()===================
-        # These is to set up the button connectors
+
+       # ===================  Set up Pages / Buttons Connectors    ===================
+
+        # This is to set up the button connectors QT5
         buildVerticalSpreadViews.updateConnectVS(self, _translate)
 
-        #buildVerticalSpreadViews.doExpiry(self.comboBox_Expiry, _translate)
-
-        #set up table trimmings
+        #create Vertical Spread / set up table trimmings - create tables Qt5
         buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks,
                                            self.tableWidget_BullCallSpread, self.tableWidget_BullPutSpread)
 
-        #buildIronCondorViews.doExpiry(self.comboBox_Expiry_IC, _translate)
+        #create the Iron Condor Page
         buildIronCondorViews.updateConnectIC(self, _translate)
 
 

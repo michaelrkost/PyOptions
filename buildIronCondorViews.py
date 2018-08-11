@@ -60,7 +60,6 @@ def get_underlying_info(aTableWidget):
         # create a new optionClass instance
         aTableWidget.an_option_spread = optionSpreadsClass.OptionVerticalSpreads(a_qualified_contract, aTableWidget.ib)
         # Fully qualify the option
-        aTableWidget.an_option_spread.qualify_option_chain(ibPyUtils.right(aTableWidget), theExpiry,
-                                                           theStrikePriceRange, theStrikePriceMultiple)
+        aTableWidget.an_option_spread.qualify_option_chain(theExpiry, theStrikePriceRange, theStrikePriceMultiple)
 
         print("a_qualified_contract:  " , a_qualified_contract)
