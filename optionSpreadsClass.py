@@ -49,8 +49,15 @@ class OptionVerticalSpreads:
         """
         self.a_Contract = a_qualified_contract
         self.ib = anIB
+
+        self.ib.reqMktData(self.a_Contract, '9,23,24,27,28,29,30')
+
         self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
-        logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
+        # replaced 8/11/18 with this:
+        self.theUnderlyingReqTickerData = self.ib.reqMktData(self.a_Contract,'9,23,24,27,28,29,30')
+
+        #logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
+
         self.optionContracts = []
         self.theStrikes = []
         self.contractReqTickers = []

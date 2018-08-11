@@ -45,11 +45,7 @@ def get_underlying_info(aTableWidget):
     theStrikePriceRange = int(aTableWidget.comboBox_StrikePriceRange.currentText())
     theStrikePriceMultiple = int(aTableWidget.comboBox_StrikePriceMultiple.currentText())
 
-    # set the type of Price Data to receive
-    #   - Frozen market data is the last data recorded at market close.
-    #   - Last market data is the last data set, which may be empty after hours
-    aTableWidget.ib.reqMarketDataType(ibPyUtils.marketDataType(aTableWidget.radioButton_MktDataType_Frozen))
-    logger.logger.info("frozenVS:  %s", aTableWidget.radioButton_MktDataType_Frozen.isChecked())
+    ibPyUtils.reqMarketData_Setup(aTableWidget)
 
     # from the GUI radio buttons determine if this a Stock/Index/Option and get the underlying
     # and create a Contract
@@ -280,7 +276,7 @@ def displayUnderlyingDetails(aTableWidget, expiryDate):
 
     aTableWidget.stockLast.setText('{:>7.2f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.last))
 
-    aTableWidget.stockClose.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.close))
+    aTableWidget.stockClose.setText('{:>7.2f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.close))
 
     aTableWidget.putOpenInterest.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.putOpenInterest))
 
