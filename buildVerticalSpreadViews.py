@@ -144,21 +144,21 @@ def displayGreeks(aTableWidget, contracts):
     for aRight in contracts.rights:
         for aStrike in contracts.theStrikes:
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 0, QtWidgets.QTableWidgetItem(
-                '{:d}'.format(int(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'ID']))))
+                '{:d}'.format(int(contracts.greekValues.loc[(aRight, anExpriy, aStrike), 'ID']))))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 1, QtWidgets.QTableWidgetItem(aRight))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 2,
                                                   QtWidgets.QTableWidgetItem(dateUtils.month3Format(anExpriy)))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 3, QtWidgets.QTableWidgetItem(str(aStrike)))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 4, QtWidgets.QTableWidgetItem(
-                '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'Price'])))
+                '{:>7.2f}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike),'Price'])))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 5, QtWidgets.QTableWidgetItem(
-                '{:>2.2%}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
+                '{:>2.2%}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike),'ImpliedVol'])))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 6, QtWidgets.QTableWidgetItem(
-                '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
+                '{:>.6f}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike), 'Gamma'])))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 7, QtWidgets.QTableWidgetItem(
-                '{:>.6f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike), 'Delta'])))
+                '{:>.6f}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike), 'Delta'])))
             aTableWidget.tableWidget_OptionGreeks.setItem(theRow, 8, QtWidgets.QTableWidgetItem(
-                '{:>7.2f}'.format(contracts.optionPrices.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
+                '{:>7.2f}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike),'TimeVal'])))
 
             theRow += 1
 

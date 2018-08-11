@@ -21,7 +21,7 @@ class OptionVerticalSpreads:
     #     theStrikes - the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
     #     aTicker - the contracts ticker / a snapshot ticker of the given contract.
     #     bullCallSpreads - Pandas dataframe for spread info
-    #     optionPrices - Pandas dataframe for greeks/option price
+    #     greekValues - Pandas dataframe for greeks/option price
     #
     putRight = 'P'
     callRight = 'C'
@@ -55,7 +55,10 @@ class OptionVerticalSpreads:
         self.theStrikes = []
         self.contractReqTickers = []
         self.theExpiration = []
-        self.optionPrices = [] #todo change name to greekValues
+
+        # greekValues = ID, Delta, TimeVal, ImpVol, Gamma, Price // was previously named optionPrices
+        self.greekValues = []
+
         self.right = []
         self.oneBullCallVerticalSpreadOptionUnit = None
         self.oneBullPutVerticalSpreadOptionUnit = None
@@ -163,8 +166,8 @@ class OptionVerticalSpreads:
                 else:
                     # Max Profit = Higher Strike - Lower Strike for net credit
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] \
-                        = self.optionPrices.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeH), 'Price'] \
-                          - self.optionPrices.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeL), 'Price']
+                        = self.greekValues.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeH), 'Price'] \
+                          - self.greekValues.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeL), 'Price']
 
                     # Max Loss = difference between strike prices minus cost of spread ie.Loss
                     # Max Loss = (aStrikeH - aStrikeL) - Max Loss
@@ -194,8 +197,8 @@ class OptionVerticalSpreads:
                     # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
                     # Max Loss = -(aStrikeH.Price) + aStrikeL.price
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
-                        = self.optionPrices.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeL), 'Price'] \
-                          - self.optionPrices.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeH), 'Price']
+                        = self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeL), 'Price'] \
+                          - self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeH), 'Price']
 
                     # Max Profit = difference between strike prices minus cost of spread ie.Loss
                     # Max Profit = (aStrikeH - aStrikeL) - Max Loss
@@ -219,8 +222,8 @@ class OptionVerticalSpreads:
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList,
                                                     names=['Right', 'Expiry', 'Strike'])
 
-        self.optionPrices = pd.DataFrame(0.0, index=multiIndexRange,
-                                         columns=headerPrice)
+        self.greekValues = pd.DataFrame(0.0, index=multiIndexRange,
+                                        columns=headerPrice)
 
         logger.logger.info("Processing Greeks")
 
@@ -229,22 +232,22 @@ class OptionVerticalSpreads:
             theGreeks = theReqTicker.modelGreeks
             self.contractReqTickers.append(theReqTicker)
 
-            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.greekValues.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'ID'] = aContract.conId
 
-            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.greekValues.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Delta'] = theGreeks.delta
             # close is yesterdays close - mess up calculations
             #An option's time value is equal to its premium (the cost of the option) minus its intrinsic value
             # (the difference between the strike price and the price of the underlying).
-            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.greekValues.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'TimeVal'] = theReqTicker.last - abs(self.theUnderlyingReqTickerData.last
                                                                              - aContract.strike)
-            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.greekValues.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'ImpliedVol'] = theGreeks.impliedVol
-            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.greekValues.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Gamma'] = theGreeks.gamma
-            self.optionPrices.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
+            self.greekValues.loc[(aContract.right, aContract.lastTradeDateOrContractMonth, aContract.strike),
                                        'Price'] = theReqTicker.last
 
         logger.logger.info('=== Greeks Built =========')
@@ -296,12 +299,12 @@ class OptionVerticalSpreads:
                     # Max Profit: Distance  between long strike and short strike + credit received
                     self.callRatioSpread.loc[(aStrikeL, aStrikeH), 'Max$'] \
                         = abs(aStrikeH - aStrikeL) \
-                          + ((self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price'] *2 )
-                             - self.optionPrices.loc[(self.right, self.theExpiration, aStrikeL), 'Price'])
+                          + ((self.greekValues.loc[(self.right, self.theExpiration, aStrikeH), 'Price'] * 2)
+                             - self.greekValues.loc[(self.right, self.theExpiration, aStrikeL), 'Price'])
 
                     # Breakeven(s): Short call strike + max profit potential
                     self.callRatioSpread.loc[(aStrikeL, aStrikeH), 'BreakEven$'] \
-                        = self.optionPrices.loc[(self.right, self.theExpiration, aStrikeH), 'Price'] + \
+                        = self.greekValues.loc[(self.right, self.theExpiration, aStrikeH), 'Price'] + \
                           self.callRatioSpread.loc[(aStrikeL, aStrikeH), 'Max$']
 
         self.oneCallRatioSpreadOptionUnit = self.callRatioSpread.copy(deep=True)
