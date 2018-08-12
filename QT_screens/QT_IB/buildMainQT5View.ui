@@ -35,13 +35,13 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>40</y>
+        <y>50</y>
         <width>1441</width>
         <height>711</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="qualifyContracts_tab">
        <attribute name="title">
@@ -650,13 +650,13 @@ color: rgb(32, 74, 135);</string>
         <property name="lineWidth">
          <number>4</number>
         </property>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>20</x>
            <y>40</y>
            <width>321</width>
-           <height>191</height>
+           <height>204</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -887,7 +887,7 @@ color: rgb(32, 74, 135);</string>
           <string>Underlying Details</string>
          </property>
         </widget>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -1049,7 +1049,7 @@ color: rgb(32, 74, 135);</string>
       </widget>
       <widget class="QWidget" name="bullSpread_tab">
        <attribute name="title">
-        <string>Bull Spread</string>
+        <string>Bull Spreads</string>
        </attribute>
        <widget class="QTableWidget" name="tableWidget_BullCallSpread">
         <property name="geometry">
@@ -1112,9 +1112,9 @@ color: rgb(32, 74, 135);</string>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_numberOfContracts">
+          <widget class="QSpinBox" name="spinBox_numberOfContracts_BullSpread">
            <property name="minimum">
-            <number>1</number>
+            <number>0</number>
            </property>
            <property name="maximum">
             <number>15</number>
@@ -1122,7 +1122,7 @@ color: rgb(32, 74, 135);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_updateNumberOfContracts">
+          <widget class="QPushButton" name="pushButton_updateNumberOfContracts_BullSpread">
            <property name="text">
             <string>Update</string>
            </property>
@@ -1236,30 +1236,62 @@ color: rgb(32, 74, 135);</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab3">
+      <widget class="QWidget" name="bearSpreads_tab">
        <attribute name="title">
-        <string>Tab3</string>
+        <string>Bear Spreads</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget_2">
+       <widget class="Line" name="line_4">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>751</width>
-          <height>561</height>
+          <x>20</x>
+          <y>40</y>
+          <width>271</width>
+          <height>20</height>
          </rect>
         </property>
-        <property name="rowCount">
-         <number>10</number>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
         </property>
-        <property name="columnCount">
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget_BearPutSpread">
+        <property name="geometry">
+         <rect>
+          <x>610</x>
+          <y>80</y>
+          <width>521</width>
+          <height>571</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="rowCount">
          <number>5</number>
         </property>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
+        <property name="columnCount">
+         <number>4</number>
+        </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>120</number>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>11</number>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>25</number>
+        </attribute>
         <row/>
         <row/>
         <row/>
@@ -1269,7 +1301,134 @@ color: rgb(32, 74, 135);</string>
         <column/>
         <column/>
         <column/>
+       </widget>
+       <widget class="QPushButton" name="pushButton_updateNumberOfContracts_BearSpread">
+        <property name="geometry">
+         <rect>
+          <x>201</x>
+          <y>10</y>
+          <width>80</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget_BearCallSpread">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>521</width>
+          <height>571</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="rowCount">
+         <number>5</number>
+        </property>
+        <property name="columnCount">
+         <number>4</number>
+        </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>120</number>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>11</number>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>25</number>
+        </attribute>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
         <column/>
+        <column/>
+        <column/>
+        <column/>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>261</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>aakar</family>
+          <pointsize>16</pointsize>
+          <weight>9</weight>
+          <italic>true</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 italic 16pt &quot;aakar&quot;;
+color: rgb(32, 74, 135);</string>
+        </property>
+        <property name="text">
+         <string>Bear CALL Vertical Spread </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>23</x>
+          <y>10</y>
+          <width>121</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Number Of Contracts</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_23">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>60</y>
+          <width>411</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 italic 16pt &quot;aakar&quot;;
+color: rgb(32, 74, 135);</string>
+        </property>
+        <property name="text">
+         <string>Bear PUT Vertical Spread - Credit Spread</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinBox_numberOfContracts_BearSpread">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>10</y>
+          <width>45</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>15</number>
+        </property>
        </widget>
       </widget>
      </widget>
@@ -1929,10 +2088,9 @@ color: rgb(32, 74, 135);</string>
   <tabstop>tableWidget</tabstop>
   <tabstop>tableWidget_OptionGreeks</tabstop>
   <tabstop>tableWidget_BullCallSpread</tabstop>
-  <tabstop>spinBox_numberOfContracts</tabstop>
-  <tabstop>pushButton_updateNumberOfContracts</tabstop>
+  <tabstop>spinBox_numberOfContracts_BullSpread</tabstop>
+  <tabstop>pushButton_updateNumberOfContracts_BullSpread</tabstop>
   <tabstop>tableWidget_BullPutSpread</tabstop>
-  <tabstop>tableWidget_2</tabstop>
   <tabstop>lineEdit_underlying</tabstop>
   <tabstop>qualifyIronCondor</tabstop>
   <tabstop>radioButton_Index_IC</tabstop>

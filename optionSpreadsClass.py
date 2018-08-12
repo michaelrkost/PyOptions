@@ -216,8 +216,16 @@ class OptionVerticalSpreads:
 
     def updateBullSpreads(self, contracts=1):
 
-        self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
-        self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (100 * contracts))
+        # using 0 to see the option price -
+        # one unit will show the single option price
+        # TODO make sure this is working w/0
+        if contracts == 0:
+            numberOfUnits = 1
+        else:
+            numberOfUnits = 100
+
+        self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (numberOfUnits * contracts))
+        self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (numberOfUnits * contracts))
 
     def buildGreeks(self):
         """
