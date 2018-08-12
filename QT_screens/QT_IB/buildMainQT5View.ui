@@ -41,7 +41,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="qualifyContracts_tab">
        <attribute name="title">
@@ -163,7 +163,11 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLineEdit" name="underlyingText"/>
+           <widget class="QLineEdit" name="underlyingText">
+            <property name="text">
+             <string>SPX</string>
+            </property>
+           </widget>
           </item>
           <item row="1" column="1">
            <widget class="QComboBox" name="comboBoxExchange">
@@ -2118,12 +2122,12 @@ color: rgb(32, 74, 135);</string>
    <slot>selectRow(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>397</x>
-     <y>237</y>
+     <x>399</x>
+     <y>428</y>
     </hint>
     <hint type="destinationlabel">
-     <x>338</x>
-     <y>579</y>
+     <x>532</x>
+     <y>657</y>
     </hint>
    </hints>
   </connection>

@@ -50,13 +50,16 @@ class OptionVerticalSpreads:
         self.a_Contract = a_qualified_contract
         self.ib = anIB
 
-        self.ib.reqMktData(self.a_Contract, '9,23,24,27,28,29,30')
+        # replaced --> self.ib.reqMktData(self.a_Contract, '9,23,24,27,28,29,30')
+        #   def reqMktData(self, tickerId, contract, genericTickList, snapshot):
+        # 8/11/18 with this:
+        # IB api / reqMktData
 
         self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
-        # replaced 8/11/18 with this:
-        self.theUnderlyingReqTickerData = self.ib.reqMktData(self.a_Contract,'9,23,24,27,28,29,30')
 
-        #logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
+        self.theUnderlyingReqTickerData = self.ib.reqMktData(self.a_Contract,'100, 101, 104, 105, 106')
+
+        logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
 
         self.optionContracts = []
         self.theStrikes = []
@@ -67,11 +70,23 @@ class OptionVerticalSpreads:
         self.greekValues = []
 
         self.right = []
+
+        # Bull Call Vertical Spreads --------------------
         self.oneBullCallVerticalSpreadOptionUnit = None
         self.oneBullPutVerticalSpreadOptionUnit = None
-        self.oneCallRatioSpreadOptionUnit = None
+
         self.pandasBullCallVerticalSpread = None
         self.pandasBullPutVerticalSpread = None
+
+        # Bear Call Vertical Spreads --------------------
+        self.oneBearCallVerticalSpreadOptionUnit = None
+        self.oneBearPutVerticalSpreadOptionUnit = None
+
+        self.pandasBearCallVerticalSpread = None
+        self.pandasBearPutVerticalSpread = None
+
+        # Ratio Spreads  --------------------
+        self.oneCallRatioSpreadOptionUnit = None
         self.callRatioSpread = None
 
     def qualify_option_chain(self, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
@@ -136,7 +151,13 @@ class OptionVerticalSpreads:
                 self.optionContracts.append(c)
 
 
-    def buildPandasBullVerticalSpreads(self):
+    def buildPandasVerticalSpreads(self):
+        """
+        Build all Vertical Spreads
+        - Bull - Call / Put
+        - Bear - Call / Put
+        :return:
+        """
 
         headerLM = ['Loss$', 'Max$']
         colStrikeHL = ['StrikeL', 'StrikeH']
@@ -149,9 +170,16 @@ class OptionVerticalSpreads:
 
         self.pandasBullCallVerticalSpread = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
         self.pandasBullPutVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
+        self.pandasBearCallVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
+        self.pandasBearPutVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
 
         self.populateBullCallVerticalSpread()
         self.populateBullPutVerticalSpread()
+        self.populateBearCallVerticalSpread()
+        self.populateBearPutVerticalSpread()
+
+        # self.updateBearSpreads(self)
+        # self.updateBullSpreads(self)
 
 
     def populateBullPutVerticalSpread(self):
@@ -181,13 +209,13 @@ class OptionVerticalSpreads:
                     self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$']
         self.oneBullPutVerticalSpreadOptionUnit = self.pandasBullPutVerticalSpread.copy(deep=True)
-        #self.pandasBullPutVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * 1))
+        self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (100*1))
 
 
     def populateBullCallVerticalSpread(self):
         """
         Create & Display
-        Long Call Vertical Spread:
+        Bull Call Vertical Spread:
             OptionA - buy a call option
             OptionB  - write(sell) a call options w/a higher strike price than OptionA
 
@@ -212,7 +240,67 @@ class OptionVerticalSpreads:
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
         self.oneBullCallVerticalSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
-        #self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * 1))
+        self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (100 * 1))
+
+
+    def populateBearPutVerticalSpread(self):
+        """
+        Create & Display
+        Bear Call Vertical Spread:
+            OptionA - aStrikeH - buy a 1 ITM(In the Money) Put option / Higher /
+            OptionB - aStrikeL - write(sell) 1 OTM(out of the Money) Put options / lower strike price than OptionA
+
+        Max potential Profit: Difference between strike A and strike B minus the net debit paid. / (A-B)-Loss
+        Max potential Loss:   Net Debit
+        :return:
+        """
+        for aStrikeL in self.theStrikes:
+            for aStrikeH in self.theStrikes:
+                if aStrikeH <= aStrikeL:
+                    self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
+                    self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
+                else:
+                    # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
+                    # Max Loss = -(aStrikeH.Price) + aStrikeL.price
+                    self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
+                        = self.greekValues.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeH), 'Price'] \
+                          - self.greekValues.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeL), 'Price']
+
+                    # Max Profit = difference between strike prices minus cost of spread ie.Loss
+                    # Max Profit = (aStrikeH - aStrikeL) - Max Loss
+                    self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
+                        (aStrikeH - aStrikeL) - self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
+        self.oneBearPutVerticalSpreadOptionUnit = self.pandasBearPutVerticalSpread.copy(deep=True)
+        self.pandasBearPutVerticalSpread.update(self.oneBearPutVerticalSpreadOptionUnit.loc[:, :] * (100*1))
+
+    def populateBearCallVerticalSpread(self):
+        """
+        Create & Display
+        Bear Put Vertical Spread:
+            OptionA - aStrikeH - buy 1 OTM put option at a Higher strike price
+            OptionB - aStrikeL - write(sell) 1 ITM put options w/a higher strike price than OptionA
+
+        Max potential Profit: The net credit.
+        Max potential Loss:   Difference between the strike prices minus the net credit
+        :return:
+        """
+        for aStrikeL in self.theStrikes:
+            for aStrikeH in self.theStrikes:
+                if aStrikeH <= aStrikeL:
+                    self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
+                    self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
+                else:
+                    # Max Profit = Higher Strike - Lower Strike for net credit
+                    self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] \
+                        = self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeL), 'Price'] \
+                          - self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeH), 'Price']
+
+                    # Max Loss = difference between strike prices minus cost of spread ie.Loss
+                    # Max Loss = (aStrikeH - aStrikeL) - Max Loss
+                    self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = \
+                        (aStrikeH - aStrikeL) - self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$']
+        self.oneBearCallVerticalSpreadOptionUnit = self.pandasBearCallVerticalSpread.copy(deep=True)
+        self.pandasBearCallVerticalSpread.update(self.oneBearCallVerticalSpreadOptionUnit.loc[:, :] * (100*1))
 
     def updateBullSpreads(self, contracts=1):
 
@@ -226,6 +314,19 @@ class OptionVerticalSpreads:
 
         self.pandasBullCallVerticalSpread.update(self.oneBullCallVerticalSpreadOptionUnit.loc[:, :] * (numberOfUnits * contracts))
         self.pandasBullPutVerticalSpread.update(self.oneBullPutVerticalSpreadOptionUnit.loc[:, :] * (numberOfUnits * contracts))
+
+    def updateBearSpreads(self, contracts=1):
+
+        # using 0 to see the option price -
+        # one unit will show the single option price
+        # TODO make sure this is working w/0
+        if contracts == 0:
+            numberOfUnits = 1
+        else:
+            numberOfUnits = 100
+
+        self.pandasBearCallVerticalSpread.update(self.oneBearCallVerticalSpreadOptionUnit.loc[:, :] * (numberOfUnits * contracts))
+        self.pandasBearPutVerticalSpread.update(self.oneBearPutVerticalSpreadOptionUnit.loc[:, :] * (numberOfUnits * contracts))
 
     def buildGreeks(self):
         """

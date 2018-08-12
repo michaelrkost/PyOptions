@@ -14,7 +14,7 @@ from ib_insync import *
 util.useQt()
 
 # Option management classes for PyOptions - mrk
-import buildVerticalSpreadViews, buildIronCondorViews
+import buildVerticalSpreadViews, buildIronCondorViews, displayVerticalSpreadViews
 
 from localUtilities import errorHandler, configIB, dateUtils, logger
 
@@ -996,8 +996,9 @@ class Ui_MainPyOptionsWindow(object):
         buildVerticalSpreadViews.updateConnectVS(self, _translate)
 
         #create Vertical Spread / set up table trimmings - create tables Qt5
-        buildVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks,
-                                           self.tableWidget_BullCallSpread, self.tableWidget_BullPutSpread)
+        displayVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks,
+                                            self.tableWidget_BullCallSpread, self.tableWidget_BullPutSpread,
+                                            self.tableWidget_BearCallSpread, self.tableWidget_BearPutSpread)
 
         #create the Iron Condor Page
         buildIronCondorViews.updateConnectIC(self, _translate)
