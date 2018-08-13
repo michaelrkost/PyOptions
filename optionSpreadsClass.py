@@ -214,13 +214,13 @@ class OptionVerticalSpreads:
 
     def populateBullCallVerticalSpread(self):
         """
-        Create & Display
-        Bull Call Vertical Spread:
-            OptionA - buy a call option
-            OptionB  - write(sell) a call options w/a higher strike price than OptionA
+        Create & Display  -mrk 8/13/18                  _
+        Bull Call Vertical Spread / Debit Call Spread _/
+            OptionA/aStrikeL  - buy a long Call option
+            OptionB/aStrikeH  - write(sell) a short Call options at a higher strike price than OptionA
 
-        Max potential Profit: Difference between strike A and strike B minus the net debit paid.
-        Max potential Loss:   Net Debit
+        Max Profit: Difference between strike A and strike B minus the Net Debit paid.
+        Max Loss:   Net Debit
         :return:
         """
         for aStrikeL in self.theStrikes:
@@ -229,14 +229,14 @@ class OptionVerticalSpreads:
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
                 else:
-                    # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
-                    # Max Loss = -(aStrikeH.Price) + aStrikeL.price
+                    # Max Loss is the Net Debit ----
+                    # Difference between (OptionB/aStrikeH Net Credit / Price) and (Cost/Price of OptionA/aStrikeL)
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
                         = self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeL), 'Price'] \
                           - self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeH), 'Price']
 
-                    # Max Profit = difference between strike prices minus cost of spread ie.Loss
-                    # Max Profit = (aStrikeH - aStrikeL) - Max Loss
+                    # Max Profit = difference between strike prices minus Net Debit ie.Loss
+                    # Max Profit = (aStrikeH - aStrikeL) - Net Debit/Loss$
                     self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBullCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
         self.oneBullCallVerticalSpreadOptionUnit = self.pandasBullCallVerticalSpread.copy(deep=True)
@@ -245,13 +245,13 @@ class OptionVerticalSpreads:
 
     def populateBearPutVerticalSpread(self):
         """
-        Create & Display
-        Bear Call Vertical Spread:
-            OptionA - aStrikeH - buy a 1 ITM(In the Money) Put option / Higher /
-            OptionB - aStrikeL - write(sell) 1 OTM(out of the Money) Put options / lower strike price than OptionA
+        Create & Display - mrk 8/13/18
+        Bear Call Vertical Spread / Debit Spread
+            OptionA - aStrikeH - buy a 1 long Put option
+            OptionB - aStrikeL - write(sell) a short Put options at a lower strike price than OptionA
 
-        Max potential Profit: Difference between strike A and strike B minus the net debit paid. / (A-B)-Loss
-        Max potential Loss:   Net Debit
+        Max Profit: Difference between aStrikeH and aStrikeL minus the Net Debit paid
+        Max Loss:   Net Debit
         :return:
         """
         for aStrikeL in self.theStrikes:
@@ -260,14 +260,14 @@ class OptionVerticalSpreads:
                     self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
                     self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
                 else:
-                    # Max Loss is the (cost of aStrikeH) plus (aStrikeL profit)
-                    # Max Loss = -(aStrikeH.Price) + aStrikeL.price
+                    # Max Loss is the Net Debit ----
+                    # Difference between (OptionB/aStrikeH Net Credit/Price) and (Cost/Price of OptionA/aStrikeL)
                     self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] \
                         = self.greekValues.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeH), 'Price'] \
                           - self.greekValues.loc[(ibPyUtils.put_right(), self.theExpiration, aStrikeL), 'Price']
 
-                    # Max Profit = difference between strike prices minus cost of spread ie.Loss
-                    # Max Profit = (aStrikeH - aStrikeL) - Max Loss
+                    # Max Profit = difference between strike prices minus Net Debit ie.Loss
+                    # Max Profit = (aStrikeH - aStrikeL) - Net Debit/Loss$
                     self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBearPutVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$']
         self.oneBearPutVerticalSpreadOptionUnit = self.pandasBearPutVerticalSpread.copy(deep=True)
@@ -275,13 +275,13 @@ class OptionVerticalSpreads:
 
     def populateBearCallVerticalSpread(self):
         """
-        Create & Display
-        Bear Put Vertical Spread:
-            OptionA - aStrikeH - buy 1 OTM put option at a Higher strike price
-            OptionB - aStrikeL - write(sell) 1 ITM put options w/a higher strike price than OptionA
+        Create & Display - mrk 8/13/18
+        Bear Call Vertical Spread / Credit Spread
+            OptionA - aStrikeH - buy 1 long Put option at a higher strike price than OptionB
+            OptionB - aStrikeL - write(sell) short Put option at a lower strike price than OptionA
 
-        Max potential Profit: The net credit.
-        Max potential Loss:   Difference between the strike prices minus the net credit
+        Max Profit: The Net Credit.
+        Max Loss:   Difference between the strike prices minus the net credit
         :return:
         """
         for aStrikeL in self.theStrikes:
@@ -290,12 +290,13 @@ class OptionVerticalSpreads:
                     self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = 0
                     self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] = 0
                 else:
-                    # Max Profit = Higher Strike - Lower Strike for net credit
+                    # Max Profit is the Net Credit ----
+                    # Difference between (Option/aStrikeL Net Credit/Price) and (Cost/Price of OptionA/aStrikeH)
                     self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$'] \
                         = self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeL), 'Price'] \
                           - self.greekValues.loc[(ibPyUtils.call_right(), self.theExpiration, aStrikeH), 'Price']
 
-                    # Max Loss = difference between strike prices minus cost of spread ie.Loss
+                    # Max Loss = difference between strike prices minus Net Debit ie.Loss
                     # Max Loss = (aStrikeH - aStrikeL) - Max Loss
                     self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Loss$'] = \
                         (aStrikeH - aStrikeL) - self.pandasBearCallVerticalSpread.loc[(aStrikeL, aStrikeH), 'Max$']

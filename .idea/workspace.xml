@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="263937a9-c6db-44c6-a467-6babb12493cf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/buildMainQT5View.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildMainQT5View.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildVerticalSpreadViews.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildVerticalSpreadViews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/displayVerticalSpreadViews.py" beforeDir="false" afterPath="$PROJECT_DIR$/displayVerticalSpreadViews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optionSpreadsClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/optionSpreadsClass.py" afterDir="false" />
     </list>
@@ -20,9 +19,9 @@
           <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.3" value="5" />
-          <entry key="project.open.time.4" value="7" />
+          <entry key="project.open.time.4" value="8" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -34,7 +33,7 @@
         <counts>
           <entry key="Python Console" value="4" />
           <entry key="dummy" value="177" />
-          <entry key="py" value="4264" />
+          <entry key="py" value="4725" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -45,7 +44,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="177" />
-          <entry key="Python" value="4268" />
+          <entry key="Python" value="4729" />
         </counts>
       </usages-collector>
     </session>
@@ -66,11 +65,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-142">
-                  <caret line="98" column="120" selection-start-line="98" selection-start-column="106" selection-end-line="98" selection-end-column="120" />
+                <state relative-caret-position="1385">
+                  <caret line="106" column="20" lean-forward="true" selection-start-line="98" selection-start-column="106" selection-end-line="98" selection-end-column="120" />
                   <folding>
                     <element signature="e#2#74#0" expanded="true" />
                   </folding>
@@ -81,8 +80,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/displayVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2130">
-                  <caret line="142" column="27" lean-forward="true" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
+                <state relative-caret-position="754">
+                  <caret line="165" column="71" selection-start-line="165" selection-start-column="71" selection-end-line="165" selection-end-column="71" />
                   <folding>
                     <element signature="e#1#35#0" expanded="true" />
                   </folding>
@@ -91,19 +90,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="503">
-                  <caret line="998" column="35" selection-start-line="998" selection-start-column="35" selection-end-line="998" selection-end-column="35" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="106">
-                  <caret line="314" selection-start-line="314" selection-end-line="315" selection-end-column="128" />
+                  <caret line="315" selection-start-line="315" selection-end-line="316" selection-end-column="128" />
                   <folding>
                     <element signature="e#19#63#0" expanded="true" />
                   </folding>
@@ -118,8 +108,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1140">
-                  <caret line="76" column="64" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="64" />
+                <state relative-caret-position="559">
+                  <caret line="125" column="9" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
                   <folding>
                     <element signature="e#2#74#0" expanded="true" />
                   </folding>
@@ -130,8 +120,11 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/displayVerticalSpreadViews.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
+                <state relative-caret-position="1039">
                   <caret line="135" column="43" selection-start-line="135" selection-start-column="43" selection-end-line="135" selection-end-column="43" />
+                  <folding>
+                    <element signature="e#1#35#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -139,8 +132,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="362">
-                  <caret line="180" selection-start-line="180" selection-end-line="182" />
+                <state relative-caret-position="647">
+                  <caret line="298" column="82" selection-start-line="298" selection-start-column="82" selection-end-line="298" selection-end-column="82" />
                   <folding>
                     <element signature="e#19#63#0" expanded="true" />
                   </folding>
@@ -185,12 +178,12 @@
       <find>reqmarketda</find>
       <find>theUnderlyingReqTickerData</find>
       <find>pushbu</find>
-      <find>spinBox_numberOfContracts_BullSpread</find>
       <find>spinBox_numberOfContracts</find>
       <find>tableWidget_BearPutSpread</find>
       <find>trim</find>
       <find>tableWidget_BearC</find>
       <find>reqmk</find>
+      <find>spinBox_numberOfContracts_BullSpread</find>
     </findStrings>
     <replaceStrings>
       <replace>self.contract</replace>
@@ -233,14 +226,14 @@
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/dateUtils.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py" />
         <option value="$PROJECT_DIR$/../local-packages/localUtilities/ibPyUtils.py" />
+        <option value="$PROJECT_DIR$/buildVerticalSpreadViews.py" />
         <option value="$PROJECT_DIR$/buildMainQT5View.py" />
         <option value="$PROJECT_DIR$/displayVerticalSpreadViews.py" />
-        <option value="$PROJECT_DIR$/buildVerticalSpreadViews.py" />
         <option value="$PROJECT_DIR$/optionSpreadsClass.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="785" />
     <option name="y" value="1080" />
     <option name="width" value="2562" />
@@ -251,6 +244,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,7 +271,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -325,7 +318,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="buildOptionMatrices" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="buildVerticalSpreadViews" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyOptions" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -333,11 +326,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../local-packages/localUtilities" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../local-packages/localUtilities/buildOptionMatrices.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buildVerticalSpreadViews.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -412,17 +405,17 @@
     <list>
       <item itemvalue="Python.PyOption" />
       <item itemvalue="Python.bullSpreadViewSmall" />
-      <item itemvalue="Python.buildOptionMatrices" />
       <item itemvalue="Python.dateUtils" />
       <item itemvalue="Python.optionClass" />
+      <item itemvalue="Python.buildVerticalSpreadViews" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.PyOption" />
+        <item itemvalue="Python.buildVerticalSpreadViews" />
         <item itemvalue="Python.dateUtils" />
         <item itemvalue="Python.bullSpreadViewSmall" />
         <item itemvalue="Python.optionClass" />
-        <item itemvalue="Python.buildOptionMatrices" />
       </list>
     </recent_temporary>
   </component>
@@ -464,45 +457,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="878" y="1080" width="2562" height="1080" extended-state="6" />
+    <frame x="878" y="1080" width="2562" height="1080" extended-state="7" />
     <layout>
       <window_info content_ui="combo" x="1928" y="37" width="527" height="965" id="Project" order="0" weight="0.16633819" />
       <window_info x="2787" y="33" width="796" height="979" id="Structure" order="1" sideWeight="0.49947754" weight="0.17027986" />
       <window_info id="Favorites" order="2" sideWeight="0.5005225" side_tool="true" weight="0.24990146" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" x="1217" y="1467" width="1176" height="325" id="Find" order="1" weight="0.32706374" />
-      <window_info anchor="bottom" x="39" y="70" width="1248" height="884" id="Run" order="2" sideWeight="0.6525" type="FLOATING" weight="0.45865634" />
+      <window_info anchor="bottom" x="2130" y="21" width="1248" height="884" id="Run" order="2" sideWeight="0.6525" type="FLOATING" weight="0.45865634" />
       <window_info anchor="bottom" x="1981" y="39" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.32497388" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32706374" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49524415" weight="0.32706374" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
-      <window_info anchor="bottom" x="1978" y="21" width="1835" height="999" id="Python Console" order="10" sideWeight="0.49947312" type="FLOATING" weight="0.32672232" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16710596" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32723358" />
-      <window_info anchor="bottom" x="72" y="109" width="1244" height="907" id="Run" order="2" sideWeight="0.6525" type="FLOATING" visible="true" weight="0.45865634" />
-      <window_info anchor="bottom" x="114" y="88" width="1667" height="931" id="Debug" order="3" sideWeight="0.4963119" type="FLOATING" weight="0.48869753" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" x="0" y="441" width="1577" height="253" id="TODO" order="6" sideWeight="0.49947312" weight="0.32508072" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49947312" weight="0.32809225" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49524415" weight="0.32723358" />
+      <window_info active="true" anchor="bottom" x="1978" y="21" width="1835" height="999" id="Python Console" order="8" sideWeight="0.49947312" type="FLOATING" visible="true" weight="0.3260188" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49524415" weight="0.32706374" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.3475" side_tool="true" weight="0.43164694" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -542,7 +516,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/optionSpreadsClass.py</url>
-          <line>322</line>
+          <line>323</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
@@ -680,10 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1515">
           <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-            <marker date="1534019498557" expanded="true" signature="3589:3984" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -703,22 +673,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/buildMainQT5View.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="998" column="35" selection-start-line="998" selection-start-column="35" selection-end-line="998" selection-end-column="35" />
+        <state relative-caret-position="307">
+          <caret line="468" column="62" lean-forward="true" selection-start-line="468" selection-start-column="62" selection-end-line="468" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/displayVerticalSpreadViews.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
+        <state relative-caret-position="1039">
           <caret line="135" column="43" selection-start-line="135" selection-start-column="43" selection-end-line="135" selection-end-column="43" />
+          <folding>
+            <element signature="e#1#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buildVerticalSpreadViews.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="64" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="64" />
+        <state relative-caret-position="559">
+          <caret line="125" column="9" selection-start-line="125" selection-start-column="9" selection-end-line="125" selection-end-column="9" />
           <folding>
             <element signature="e#2#74#0" expanded="true" />
           </folding>
@@ -727,8 +700,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/optionSpreadsClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="180" selection-start-line="180" selection-end-line="182" />
+        <state relative-caret-position="647">
+          <caret line="298" column="82" selection-start-line="298" selection-start-column="82" selection-end-line="298" selection-end-column="82" />
           <folding>
             <element signature="e#19#63#0" expanded="true" />
           </folding>

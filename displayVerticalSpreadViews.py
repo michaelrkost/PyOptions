@@ -161,9 +161,9 @@ def displayUnderlyingDetails(aTableWidget, expiryDate):
 
     aTableWidget.putVolume.setText('{:>7.0f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.putVolume))
 
-    totalVol = aTableWidget.an_option_spread.theUnderlyingReqTickerData.putVolume + \
+    theTotalVolume = aTableWidget.an_option_spread.theUnderlyingReqTickerData.putVolume + \
                aTableWidget.an_option_spread.theUnderlyingReqTickerData.callVolume
-    aTableWidget.totalVolume.setText('{:>7.0f}'.format(totalVol))
+    aTableWidget.totalVolume.setText('{:>7.0f}'.format(theTotalVolume))
 
     aTableWidget.daysToExpiry.setText('{:>7.0f}'.format(dateUtils.daysToExpiry(expiryDate)))
 
