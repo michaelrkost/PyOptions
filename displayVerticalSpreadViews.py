@@ -167,3 +167,6 @@ def displayUnderlyingDetails(aTableWidget, expiryDate):
 
     aTableWidget.daysToExpiry.setText('{:>7.0f}'.format(dateUtils.daysToExpiry(expiryDate)))
 
+    aTableWidget.impliedVol.setText('{:.2%}'.format(aTableWidget.an_option_spread.impliedVolatility))
+
+   # aTableWidget.tableWidget_OptionGreeks.setItem('{:>2.2%}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike), 'ImpliedVol'])))

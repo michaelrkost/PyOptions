@@ -59,6 +59,9 @@ class OptionVerticalSpreads:
 
         self.theUnderlyingReqTickerData = self.ib.reqMktData(self.a_Contract,'100, 101, 104, 105, 106')
 
+        self.impliedVolatility = self.getImpliedVol(self.a_Contract.symbol, self.theUnderlyingReqTickerData.close,
+                                                    self.a_Contract.exchange)
+
         logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
 
         self.optionContracts = []
@@ -430,6 +433,22 @@ class OptionVerticalSpreads:
     def updateCallRatioSpread(self, contracts=1):
 
         self.callRatioSpread.update(self.callRatioSpread.loc[:, :] * (100 * contracts))
+
+    def getImpliedVol(self, theSymbol, theClose, theExchange):
+
+        theExpiry = ibPyUtils.getNearestExpiryFromToday()
+        nearest5StrikePrice = ibPyUtils.roundToNearest5(theClose)
+
+        aContract = Option(theSymbol, theExpiry, nearest5StrikePrice, 'C', theExchange)
+
+        [ticker] = self.ib.reqTickers(aContract)
+
+
+       # ib.qualifyContracts(aContract)
+
+        return ticker.modelGreeks.impliedVol
+
+
 
 
 

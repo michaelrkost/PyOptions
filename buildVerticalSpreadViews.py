@@ -2,6 +2,7 @@
 
 from localUtilities import configIB, dateUtils, ibPyUtils, ibPyViewUtils
 import optionSpreadsClass, displayVerticalSpreadViews as displayVS
+import datetime
 
 
 def get_underlying_info(aTableWidget):
@@ -58,8 +59,13 @@ def get_underlying_info(aTableWidget):
         displayVS.displayContracts(aTableWidget, aTableWidget.an_option_spread.optionContracts)
 
         # Get the Last Price for the Underlying
-        the_underlyingOutput = ' {} / Last Price: {:>7.2f}'.format(aTableWidget.an_option_spread.a_Contract.symbol,
-                                                                   aTableWidget.an_option_spread.theUnderlyingReqTickerData.last)
+        the_underlyingOutput = ' {} / Last Price: {:>7.2f} // Expiry:  {}'.format(aTableWidget.an_option_spread.a_Contract.symbol,
+                                                                   aTableWidget.an_option_spread.theUnderlyingReqTickerData.last,
+                                                                     dateUtils.month3Format(aTableWidget.an_option_spread.theExpiration))
+
+
+
+
         # SetText /pyQt5 the Last Price Underlying price
         aTableWidget.lineEdit_underlying.setText(the_underlyingOutput)
 

@@ -458,6 +458,14 @@ color: rgb(32, 74, 135);</string>
           <string>Underlying</string>
          </property>
         </widget>
+        <zorder>line_2</zorder>
+        <zorder>qualifyContracts</zorder>
+        <zorder>splitter</zorder>
+        <zorder>layoutWidget_2</zorder>
+        <zorder>groupBox_StrikePrice</zorder>
+        <zorder>layoutWidget_8</zorder>
+        <zorder>label_5</zorder>
+        <zorder>label_36</zorder>
        </widget>
        <widget class="QTableWidget" name="tableWidget">
         <property name="geometry">
@@ -1367,7 +1375,7 @@ color: rgb(32, 74, 135);</string>
          <rect>
           <x>20</x>
           <y>60</y>
-          <width>261</width>
+          <width>421</width>
           <height>20</height>
          </rect>
         </property>
@@ -1385,7 +1393,7 @@ color: rgb(32, 74, 135);</string>
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Bear CALL Vertical Spread </string>
+         <string>Bear CALL Vertical Spread - Credit Spread</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_21">
@@ -1415,7 +1423,7 @@ color: rgb(32, 74, 135);</string>
 color: rgb(32, 74, 135);</string>
         </property>
         <property name="text">
-         <string>Bear PUT Vertical Spread - Credit Spread</string>
+         <string>Bear PUT Vertical Spread</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="spinBox_numberOfContracts_BearSpread">
@@ -1441,7 +1449,7 @@ color: rgb(32, 74, 135);</string>
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>341</width>
+        <width>421</width>
         <height>27</height>
        </rect>
       </property>
