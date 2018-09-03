@@ -2,6 +2,7 @@
 from localUtilities import ibPyUtils, logger
 
 import pandas as pd
+import math
 
 import itertools
 
@@ -58,9 +59,25 @@ class OptionVerticalSpreads:
         self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
 
         self.theUnderlyingReqTickerData = self.ib.reqMktData(self.a_Contract,'100, 101, 104, 105, 106')
+        
+        
+        
+        # get implied volatility for this underlying out past 15days
+        
+        #use this to keep the implied volatility contract info
+        self.theImpliedVolContract = []
+        
+        self.daysTillExpriy = ibPyUtils.getNearestExpiryFromToday()
 
+        #todo - organize close vs. last and be consistant - IMPORTANT
         self.impliedVolatility = self.getImpliedVol(self.a_Contract.symbol, self.theUnderlyingReqTickerData.close,
-                                                    self.a_Contract.exchange)
+                                                    self.a_Contract.exchange, self.daysTillExpriy)
+
+        #based on Impled Vol get projected 30 & 45 day range        
+        self.projected30DayRange = self.projectedVolatilityNDays(self.impliedVolatility, self.theUnderlyingReqTickerData.last, 30)
+        self.projected45DayRange = self.projectedVolatilityNDays(self.impliedVolatility, self.theUnderlyingReqTickerData.last, 45)
+        print('self.projected30DayRange: ', self.projected30DayRange)
+        print('self.projected45DayRange: ', self.projected45DayRange)
 
         logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
 
@@ -434,19 +451,34 @@ class OptionVerticalSpreads:
 
         self.callRatioSpread.update(self.callRatioSpread.loc[:, :] * (100 * contracts))
 
-    def getImpliedVol(self, theSymbol, theClose, theExchange):
+    def getImpliedVol(self, theSymbol, theClose, theExchange, theExpiry):
 
-        theExpiry = ibPyUtils.getNearestExpiryFromToday()
         nearest5StrikePrice = ibPyUtils.roundToNearest5(theClose)
 
-        aContract = Option(theSymbol, theExpiry, nearest5StrikePrice, 'C', theExchange)
+        self.theImpliedVolContract = Option(theSymbol, theExpiry, nearest5StrikePrice, 'C', theExchange)
 
-        [ticker] = self.ib.reqTickers(aContract)
-
-
-       # ib.qualifyContracts(aContract)
+        [ticker] = self.ib.reqTickers(self.theImpliedVolContract)
 
         return ticker.modelGreeks.impliedVol
+
+    def projectedVolatilityNDays(self, impliedVol, stockPrice, projectedDays):
+        """
+        Deannualize IV turn into a one day figure
+        1-Day expected Vol = Implied Volatility  sqrt(number of trading Days in Year)
+        projectedDays Expected Vol = 1-Day expected Vol * sqrt(projectedDays)
+
+        The expected movement of a stock can be calculated with the following formula, where S subscript 0 is
+        the stock's current price, IV is implied volatility, and the final term is the square root of days
+        to expiration divided by 365.
+
+        projectedVolatilityNDays = stock current price * IV * sqrt(projectedDays/356)
+
+        :return: 
+        """
+
+        projected = stockPrice* impliedVol * math.sqrt(projectedDays / 356)
+
+        return projected
 
 
 

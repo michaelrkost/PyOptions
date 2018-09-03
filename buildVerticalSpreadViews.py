@@ -14,6 +14,8 @@ def get_underlying_info(aTableWidget):
     aTableWidget.tableWidget.clearContents()
     aTableWidget.tableWidget_OptionGreeks.clearContents()
     aTableWidget.tableWidget_BullCallSpread.clearContents()
+    displayVS.displayProjectedVolDetailsClear(aTableWidget)
+
     aTableWidget.spinBox_numberOfContracts_BullSpread.setValue(1)
 
     the_underlying = aTableWidget.underlyingText.text()
@@ -72,8 +74,8 @@ def get_underlying_info(aTableWidget):
         # Display underlying details
         displayVS.displayUnderlyingDetails(aTableWidget, theExpiry)
 
-        # set in str the volPercent30Day
-        buildProjectedVolatility(aTableWidget, theExpiry)
+        # Display Projected Volatility details
+        displayVS.displayProjectedVolDetails(aTableWidget, theExpiry)
 
         # Build the Greeks in optionSpreadClass then Display
         aTableWidget.an_option_spread.buildGreeks()
@@ -158,9 +160,4 @@ def onConnectButtonClicked(self):
     else:
         self.ib.disconnect()
         self.statusbar.showMessage("Disconnected from IB")
-
-def buildProjectedVolatility(aTableWidget, expiryDate):
-
-    volPercent30Day = '{}'.format(aTableWidget.an_option_spread.a_Contract.symbol)
-    aTableWidget.VolPercent_30Day.setText(volPercent30Day)
 

@@ -169,4 +169,61 @@ def displayUnderlyingDetails(aTableWidget, expiryDate):
 
     aTableWidget.impliedVol.setText('{:.2%}'.format(aTableWidget.an_option_spread.impliedVolatility))
 
-   # aTableWidget.tableWidget_OptionGreeks.setItem('{:>2.2%}'.format(contracts.greekValues.loc[(aRight, anExpriy, aStrike), 'ImpliedVol'])))
+
+def displayProjectedVolDetails(aTableWidget, expiryDate):
+
+    the30DayVol = (aTableWidget.an_option_spread.projected30DayRange /
+                   aTableWidget.an_option_spread.theUnderlyingReqTickerData.last)
+    the45DayVol = (aTableWidget.an_option_spread.projected45DayRange /
+                    aTableWidget.an_option_spread.theUnderlyingReqTickerData.last)
+    the30DayUSD = aTableWidget.an_option_spread.projected30DayRange
+    the45DayUSD = aTableWidget.an_option_spread.projected45DayRange
+
+    # set Volatility %
+    aTableWidget.VolPercent_30Day.setText('{:.2%}'.format(the30DayVol))
+    aTableWidget.VolPercent_45Day.setText('{:.2%}'.format(the45DayVol))
+
+    #Set Volatility USD %
+    aTableWidget.volUSD_30Day.setText('{:>7.2f}'.format(the30DayUSD))
+    aTableWidget.volUSD_45Day.setText('{:>7.2f}'.format(the45DayUSD))
+
+
+    aTableWidget.percentRange_30Day.setText('{:.2%}'.format(the30DayVol /2))
+    aTableWidget.percentRange_45Day.setText('{:.2%}'.format( the45DayVol/2))
+
+    aTableWidget.dollarRange_30Day.setText('{:>7.2f}'.format(the30DayUSD/2))
+    aTableWidget.dollarRange_45Day.setText('{:>7.2f}'.format(the45DayUSD/2))
+
+    aTableWidget.dollarRangeUp_30Day.setText('{:>7.2f}'.format((the30DayUSD/2)
+                                                               + aTableWidget.an_option_spread.theUnderlyingReqTickerData.last))
+    aTableWidget.dollarRangeUp_45Day.setText('{:>7.2f}'.format((the45DayUSD/2)
+                                                               + aTableWidget.an_option_spread.theUnderlyingReqTickerData.last))
+
+    aTableWidget.dollarRangeDown_30Day.setText('{:>7.2f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.last
+                                                                 - (the30DayUSD/2)))
+    aTableWidget.dollarRangeDown_45Day.setText('{:>7.2f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.last
+                                                                 - (the45DayUSD / 2)))
+
+def displayProjectedVolDetailsClear(aTableWidget):
+
+    # set Volatility %
+    aTableWidget.VolPercent_30Day.clear()
+    aTableWidget.VolPercent_45Day.clear()
+
+    #Set Volatility USD %
+    aTableWidget.volUSD_30Day.clear()
+    aTableWidget.volUSD_45Day.clear()
+
+
+    aTableWidget.percentRange_30Day.clear()
+    aTableWidget.percentRange_45Day.clear()
+
+    aTableWidget.dollarRange_30Day.clear()
+    aTableWidget.dollarRange_45Day.clear()
+
+    aTableWidget.dollarRangeUp_30Day.clear()
+    aTableWidget.dollarRangeUp_45Day.clear()
+
+    aTableWidget.dollarRangeDown_30Day.clear()
+    aTableWidget.dollarRangeDown_45Day.clear()
+
