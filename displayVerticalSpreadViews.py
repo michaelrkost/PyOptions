@@ -204,6 +204,14 @@ def displayProjectedVolDetails(aTableWidget, expiryDate):
     aTableWidget.dollarRangeDown_45Day.setText('{:>7.2f}'.format(aTableWidget.an_option_spread.theUnderlyingReqTickerData.last
                                                                  - (the45DayUSD / 2)))
 
+
+    aTableWidget.lineEdit_Today.setText(dateUtils.getTodayStr())
+    aTableWidget.lineEdit_30Days.setText(dateUtils.get30DaysOutStr())
+    aTableWidget.lineEdit_45Days.setText(dateUtils.get45DaysOutStr())
+
+
+
+
 def displayProjectedVolDetailsClear(aTableWidget):
 
     # set Volatility %

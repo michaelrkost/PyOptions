@@ -7,7 +7,6 @@ import datetime
 
 def get_underlying_info(aTableWidget):
     #TODO drop/queue history/ any existing instance of contracts if new instance is created
-    #TODO filter out or combine Weekly or Monthly at the UI level
     aTableWidget.statusbar.clearMessage()
 
     #clear contents for feed back to user - new call

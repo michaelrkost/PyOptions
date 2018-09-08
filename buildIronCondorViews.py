@@ -16,8 +16,7 @@ def updateConnectIC(aTableWidget, _translate):
     aTableWidget.actionIron_Condor.triggered.connect(lambda: aTableWidget.stackedWidget.setCurrentIndex(ibPyViewUtils.stackedWidgetView_IronCondor))
 
 def get_underlying_info(aTableWidget):
-    #TODO drop/queue history/ any existing instance of contracts if new instance is created
-    #TODO filter out or combine Weekly or Monthly at the UI level
+
     aTableWidget.statusbar.clearMessage()
 
     the_underlying = aTableWidget.underlyingText_IC.text()
