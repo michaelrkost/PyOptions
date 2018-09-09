@@ -1223,6 +1223,9 @@ color: rgb(32, 74, 135);</string>
            <property name="maximum">
             <number>15</number>
            </property>
+           <property name="value">
+            <number>0</number>
+           </property>
           </widget>
          </item>
          <item>

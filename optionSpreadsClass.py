@@ -1,5 +1,5 @@
 # Get my Utilities
-from localUtilities import ibPyUtils, logger
+from localUtilities import ibPyUtils, logger, dateUtils
 
 import pandas as pd
 import math
@@ -8,9 +8,11 @@ import itertools
 
 from ib_insync import *
 
+# using last price NOT close price throughout as close seemed to mess things up. 9/8/18 - mrk
+
 class OptionVerticalSpreads:
 
-    # all the options Pandas builds and Calculations
+    # The options Pandas builds and Calculations
     # ##### # #####
     #    -- init
     #       :param a_qualified_contract: the Contract
@@ -57,27 +59,19 @@ class OptionVerticalSpreads:
         # IB api / reqMktData
 
         self.theUnderlyingReqTickerData = self.ib.reqTickers(self.a_Contract).pop()
-
         self.theUnderlyingReqTickerData = self.ib.reqMktData(self.a_Contract,'100, 101, 104, 105, 106')
-        
-        
-        
+
         # get implied volatility for this underlying out past 15days
-        
-        #use this to keep the implied volatility contract info
+        # use this to keep the implied volatility contract info
         self.theImpliedVolContract = []
-        
         self.daysTillExpriy = ibPyUtils.getNearestExpiryFromToday()
 
-        #todo - organize close vs. last and be consistant - IMPORTANT
-        self.impliedVolatility = self.getImpliedVol(self.a_Contract.symbol, self.theUnderlyingReqTickerData.close,
+        self.impliedVolatility = self.getImpliedVol(self.a_Contract.symbol, self.theUnderlyingReqTickerData.last,
                                                     self.a_Contract.exchange, self.daysTillExpriy)
 
         #based on Impled Vol get projected 30 & 45 day range        
         self.projected30DayRange = self.projectedVolatilityNDays(self.impliedVolatility, self.theUnderlyingReqTickerData.last, 30)
         self.projected45DayRange = self.projectedVolatilityNDays(self.impliedVolatility, self.theUnderlyingReqTickerData.last, 45)
-        print('self.projected30DayRange: ', self.projected30DayRange)
-        print('self.projected45DayRange: ', self.projected45DayRange)
 
         logger.logger.info('self.theUnderlyingReqTickerData.last:  %s', self.theUnderlyingReqTickerData.last)
 
@@ -110,7 +104,7 @@ class OptionVerticalSpreads:
         self.callRatioSpread = None
 
     def qualify_option_chain(self, anExpiry, strikePriceRange=5, strikePriceMultiple=5):
-        """Fully qualify the given contracts in-place. close not last
+        """Fully qualify the given contracts in-place.
         This will fill in the missing fields in the contract, especially the conId.
 
         Update attributes: aTicker, contracts, theStrikes
@@ -125,6 +119,7 @@ class OptionVerticalSpreads:
         # reqSecDefOptParams returns a list of expires and a list of strike prices.
         # In some cases it is possible there are combinations of strike and expiry that
         # would not give a valid option contract.
+        # filter on SMART / Exchange
         listOptionChain = self.ib.reqSecDefOptParams(self.a_Contract.symbol, '', self.a_Contract.secType,
                                                 self.a_Contract.conId)
 
@@ -132,7 +127,7 @@ class OptionVerticalSpreads:
                                       if c.exchange == 'SMART')
 
         # Get the Strikes as defined by current price, strikePriceRange and strikePriceMultiple
-        # Updated so not using close price / added last price functionality
+        # Updated so no longer using close price / added last price functionality
         self.theStrikes = ibPyUtils.getStrikes(listSmartOptionChain, self.theUnderlyingReqTickerData.last,
                                        strikePriceRange, strikePriceMultiple)
 
@@ -157,7 +152,7 @@ class OptionVerticalSpreads:
         self.ib.qualifyContracts(*allCallOptionContracts)
         self.ib.qualifyContracts(*allPutOptionContracts)
 
-        # filter for Contract Numbers
+        # filter for Contract Numbers - remove those w/out Contract Numbers
         # and set attribute optionContracts
         # at this point self.optionContracts will have all the contracts P/C
         for c in allCallOptionContracts:
@@ -451,9 +446,9 @@ class OptionVerticalSpreads:
 
         self.callRatioSpread.update(self.callRatioSpread.loc[:, :] * (100 * contracts))
 
-    def getImpliedVol(self, theSymbol, theClose, theExchange, theExpiry):
+    def getImpliedVol(self, theSymbol, theLast, theExchange, theExpiry):
 
-        nearest5StrikePrice = ibPyUtils.roundToNearest5(theClose)
+        nearest5StrikePrice = ibPyUtils.roundToNearest5(theLast)
 
         self.theImpliedVolContract = Option(theSymbol, theExpiry, nearest5StrikePrice, 'C', theExchange)
 
@@ -471,12 +466,12 @@ class OptionVerticalSpreads:
         the stock's current price, IV is implied volatility, and the final term is the square root of days
         to expiration divided by 365.
 
-        projectedVolatilityNDays = stock current price * IV * sqrt(projectedDays/356)
+        projectedVolatilityNDays = stock current price * IV * sqrt(projectedDays/daysInYear)
 
         :return: 
         """
 
-        projected = stockPrice* impliedVol * math.sqrt(projectedDays / 356)
+        projected = stockPrice* impliedVol * math.sqrt(projectedDays / dateUtils.daysInYear())
 
         return projected
 

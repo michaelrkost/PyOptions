@@ -10,10 +10,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ib_insync import *
 
-# need to give QT the async from ib_insync
+# needed to give QT the async from ib_insync
 util.useQt()
 
-# Option management classes for PyOptions - mrk
+# Option management classes for PyOptions
 import buildVerticalSpreadViews, buildIronCondorViews, displayVerticalSpreadViews
 
 from localUtilities import errorHandler, configIB, dateUtils, logger
@@ -1060,10 +1060,10 @@ class Ui_MainPyOptionsWindow(object):
 
     # ===================  Set up Pages / Buttons Connectors    ===================
 
-        # This is to set up the button connectors QT5
+        # This is to set up the button connectors - QT5
         buildVerticalSpreadViews.updateConnectVS(self, _translate)
 
-        #create Vertical Spread / set up table trimmings - create tables Qt5
+        #create Vertical Spread / set up table trimmings - create tables - Qt5
         displayVerticalSpreadViews.trimTable(self.tableWidget, self.tableWidget_OptionGreeks,
                                             self.tableWidget_BullCallSpread, self.tableWidget_BullPutSpread,
                                             self.tableWidget_BearCallSpread, self.tableWidget_BearPutSpread)
