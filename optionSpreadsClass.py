@@ -168,7 +168,7 @@ class OptionVerticalSpreads:
 
     def buildPandasVerticalSpreads(self):
         """
-        Build all Vertical Spreads
+        Create Pandas Matirx then populate the Vertical Spreads
         - Bull - Call / Put
         - Bear - Call / Put
         :return:
@@ -181,20 +181,17 @@ class OptionVerticalSpreads:
         # indexRangeList
         multiIndexRange = pd.MultiIndex.from_tuples(indexRangeList, names=colStrikeHL)
 
-        type(multiIndexRange)
-
+        # Create the Pandas
         self.pandasBullCallVerticalSpread = pd.DataFrame(0.0, index=multiIndexRange, columns=headerLM)
         self.pandasBullPutVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
         self.pandasBearCallVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
         self.pandasBearPutVerticalSpread = self.pandasBullCallVerticalSpread.copy(deep=True)
 
+        # Populate the Pandas
         self.populateBullCallVerticalSpread()
         self.populateBullPutVerticalSpread()
         self.populateBearCallVerticalSpread()
         self.populateBearPutVerticalSpread()
-
-        # self.updateBearSpreads(self)
-        # self.updateBullSpreads(self)
 
 
     def populateBullPutVerticalSpread(self):

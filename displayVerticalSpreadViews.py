@@ -21,6 +21,7 @@ def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullPutSpread, 
     tableWidget_OptionGreeks.setAlternatingRowColors(True)
 
     headerBullSpread = ['Strike Low/Buy', 'Strike High/Sell', 'Max$ Loss', 'Max$ Profit']
+    headerBearSpread = ['Strike Low/Sell', 'Strike High/Buy', 'Max$ Loss', 'Max$ Profit']
 
     tableWidget_BullCallSpread.setHorizontalHeaderLabels(headerBullSpread)
     tableWidget_BullCallSpread.setAlternatingRowColors(True)
@@ -28,10 +29,10 @@ def trimTable(tableWidget, tableWidget_OptionGreeks, tableWidget_BullPutSpread, 
     tableWidget_BullPutSpread.setHorizontalHeaderLabels(headerBullSpread)
     tableWidget_BullPutSpread.setAlternatingRowColors(True)
 
-    tableWidget_BearPutSpread.setHorizontalHeaderLabels(headerBullSpread)
+    tableWidget_BearPutSpread.setHorizontalHeaderLabels(headerBearSpread)
     tableWidget_BearPutSpread.setAlternatingRowColors(True)
 
-    tableWidget_BearCallSpread.setHorizontalHeaderLabels(headerBullSpread)
+    tableWidget_BearCallSpread.setHorizontalHeaderLabels(headerBearSpread)
     tableWidget_BearCallSpread.setAlternatingRowColors(True)
 
 
