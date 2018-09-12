@@ -41,7 +41,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="qualifyContracts_tab">
        <attribute name="title">
@@ -1614,35 +1614,13 @@ color: rgb(32, 74, 135);</string>
      <widget class="QWidget" name="horizontalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>460</x>
+        <x>540</x>
         <y>40</y>
-        <width>511</width>
+        <width>261</width>
         <height>31</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_Today">
-         <property name="styleSheet">
-          <string notr="true">font: italic 12pt &quot;Ubuntu Mono&quot;;
-color: rgb(32, 74, 135);</string>
-         </property>
-         <property name="text">
-          <string>Today</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_Today">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(238, 238, 236);
-</string>
-         </property>
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="QLabel" name="label_30DaysOut">
          <property name="styleSheet">
@@ -1686,6 +1664,40 @@ color: rgb(32, 74, 135);</string>
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="label_Today">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>0</y>
+        <width>41</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: italic 12pt &quot;Ubuntu Mono&quot;;
+color: rgb(32, 74, 135);</string>
+      </property>
+      <property name="text">
+       <string>Today</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_Today">
+      <property name="geometry">
+       <rect>
+        <x>637</x>
+        <y>2</y>
+        <width>106</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 236);
+</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_ironCondor">
